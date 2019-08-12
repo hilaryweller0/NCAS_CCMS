@@ -1,0 +1,83 @@
+% Package to provide \opttext{text} and \optparagraph{text} commands
+% that display the text in red, but if \studentversion is called at
+% the start of the document then a gap the same size as the text will
+% be left instead. The first is for short expanses of text (e.g. table
+% entries) while the second is for paragraphs (including
+% equations). Unfortunately it is not possible to have paragraph
+% breaks in "text"; you need eto call \optparagraph twice.
+\usepackage{ifthen}
+\usepackage{color,comment}
+
+\newboolean{@studentversion}\setboolean{@studentversion}{false}
+\newboolean{@onlineversionWithout}\setboolean{@onlineversionWithout}{false}
+\newboolean{@onlineversionWith}\setboolean{@onlineversionWith}{false}
+\newboolean{@lecversion}\setboolean{@lecversion}{false}
+
+% Command to turn on the student version of the document
+\newcommand{\studentversion}{\setboolean{@studentversion}{true}}
+% Command to turn on the online version of the document (2 versions)
+\newcommand{\onlineversionWithout}{\setboolean{@onlineversionWithout}{true}}
+\newcommand{\onlineversionWith}{\setboolean{@onlineversionWith}{true}}
+% Command to turn on the test online version of the document
+\newcommand{\lecversion}{\setboolean{@lecversion}{true}}
+\lecversion
+
+\ifthenelse{\boolean{@onlineversionWith} \OR \boolean{@onlineversionWithout}}
+           {\usepackage[display]{texpower}}
+           {\usepackage[printout]{texpower}}
+
+% The \opttext command - step through for online version, leave gap for
+% student version
+\newcommand{\opttext}[1]{%
+    \ifthenelse{\boolean{@onlineversionWith}}%
+    {% online version with answers, so step 
+        \step{{\color{red} #1}}%
+    }{}%
+    \ifthenelse{\boolean{@onlineversionWithout}}%
+    {% online version without answers, so step without answers, leaving gap
+        \step{\color{white} #1}%
+    }{}%
+    \ifthenelse{\boolean{@studentversion}}%
+    {% student version so leave a gap
+        {\color{white} #1}%
+    }{}%
+    \ifthenelse{\boolean{@lecversion}}%
+    {% lecturer version so in red
+        {\color{red} #1}%
+    }{}%
+}
+
+% The \hidden command - blank for student version and online version
+\newcommand{\hidden}[1]{%
+    \ifthenelse{\boolean{@onlineversionWithout} \OR \boolean{@studentversion}}%
+    {% Student version - leave gap
+        \phantom{#1}%
+    }{}%
+    \ifthenelse{\boolean{@onlineversionWith}}%
+    {% online version with answers, so step 
+        \step{{\color{red} #1}}%
+    }{}%
+    \ifthenelse{\boolean{@lecversion}}%
+    {% lecturer version, text in red
+        {\color{red} #1}%
+    }{}%
+}
+
+% The optpage command
+\newcommand{\optpage}[1]
+{
+    \clearpage
+    \ifthenelse{\boolean{@lecversion}\or\boolean{@onlineversionWith}}
+        {#1 \clearpage}
+        {}
+}
+
+% The optBlock command
+\newcommand{\optBlock}[1]
+{
+    \ifthenelse{\boolean{@lecversion}}
+        {{\color{red} #1}}
+        {{\color{white} #1}}
+}
+
+

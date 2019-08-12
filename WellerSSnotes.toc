@@ -1,0 +1,37 @@
+\contentsline {chapter}{\numberline {1}The Navier Stokes Equations}{7}{chapter.1}
+\contentsline {section}{\numberline {1.1}Advection and Diffusion}{8}{section.1.1}
+\contentsline {section}{\numberline {1.2}The Momentum Equation}{9}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Coriolis}{9}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}The Pressure Gradient Force}{10}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Gravitational Acceleration: Explosive Comulonimbus}{14}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}The Complete Navier Stokes Equations}{15}{subsection.1.2.4}
+\contentsline {chapter}{\numberline {2}Finite Differences}{16}{chapter.2}
+\contentsline {section}{\numberline {2.1}Exercises}{19}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Answers}{20}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Python Code to Solve the Linear Advection Equation using CTCS}{21}{section.2.2}
+\contentsline {section}{\numberline {2.3}Python Code to Solve the Intertial Oscillation Equation using forward-backward time-stepping}{23}{section.2.3}
+\contentsline {section}{\numberline {2.4}Practical: Solving a Differential Equation using Finite Differences}{25}{section.2.4}
+\contentsline {section}{\numberline {2.5}Using the Computers for the Practicals}{26}{section.2.5}
+\contentsline {chapter}{\numberline {3}Software Architecture}{28}{chapter.3}
+\contentsline {section}{\numberline {3.1}Some Good Programming Practices}{29}{section.3.1}
+\contentsline {section}{\numberline {3.2}Testing}{31}{section.3.2}
+\contentsline {section}{\numberline {3.3}Debugging}{32}{section.3.3}
+\contentsline {section}{\numberline {3.4}Version Control using git}{33}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Setting up \url {git}}{33}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Setting up a Local Repository}{34}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Sign up for a \url {github} account and create a Remote Repository}{34}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Link the local and remote repositories}{34}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}Push the changes in your local repository to GitHub.}{34}{subsection.3.4.5}
+\contentsline {subsection}{\numberline {3.4.6}Some more configuration}{35}{subsection.3.4.6}
+\contentsline {subsection}{\numberline {3.4.7}Adding all suitable files}{35}{subsection.3.4.7}
+\contentsline {subsection}{\numberline {3.4.8}Retrieving Old Versions}{36}{subsection.3.4.8}
+\contentsline {section}{\numberline {3.5}Practical: Use Some of the Software Techniques Described}{37}{section.3.5}
+\contentsline {chapter}{\numberline {4}Numerical Analysis}{38}{chapter.4}
+\contentsline {section}{\numberline {4.1}Accuracy and Order of Accuracy}{39}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Accuracy of CTCS discretisations}{39}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Exercises}{41}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Stability of Numerical Methods}{44}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Example}{44}{subsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.1.1}Exercises}{46}{subsubsection.4.2.1.1}
+\contentsline {chapter}{\numberline {5}Spatial Discritisation for Atmospheric Modelling}{48}{chapter.5}
+\contentsline {section}{\numberline {5.1}Practical: Implement a Better Numerical Method }{85}{section.5.1}

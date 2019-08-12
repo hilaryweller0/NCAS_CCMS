@@ -1,0 +1,1759 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass report
+\options serif
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref page
+\pdf_pdfusetitle true
+\papersize custom
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 2
+\use_package mathdots 2
+\use_package mathtools 1
+\use_package mhchem 2
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\paperwidth 768pt
+\paperheight 576pt
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\align center
+
+\series bold
+\size large
+Time Stepping for Atmospheric Models
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\size large
+Hilary Weller, June 2019
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Meteorology, University of Reading
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+Notes at: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.met.reading.ac.uk/~sws02hs/teaching/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Aim
+\end_layout
+
+\begin_layout Itemize
+Describe a multitude of time stepping methods used in atmospheric modelling
+ and how they relate to each other
+\end_layout
+
+\begin_layout Itemize
+Describe their advantages and disadvantages
+\end_layout
+
+\begin_layout Itemize
+What modelling centres use what methods
+\end_layout
+
+\begin_layout Section*
+Time Stepping and Related Methods
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Runge-Kutta or multi-step
+\end_layout
+
+\begin_layout Itemize
+Implicit or explicit
+\end_layout
+
+\begin_layout Itemize
+Semi-implicit, split explicit or 
+\begin_inset Newline newline
+\end_inset
+
+HEVI –
+\bar under
+ H
+\bar default
+orizontally 
+\bar under
+E
+\bar default
+xplicit, 
+\bar under
+V
+\bar default
+ertically 
+\bar under
+I
+\bar default
+mplicit
+\end_layout
+
+\begin_layout Itemize
+Projection method
+\end_layout
+
+\begin_layout Itemize
+Elliptic or hyperbolic equations
+\end_layout
+
+\begin_layout Itemize
+Newton's method
+\end_layout
+
+\begin_layout Itemize
+Exponential integrators
+\end_layout
+
+\begin_layout Itemize
+Parallel in time
+\begin_inset Newline newline
+\end_inset
+
+(Beth Wingate on Friday)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Runge-Kutta (RK)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="33text%">
+<column alignment="center" valignment="top" width="33text%">
+<column alignment="right" valignment="top" width="33text%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+To solve 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle \frac{d\mathbf{y}}{dt}=\mathbf{f}(\mathbf{y},t)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with a 
+\begin_inset Formula $\nu$
+\end_inset
+
+ stage RK scheme with time step 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+, 
+\begin_inset Formula $t^{n}=n\Delta t$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{y}^{n}=\mathbf{y}(t^{n})$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{y}^{(j)} & = & \mathbf{y}^{n}+\Delta t\sum_{\ell=1}^{\nu}a_{j\ell}\mathbf{f}\left(\mathbf{y}^{(\ell)},t^{n}+c_{\ell}\Delta t\right)\ \text{ for }j=1\ldots\nu\\
+\mathbf{y}^{n+1} & = & \mathbf{y}^{n}+\Delta t\sum_{j=1}^{\nu}w_{j}\mathbf{f}\left(\mathbf{y}^{(j)},t^{n}+c_{j}\Delta t\right).
+\end{eqnarray*}
+
+\end_inset
+
+The scheme is defined by a Butcher tableau:
+\begin_inset Formula 
+\[
+\begin{array}{c|c}
+\mathsf{\mathbf{c}} & A\\
+\hline  & \mathbf{w}^{T}
+\end{array}=\begin{array}{c|cccccc}
+c_{1} & a_{11} & a_{12} & \cdots & a_{1\ell} & \cdots & a_{1\nu}\\
+\vdots & \vdots & \vdots &  & \vdots &  & \vdots\\
+c_{j} & a_{j1} & a_{j2} & \cdots & a_{j\ell} & \cdots & a_{j\nu}\\
+\vdots & \vdots & \vdots &  & \vdots &  & \vdots\\
+c_{\nu} & a_{\nu1} & a_{\nu2} & \cdots & a_{\nu\ell} & \cdots & a_{\nu\nu}\\
+\hline  & w_{1} & w_{2} & \cdots & w_{\ell} & \cdots & w_{\nu}
+\end{array}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Exercise:
+\end_layout
+
+\begin_layout Standard
+Write out these schemes more simply, without a Butcher tableau
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="29text%">
+<column alignment="center" valignment="top" width="29text%">
+<column alignment="right" valignment="top" width="29text%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Euler Implicit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c|cc}
+0 & 0 & 0\\
+1 & 0 & 1\\
+\hline  & 0 & 1
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="29text%">
+<column alignment="center" valignment="top" width="29text%">
+<column alignment="right" valignment="top" width="29text%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Euler Explicit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c|cc}
+0 & 0 & 0\\
+1 & 1 & 0\\
+\hline  & 1 & 0
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="29text%">
+<column alignment="center" valignment="top" width="29text%">
+<column alignment="right" valignment="top" width="29text%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Classic RK4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c|cccc}
+0 & 0 & 0 & 0 & 0\\
+\half & \half & 0 & 0 & 0\\
+\half & 0 & \half & 0 & 0\\
+1 & 0 & 0 & 1 & 0\\
+\hline  & \nicefrac{1}{6} & \nicefrac{1}{3} & \nicefrac{1}{3} & \nicefrac{1}{6}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+Explicit schemes have 
+\begin_inset Formula $a_{j\ell}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $j\ge\ell$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Diagonally Implicit (DIRK) schemes have 
+\begin_inset Formula $a_{j\ell}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $j>\ell$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Exercise:
+\end_layout
+
+\begin_layout Standard
+What are the Butcher tableau of these schemes?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="29text%">
+<column alignment="center" valignment="top" width="29text%">
+<column alignment="right" valignment="top" width="29text%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Forward-backward
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c}
+\mathbf{y}^{\prime}=\mathbf{y}^{n}+\Delta t\mathbf{f}(\mathbf{y}^{n})\\
+\mathbf{y}^{n+1}=\mathbf{y}^{n}+\Delta t\mathbf{f}(\mathbf{y}^{\prime})
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\optBlock{\begin{array}{c|cc}
+0 & 0 & 0\\
+1 & 1 & 0\\
+\hline  & 0 & 1
+\end{array}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="29text%">
+<column alignment="center" valignment="top" width="29text%">
+<column alignment="right" valignment="top" width="29text%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heun (2nd order)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c}
+\mathbf{y}^{\prime}=\mathbf{y}^{n}+\Delta t\mathbf{f}(\mathbf{y}^{n})\\
+\mathbf{y}^{n+1}=\mathbf{y}^{n}+\frac{1}{2}\Delta t\left(\mathbf{f}(\mathbf{y}^{n})+\mathbf{f}(\mathbf{y}^{\prime})\right)
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\optBlock{\begin{array}{c|cc}
+0 & 0 & 0\\
+1 & 1 & 0\\
+\hline  & \half & \half
+\end{array}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="29text%">
+<column alignment="center" valignment="top" width="29text%">
+<column alignment="right" valignment="top" width="29text%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Crank-Nicolson
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c}
+\mathbf{y}^{n+1}=\mathbf{y}^{n}+\frac{1}{2}\Delta t\left(\mathbf{f}(\mathbf{y}^{n})+\mathbf{f}(\mathbf{y}^{n+1})\right)\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\optBlock{\begin{array}{c|cc}
+0 & 0 & 0\\
+1 & \half & \half\\
+\hline  & \half & \half
+\end{array}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Mutli-step Schemes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="33text%">
+<column alignment="center" valignment="top" width="33text%">
+<column alignment="right" valignment="top" width="33text%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+To solve 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle \frac{d\mathbf{y}}{dt}=\mathbf{f}(\mathbf{y})}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with a 
+\begin_inset Formula $K$
+\end_inset
+
+-step multi-step method 
+\begin_inset Formula 
+\[
+\mathbf{y}^{n+1}=\sum_{k=0}^{K-1}\alpha_{k}\mathbf{y}^{n-k}+\Delta t\sum_{k=0}^{K-1}\beta_{k}\mathbf{f}\left(\mathbf{y}^{n-k}\right)+\Delta t\gamma\mathbf{f}\left(\mathbf{y}^{n+1}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\gamma>0\implies$
+\end_inset
+
+ implicit, 
+\begin_inset Formula $\gamma=0\implies$
+\end_inset
+
+ explicit 
+\end_layout
+
+\begin_layout Paragraph*
+Example/Exercise
+\end_layout
+
+\begin_layout Enumerate
+Find 
+\begin_inset Formula $\alpha_{k}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{k}$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ for BDF2 (second-order, backward) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optBlock{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\alpha_{0}=\nicefrac{4}{3}$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{1}=-\nicefrac{1}{3}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{k}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma=\nicefrac{2}{3}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{y}^{n+1}=\frac{4}{3}\mathbf{y}^{n}-\frac{1}{3}\mathbf{y}^{n-1}+\frac{2}{3}\Delta t\mathbf{f}\left(\mathbf{y}^{n+1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Write out and name the multi-step scheme with 
+\begin_inset Formula $\alpha_{0}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{1}=1$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{0}=2$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{1}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\optBlock{\text{Leapfrog}\qquad\mathbf{y}^{n+1}=\mathbf{y}^{n-1}+2\Delta t\mathbf{f}\left(\mathbf{y}^{n}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Multi-step versus multi-stage, implicit versus explicit
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optBlock{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Multi-stage is more expensive and there are usually more function evaluations
+\end_layout
+
+\begin_layout Itemize
+Multi-step methods have computational modes (spurious solutions)
+\end_layout
+
+\begin_layout Itemize
+Implicit techniques are slower per time step because they require the solution
+ of a large matrix equation
+\end_layout
+
+\begin_layout Itemize
+Explicit techniques are unstable for large time steps
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Semi-implicit solution of the Shallow Water Equations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\frac{\partial\mathbf{u}}{\partial t}+\underbrace{\mathbf{u}\cdot\nabla\mathbf{u}}_{\text{advection: slow}} & =-\underbrace{2\Omega\times\mathbf{u}}_{\text{Coriolis: slow}}-\underbrace{g\nabla h}_{\text{pressure gradient: fast}}\label{eqn:SWEuv}\\
+\frac{\partial h}{\partial t}+\underbrace{\mathbf{u}\cdot\nabla h}_{\text{advection: slow}} & =-\underbrace{h\nabla\cdot\mathbf{u}}_{\text{divergence: fast}}\label{eqn:SWEh}
+\end{align}
+
+\end_inset
+
+Treat fast terms implicitly and slow terms explicitly.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepwise{
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+First-order Euler implicit/explicit:
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{\mathbf{u}^{\opttext{n+1}}-\mathbf{u}^{\opttext{n}}}{\Delta t} & = & -\mathbf{u}^{\opttext{n}}\cdot\nabla\mathbf{u}^{\opttext{n}}-2\Omega\times\mathbf{u}^{\opttext{n}}-g\nabla h^{\opttext{n+1}}\label{eq:SWEuv_time}\\
+\frac{h^{\opttext{n+1}}-h^{\opttext{n}}}{\Delta t} & = & -\mathbf{u}^{\opttext{n}}\cdot\nabla h^{\opttext{n}}-h^{\opttext{n}}\nabla\cdot\mathbf{u}^{\opttext{n+1}}\ \text{(note linearisation)}\label{eq:SWEh_time}
+\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Re-arrange (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SWEuv_time"
+
+\end_inset
+
+) for 
+\begin_inset Formula $\mathbf{u}^{n+1}$
+\end_inset
+
+, substitute into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SWEh_time"
+
+\end_inset
+
+) and re-arrange to get a Helmholtz equation for 
+\begin_inset Formula $h$
+\end_inset
+
+, discretised in time:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepwise{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+\mathbf{u}^{n+1} & = & \opttext{\mathbf{u}^{n}-\Delta t\left(\mathbf{u}^{n}\cdot\nabla\mathbf{u}^{n}+2\Omega\times\mathbf{u}^{n}+g\nabla h^{n+1}\right)}\label{eq:u_backSubs}\\
+h^{n+1} & = & \opttext{h^{n}-\Delta t\mathbf{u}^{n}\cdot\nabla h^{n}-\Delta th^{n}\nabla\cdot\left(\mathbf{u}^{n}-\Delta t\left(\mathbf{u}^{n}\cdot\nabla\mathbf{u}^{n}+2\Omega\times\mathbf{u}^{n}\right)\right)}\label{eq:Helm1}\\
+ & + & \Delta t^{2}gh^{n}\nabla^{2}h^{n+1}.
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+If we write 
+\begin_inset VSpace -10mm
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{u}^{\prime} & = & \mathbf{u}^{n}-\Delta t\left(\mathbf{u}^{n}\cdot\nabla\mathbf{u}^{n}+2\Omega\times\mathbf{u}^{n}\right)\\
+h^{\prime} & = & h^{n}-\Delta t\left(\mathbf{u}^{n}\cdot\nabla h^{n}-h^{n}\nabla\cdot\mathbf{u}^{\prime}\right)
+\end{eqnarray*}
+
+\end_inset
+
+then we can write (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:u_backSubs"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Helm1"
+
+\end_inset
+
+) as:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+ & \opttext{\mathbf{u}^{n+1}=\mathbf{u}^{\prime}-\Delta tg\nabla h^{n+1}}\label{eq:uprime_backSubs}\\
+ & \opttext{h^{n+1}=h^{\prime}+\Delta t^{2}gh^{n}\nabla^{2}h^{n+1}.}\label{eq:Helm2}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we assume a one dimensional C-grid (
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ staggered) with 
+\begin_inset Formula $u_{j+\half}^{n}=u\left((j+\half)\Delta x,n\Delta t\right)$
+\end_inset
+
+, 
+\begin_inset Formula $h_{j}^{n}=h(j\Delta x,n\Delta t)$
+\end_inset
+
+ and we ignore spatial discretisation of 
+\begin_inset Formula $\mathbf{u}^{\prime}$
+\end_inset
+
+ and 
+\begin_inset Formula $h^{\prime}$
+\end_inset
+
+ for now, then (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uprime_backSubs"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Helm2"
+
+\end_inset
+
+) can be discretised in space and time using centred differences as:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepwise{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+\mathbf{u}_{j+\half}^{n+1} & = & \opttext{\mathbf{u}_{j+\half}^{\prime}-\Delta tg\frac{h_{j+1}^{n+1}-h_{j}^{n+1}}{\Delta x}}\label{eq:uprime_backSubs-C}\\
+h_{j}^{n+1} & = & \opttext{h_{j}^{\prime}+\Delta t^{2}gh_{j}^{n}\frac{h_{j+1}^{n+1}+h_{j-1}^{n+1}-2h_{j}^{n+1}}{2\Delta x^{2}}.}\label{eq:Helm2-C}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+Or if we use an A-grid (
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ co-located) with 
+\begin_inset Formula $u_{j}^{n}=u\left(j\Delta x,n\Delta t\right)$
+\end_inset
+
+, 
+\begin_inset Formula $h_{j}^{n}=h(j\Delta x,n\Delta t)$
+\end_inset
+
+ and we ignore spatial discretisation of 
+\begin_inset Formula $\mathbf{u}^{\prime}$
+\end_inset
+
+ and 
+\begin_inset Formula $h^{\prime}$
+\end_inset
+
+ for now, then (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uprime_backSubs"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Helm2"
+
+\end_inset
+
+) can be discretised in space and time using centred differences as:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+\mathbf{u}_{j}^{n+1} & = & \opttext{\mathbf{u}_{j}^{\prime}-\Delta tg\frac{h_{j+1}^{n+1}-h_{j-1}^{n+1}}{2\Delta x}}\label{eq:uprime_backSubs-A}\\
+h_{j}^{n+1} & = & \opttext{h_{j}^{\prime}+\Delta t^{2}gh_{j}^{n}\frac{h_{j+2}^{n+1}+h_{j-2}^{n+1}-2h_{j}^{n+1}}{8\Delta x^{2}}.}\label{eq:Helm2-A}
+\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Projection Method – for elliptic equations
+\end_layout
+
+\begin_layout Standard
+A projection method is like semi-implicit but in the limit that the fast
+ time-scale is infinitely fast and the Helmholtz equation becomes a Poisson
+ equation:
+\begin_inset Formula 
+\begin{align}
+\frac{\partial\mathbf{u}}{\partial t}+\underbrace{\mathbf{u}\cdot\nabla\mathbf{u}}_{\text{advection: slow}} & =-\underbrace{2\Omega\times\mathbf{u}}_{\text{Coriolis: slow}}-\nabla P\label{eqn:momEqn}\\
+\nabla\cdot\mathbf{u} & =0\label{eqn:divuZero}
+\end{align}
+
+\end_inset
+
+Take the divergence of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqn:momEqn"
+
+\end_inset
+
+) and take the rate of change of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqn:divuZero"
+
+\end_inset
+
+) and eliminate 
+\begin_inset Formula $\partial\partial t(\nabla\cdot\mathbf{u})$
+\end_inset
+
+ to get a Poisson equation for 
+\begin_inset Formula $P$
+\end_inset
+
+:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepwise{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\nabla^{2}P=\opttext{-\nabla\cdot\left(\mathbf{u}\cdot\nabla\mathbf{u}+2\Omega\times\mathbf{u}\right).}\label{eq:Poisson}
+\end{equation}
+
+\end_inset
+
+If we can find 
+\begin_inset Formula $P$
+\end_inset
+
+ to satisfy (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Poisson"
+
+\end_inset
+
+) then discretise (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqn:momEqn"
+
+\end_inset
+
+) in time using this 
+\begin_inset Formula $P$
+\end_inset
+
+ then 
+\begin_inset Formula $\mathbf{u}^{n+1}$
+\end_inset
+
+ will have the same divergence as 
+\begin_inset Formula $\mathbf{u}^{n}$
+\end_inset
+
+ (ie zero).
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+HEVI –
+\bar under
+ H
+\bar default
+orizontally 
+\bar under
+E
+\bar default
+xplicit, 
+\bar under
+V
+\bar default
+ertically 
+\bar under
+I
+\bar default
+mplicit
+\end_layout
+
+\begin_layout Standard
+In models of the atmosphere, typically 
+\begin_inset Formula $\Delta z\ll\Delta x$
+\end_inset
+
+ and so time-steps due to vertically propagating acoustic waves impose a
+ more severe time step restriction than anything else.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Exercise
+\end_layout
+
+\begin_layout Standard
+If the Courant numbers due to horizontal and vertical advection are 
+\begin_inset Formula $c_{u}=u\Delta t/\Delta x$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{w}=w\Delta t/\Delta z$
+\end_inset
+
+ and due to horizontal and vertical propagagion of acoustic waves are 
+\begin_inset Formula $c_{x}=c\Delta t/\Delta x$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{z}=c\Delta t/\Delta z$
+\end_inset
+
+ where 
+\begin_inset Formula $c$
+\end_inset
+
+ is the speed of sound, estimate these Courant numbers given 
+\begin_inset Formula $u=100$
+\end_inset
+
+m/s, 
+\begin_inset Formula $w=10$
+\end_inset
+
+m/s, 
+\begin_inset Formula $\Delta x=1$
+\end_inset
+
+km, 
+\begin_inset Formula $\Delta z=100$
+\end_inset
+
+m, 
+\begin_inset Formula $\Delta t=1$
+\end_inset
+
+s and 
+\begin_inset Formula $c=343$
+\end_inset
+
+m/s.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optBlock{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $c_{u}=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $c_{w}=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $c_{x}=0.343$
+\end_inset
+
+, 
+\begin_inset Formula $c_{z}=3.43$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+stepwise{
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Typically, explicit schemes are stable for Courant numbers less than one
+ and so an implicit scheme is needed for a Courant number greater than one.
+ 
+\begin_inset Formula $\therefore$
+\end_inset
+
+ use a scheme that treats vertically propagating acoustic waves implicitly.
+ This leads to a matrix equations to solve for every column of the mesh.
+ The size of the matrix is equal to the number of model layers.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Split Explicit
+\end_layout
+
+\begin_layout Standard
+If we want to increase the time step then we could use a semi-implicit method
+ (treating all acoustic waves implicitly) but this involves a solution of
+ a large matrix equation.
+ Instead we could keep the model HEVI but do 3 steps of the acoustic wave
+ terms for every one step of the advection terms.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+What models are split explicit, HEVI and semi-implicit?
+\end_layout
+
+\begin_layout Standard
+Semi-implicit: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optBlock{UK Met Office, ECMWF IFS and FVM, Environment Canada}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+HEVI: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optBlock{DYNAMICO, ICON}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Split explicit: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optBlock{MPAS, NICAM, WRF}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Explicit (no acoustic waves) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optBlock{CAM}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Which RK and multi-step schemes are used by which models?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "WLW13"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "GKC13"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
