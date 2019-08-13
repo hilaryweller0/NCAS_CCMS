@@ -9,7 +9,7 @@
 \geometry{verbose,tmargin=0.5cm,bmargin=0.5cm,lmargin=1cm,rmargin=1cm,headheight=0.5cm,footskip=10pt}
 \pagestyle{plain}
 \setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{1}
 \setlength{\parskip}{3pt}
 \setlength{\parindent}{0pt}
 \usepackage{xcolor}
@@ -38,6 +38,15 @@
 \newcommand{\lyxdot}{.}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newenvironment{lyxlist}[1]
+{\begin{list}{}
+{\settowidth{\labelwidth}{#1}
+ \setlength{\leftmargin}{\labelwidth}
+ \addtolength{\leftmargin}{\labelsep}
+ \renewcommand{\makelabel}[1]{##1\hfil}}}
+{\end{list}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \input{preamble}
 \input{studentVersion}
@@ -52,25 +61,27 @@
 
 \input{reading.tex}
 
-\tableofcontents{}\input{NSeqns.tex}
+\tableofcontents{}
+
+\input{NSeqns.tex}
 
 \input{finiteDifferences.tex}
 
+\input{practicals/usingComputers.tex}
+
 \input{practicals/introPractical.tex}
 
-\input{practicals/usingComputers.tex}
+\input{NA.tex}
 
 \input{software.tex}
 
 \input{practicals/softwarePractical.tex}
 
-\input{NA.tex}
+\input{practicals/furtherPractical.tex}
 
 \input{space.tex}
 
 \input{time.tex}
-
-\input{practicals/furtherPractical.tex}
 
 \bibliographystyle{plainnat}
 \bibliography{numerics}

@@ -72,7 +72,6 @@
 \begin_body
 
 \begin_layout Standard
-
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -158,7 +157,7 @@ r = 4
 
 \begin_layout Plain Layout
 
-print 'Area of circle of radius', r, ' is ', np.pi*r**2
+print('Area of circle of radius', r, ' is ', np.pi*r**2)
 \end_layout
 
 \end_inset
@@ -167,43 +166,13 @@ Then save the file
 \end_layout
 
 \begin_layout Enumerate
-Run this code interactively (using python 2.7):
+Run this code using python3:
 \begin_inset Newline newline
 \end_inset
 
 
 \family typewriter
-python
-\family default
-
-\begin_inset Newline newline
-\end_inset
-
-and in python type:
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-execfile("helloWorld.py")
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-or from the command line:
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-python helloWorld.py
-\end_layout
-
-\begin_layout Enumerate
-To leave python, type 
-\family typewriter
-exit()
+python3 helloWorld.py
 \end_layout
 
 \begin_layout Enumerate
@@ -256,7 +225,7 @@ Some essential unix commands:
 \begin_deeper
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="2">
+<lyxtabular version="3" rows="14" columns="2">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -604,6 +573,30 @@ command
 \begin_inset Quotes erd
 \end_inset
 
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+or 
+\family typewriter
+command
+\family default
+ -- help
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 
 \end_layout
 

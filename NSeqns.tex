@@ -6,15 +6,15 @@ The Navier-Stokes Equations for a compressible, rotating atmosphere
 {\global\long\def\arraystretch{0.8}
 
 \begin{tabular}{ll}
-\multicolumn{2}{l}{\textbf{The Lagrangian derivative:} $\frac{D\Psi}{Dt}=\frac{\partial\Psi}{\partial t}+\mathbf{u}\cdot\nabla\Psi$}\tabularnewline
- & \tabularnewline
 Momentum  & $\frac{D\mathbf{u}}{Dt}=\text{-}2\bm{\Omega}\times\mathbf{u}-\frac{\nabla p}{\rho}+\mathbf{g}+\mu_{u}\left(\nabla^{2}\mathbf{u}+\frac{1}{3}\nabla(\nabla\cdot\mathbf{u})\right)$ \tabularnewline
  & \tabularnewline
 Continuity  & $\frac{D\rho}{Dt}+\rho\nabla\cdot\mathbf{u}=0$\tabularnewline
  & \tabularnewline
-Energy  & $\frac{D\theta}{Dt}=Q+\mu_{\theta}\nabla^{2}\theta$\tabularnewline
+Potential temperature  & $\frac{D\theta}{Dt}=Q+\mu_{\theta}\nabla^{2}\theta$\tabularnewline
  & \tabularnewline
 \multicolumn{2}{l}{An equation of state, eg perfect gas law, $p=\rho RT$}\tabularnewline
+ & \tabularnewline
+\multicolumn{2}{l}{Where the Lagrangian derivative is defined as $\frac{D\Psi}{Dt}=\frac{\partial\Psi}{\partial t}+\mathbf{u}\cdot\nabla\Psi$}\tabularnewline
 \end{tabular}}{\global\long\def\arraystretch{1}
 
 \begin{flushleft}
@@ -107,6 +107,16 @@ sound.%
 \clearpage{}
 
 \subsection*{Geostrophic Balance: Pressure Gradients versus Coriolis}
+
+$\text{-}2\bm{\Omega}\times\mathbf{u}=\frac{\nabla p}{\rho}$ . If
+$2\bm{\Omega}=\begin{pmatrix}0\\
+0\\
+f
+\end{pmatrix}$ and $\mathbf{u}=\begin{pmatrix}u\\
+v\\
+w
+\end{pmatrix}$ then $u=\optBlock{-\frac{1}{f\rho}\frac{\partial p}{\partial y}}$,
+$v=\optBlock{\frac{1}{f\rho}\frac{\partial p}{\partial x}}$. 
 
 \includegraphics[height=0.8\textheight]{/home/hilary/latex/teaching/topics/NSintro/synnopticChart}
 

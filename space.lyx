@@ -198,7 +198,7 @@ No spatial discretisation method is perfect.
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Shallow Water Equations
 \end_layout
 
@@ -229,8 +229,8 @@ Non-linear
 
 \begin_inset Formula 
 \begin{align}
-\frac{D\mathbf{u}}{Dt} & =-2\Omega\times\mathbf{u}-g\nabla(h+h_{0})\label{eqn:SWEuv}\\
-\frac{Dh}{Dt} & +h\nabla\cdot\mathbf{u}=0\label{eqn:SWEh}
+\frac{D\mathbf{u}}{Dt} & =-2\Omega\times\mathbf{u}-g\nabla(h+h_{0})\label{eqn:SWEuv1}\\
+\frac{Dh}{Dt} & +h\nabla\cdot\mathbf{u}=0\label{eqn:SWEh1}
 \end{align}
 
 \end_inset
@@ -388,7 +388,7 @@ Vectors show depth integrated wind.
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Finite Differences - Arakawa A-grid
 \end_layout
 
@@ -537,7 +537,7 @@ The Arakawa A-grid is not used by operational centres in this form.
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Arakawa Grids 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1269,7 +1269,7 @@ Equivalent to a B-grid rotated by
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Subsection
 Solutions of Linearised SWE starting from an initial bump
 \end_layout
 
@@ -1425,7 +1425,7 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section*
+\begin_layout Section
 The Pole Problem
 \end_layout
 
@@ -1541,7 +1541,7 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section*
+\begin_layout Subsection
 Cubed Sphere
 \end_layout
 
@@ -1691,7 +1691,7 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section*
+\begin_layout Subsection
 Reduced grid
 \end_layout
 
@@ -1786,7 +1786,7 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section*
+\begin_layout Subsection
 Icosahedral grids
 \end_layout
 
@@ -1957,7 +1957,7 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section*
+\begin_layout Subsection
 Yin-Yang Grid
 \end_layout
 
@@ -2035,7 +2035,7 @@ semi-implicit, semi-Lagrangian (like UK Met Office)
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Discretisations for terms of the Euler Equations
 \end_layout
 
@@ -2611,7 +2611,7 @@ status open
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Who uses what for Advection?
 \end_layout
 
@@ -3136,7 +3136,7 @@ Upwinded finite volume
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Subsection
 Semi-Lagrangian
 \end_layout
 
@@ -3400,7 +3400,7 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section*
+\begin_layout Subsection
 Flux Form Semi-Lagrangian
 \end_layout
 
@@ -3714,7 +3714,7 @@ where
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Subsection
 Other Advection Schemes
 \end_layout
 
@@ -3823,7 +3823,7 @@ Implicit (eg Crank-Nicolson)
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Numerical Methods for Gravity and Acoustic waves (2nd order wave equations)
 \end_layout
 
@@ -3892,7 +3892,7 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section*
+\begin_layout Section
 Spectral Method
 \end_layout
 
@@ -4354,51 +4354,6 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "38col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Subsection*
-Finite Element Method
-\end_layout
-
-\begin_layout Plain Layout
-Representation of a function using a piecewise linear basis.
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename graphics/Piecewise_linear_function2D.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
 width "58col%"
 special "none"
 height "1in"
@@ -4409,6 +4364,10 @@ shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
 status open
+
+\begin_layout Section
+The Finite Element Method
+\end_layout
 
 \begin_layout Plain Layout
 The solution, 
@@ -4482,6 +4441,47 @@ Solve to find
 \end_inset
 
 
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "38col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Representation of a function using a piecewise linear basis.
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename graphics/Piecewise_linear_function2D.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4491,7 +4491,7 @@ Solve to find
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Spectral Element Method 
 \end_layout
 
@@ -4595,14 +4595,7 @@ Pressure and velocity co-located
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
+\begin_layout Section
 Mixed Finite Element
 \end_layout
 
@@ -4633,15 +4626,11 @@ Next generation Met Office model
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Vertical Discretisation
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace -1cm
-\end_inset
-
-
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"

@@ -78,7 +78,7 @@
 \headheight 0.5cm
 \footskip 10pt
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 1
 \paragraph_separation skip
 \defskip 3pt
 \quotes_language english
@@ -121,6 +121,22 @@ LatexCommand tableofcontents
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Day 1 am
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
 filename "NSeqns.lyx"
@@ -141,9 +157,12 @@ filename "finiteDifferences.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "practicals/introPractical.lyx"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Day 1 pm
+\end_layout
 
 \end_inset
 
@@ -154,6 +173,52 @@ filename "practicals/introPractical.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "practicals/usingComputers.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "practicals/introPractical.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Day 2 am
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "NA.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Day 2 and 3 pm
+\end_layout
 
 \end_inset
 
@@ -183,7 +248,20 @@ filename "practicals/softwarePractical.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "NA.lyx"
+filename "practicals/furtherPractical.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Day 2 and 3 am
+\end_layout
 
 \end_inset
 
@@ -201,9 +279,12 @@ filename "space.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "time.lyx"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Day 3 am
+\end_layout
 
 \end_inset
 
@@ -213,7 +294,7 @@ filename "time.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "practicals/furtherPractical.lyx"
+filename "time.lyx"
 
 \end_inset
 

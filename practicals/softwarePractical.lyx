@@ -216,18 +216,6 @@ Testing: Use a function that you have already written or write a function,
  of different inputs and outputs.
  Test situations in which the function should fail as well as situations
  where it should not fail.
- I would recommend researching a python testing module such as 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-unittest
-\end_layout
-
-\end_inset
-
- to help with your testing.
 \end_layout
 
 \end_body

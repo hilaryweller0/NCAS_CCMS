@@ -499,6 +499,47 @@ status open
 \end_layout
 
 \begin_layout Section
+Python Code to Solve the Linear Advection Equation using CTCS
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:CTCScode"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[basicstyle={
+\backslash
+ttfamily
+\backslash
+codeFont},frame=single,language=Python,tabsize=4,showstringspaces=true,basicstyl
+e=
+\backslash
+small]{practicals/CTCS.py}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Exercises
 \end_layout
 
@@ -712,47 +753,6 @@ status open
 \begin_layout Plain Layout
 
 }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Python Code to Solve the Linear Advection Equation using CTCS
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:CTCScode"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-lstinputlisting[basicstyle={
-\backslash
-ttfamily
-\backslash
-codeFont},frame=single,language=Python,tabsize=4,showstringspaces=true,basicstyl
-e=
-\backslash
-small]{practicals/CTCS.py}
 \end_layout
 
 \end_inset

@@ -96,8 +96,7 @@ Practical: Solving a Differential Equation using Finite Differences
 \end_layout
 
 \begin_layout Standard
-This practical is completely open ended and we will build on it during the
- week.
+This practical is open ended and we will build on it during the week.
  Everyone has different knowledge and experience coding numerical methods
  so during this practical you will choose your own equation to solve and
  choose or design a numerical method to solve it.
@@ -110,7 +109,14 @@ reference "sec:CTCScode"
 
 \end_inset
 
- or inertial oscillations.
+ or inertial oscillations and start from the code in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:intertial_FB"
+
+\end_inset
+
+.
  For the more adventurous, you could choose an equation that you are interested
  in or pick a couple of terms from one of the Navier-Stokes equations to
  model.

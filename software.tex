@@ -8,6 +8,8 @@ cover a few ways in which things could be done better.
 
 \section{Testing\label{sec:testing}}
 
+\paragraph*{Important for this week}
+
 Code should be tested in situations where you know exactly what the
 output should. This is a crucial part of writing bug-free code. Every
 code and every function within a code should be tested. For a function,
@@ -17,49 +19,53 @@ and checks that the outputs are as expected. There may also be situations
 where a function is expected to give an error message. The tests should
 include input that you know should give an error message.
 
+\paragraph*{Further information}
+
 There are python modules to help with testing such as \url{unittest}
 and \url{nosetest}. Tools like \url{coverage} can show you how much
 of your code you have tested. There is good integration with some
 integrated development environments (IDEs), such as \url{PyCharm},
 which helps with most aspects of writing, testing, debugging, and
-running code.
+running code. 
 
 \clearpage{}
 
-\section{Debugging}
-
 \stepwise{
 
-IDEs (Interactive Development Environments, such as PyCharm) usually
-have useful interactive debugging tools which allow you to set breakpoints
-in the code and see, for example, what all variable values are. There
-are also python libraries such as \url{pdb} which stop the code at
-the line \url{pdb.set_trace()} and then allow you to step through
-and see what all variable values are. You should also be able to debug
-by hand without a dedicated tool, using lots of print statements.
-Here are some tips:
+\section{Debugging}
+
+\paragraph*{Important for this week}
+
+You should be able to debug by hand without a dedicated tool, using
+print statements:
 \begin{itemize}
-\item \step{You should try to re-produce the problem with the simplest
-code and with arrays set as small as possible so that the code runs
-(and crashes) quickly and so that you can re-produce the calculations
-by hand in order to check what the code is doing.}\step{
-\item You should have some idea of where things go wrong. Start by putting
-in print statements at a point in the code shortly before everything
-went wrong. Print out variables that you think might be related to
-the problem and check that their values are as expected. }\step{
+\item \step{Re-produce the problem with the simplest code and with arrays
+set as small as possible so that the code runs quickly and so that
+you can re-produce the calculations by hand.}\step{
+\item You need to know where things go wrong. Start by putting in print
+statements at a point in the code shortly before everything went wrong.
+Print out variables that you think might be related to the problem
+and check that their values are as expected. }\step{
 \item Put in print statements further up where you think that everything
 was working fine, printing out relevant variables.}\step{
 \item Using more print statements, find where in between things go wrong.
 }\step{
-\item When you have found and corrected the bug, delete all the de-bugging
-code rather than commenting it out. You do not want your code littered
-with commented out code. You might like to save all of the debug statements
-in a branch of a version control repository so that you can refer
-to it later. }\step{
+\item When you have found and corrected the bug, delete the de-bugging code
+rather than commenting it out. You do not want your code littered
+with commented out code. You could save the debug statements in a
+branch of your repository. }\step{
 \item Think how this bug happened and how you can better test your code
-in future to avoid bugs like that happening again.}
+to avoid similar bugs.}
 \end{itemize}
-}\clearpage{}
+
+\paragraph*{\pause Further Information}
+
+IDEs (Interactive Development Environments, such as PyCharm) have
+useful interactive debugging tools which allow you to set breakpoints
+in the code and see, for example, what all variable values are. There
+are also python libraries such as \url{pdb} which stop the code at
+the line \url{pdb.set_trace()} and then allow you to step through
+and see what all variable values are. }\clearpage{}
 
 \section{Version Control using git\label{sec:git}}
 
@@ -76,7 +82,8 @@ and \url{github}. This will therefore be a tiny introduction. A more
 comprehensive introduction is at, for example:\\
 \url{https://swcarpentry.github.io/git-novice/}\\
 and\\
-\url{http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners}.
+{\small{}\url{http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners}}.
+
 You should really also know about collaborating, branching and merging
 in \url{git} but this little introduction will cover setting up a
 repository, adding to it, pushing and pulling from a remote repository
@@ -149,18 +156,7 @@ there.
 
 \clearpage{}
 
-\subsection{Some more configuration}
-
-To avoid always having to specify
-\begin{lstlisting}
-origin master
-\end{lstlisting}
-when pushing and pulling, you can set some more defaults
-\begin{lstlisting}
-$ git config --global pull.default matching
-$ git branch --set-upstream-to=origin/master master
-\end{lstlisting}
-Now to push and pull you only need:
+Once everything is set up you can push and pull code using:
 \begin{lstlisting}
 $ git pull
 $ git push
@@ -175,10 +171,11 @@ git config credential.helper store
 \subsection{Adding all suitable files}
 
 We may have a directory structure full of files that we want to add
-to the repository. However it is important not to add large or binary
-files to a git repository. Therefore we need a \url{.gitignore} file
-to tell git not to add files with well known extensions that imply
-that they are binary files. You can copy my \url{.gitignore} file:
+to the repository. However \textcolor{blue}{it is important not to
+add large or binary files to a git repository}. Therefore we need
+a \url{.gitignore} file to tell git not to add files with well known
+extensions that imply that they are binary files. You can copy my
+\url{.gitignore} file:
 
 \begin{lstlisting}[basicstyle=\scriptsize]
 $ wget https://raw.githubusercontent.com/studentSpencer0/helloWorld/master/.gitignore

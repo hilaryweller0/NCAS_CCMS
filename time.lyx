@@ -87,51 +87,9 @@
 
 \begin_body
 
-\begin_layout Standard
+\begin_layout Chapter
 \noindent
-\align center
-
-\series bold
-\size large
 Time Stepping for Atmospheric Models
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-
-\size large
-Hilary Weller, June 2019
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-Meteorology, University of Reading
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-Notes at: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.met.reading.ac.uk/~sws02hs/teaching/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section*
@@ -139,8 +97,8 @@ Aim
 \end_layout
 
 \begin_layout Itemize
-Describe a multitude of time stepping methods used in atmospheric modelling
- and how they relate to each other
+Describe some time stepping methods used in atmospheric modelling and how
+ they relate to each other
 \end_layout
 
 \begin_layout Itemize
@@ -212,19 +170,15 @@ Elliptic or hyperbolic equations
 \end_layout
 
 \begin_layout Itemize
-Newton's method
+Newton's method (not described)
 \end_layout
 
 \begin_layout Itemize
-Exponential integrators
+Exponential integrators (not described)
 \end_layout
 
 \begin_layout Itemize
-Parallel in time
-\begin_inset Newline newline
-\end_inset
-
-(Beth Wingate on Friday)
+Parallel in time (not described)
 \end_layout
 
 \begin_layout Standard
@@ -250,58 +204,68 @@ end{multicols}
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Runge-Kutta (RK)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="3">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="33text%">
-<column alignment="center" valignment="top" width="33text%">
-<column alignment="right" valignment="top" width="33text%">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-To solve 
-\end_layout
-
+A Runge-Kutta or multi-stage scheme uses two time levels and a number of
+ intermediate steps to go from time step 
+\begin_inset Formula $n$
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-\begin_inset Formula ${\displaystyle \frac{d\mathbf{y}}{dt}=\mathbf{f}(\mathbf{y},t)}$
+ to 
+\begin_inset Formula $n+1$
+\end_inset
+
+.
+ Here are some well known RK schemes in order to solve the ODE:
+\begin_inset Formula 
+\[
+{\displaystyle \frac{d\mathbf{y}}{dt}=\mathbf{f}(\mathbf{y})}
+\]
+
 \end_inset
 
 
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Forward-backward 
+\begin_inset Formula $\begin{array}[t]{rcl}
+\mathbf{y}^{\prime} & = & \mathbf{y}^{n}+\Delta t\mathbf{f}(\mathbf{y}^{n})\\
+\mathbf{y}^{n+1} & = & \mathbf{y}^{n}+\Delta t\mathbf{f}(\mathbf{y}^{\prime})
+\end{array}$
 \end_inset
-</cell>
-<cell alignment="right" valignment="top" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
 
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Fourth-order 
+\begin_inset Formula $\begin{array}[t]{rcl}
+\mathbf{y}_{1} & = & \mathbf{y}^{n}\\
+\mathbf{y}_{2} & = & \mathbf{y}^{n}+\Delta t\dfrac{1}{2}\mathbf{f}(\mathbf{y}_{1})\\
+\mathbf{y}_{3} & = & \mathbf{y}^{n}+\Delta t\dfrac{1}{2}\mathbf{f}(\mathbf{y}_{2})\\
+\mathbf{y}_{4} & = & \mathbf{y}^{n}+\Delta t\mathbf{f}(\mathbf{y}_{3})\\
+\mathbf{y}^{n+1} & = & \mathbf{y}^{n}+\Delta t\left(\dfrac{1}{6}\mathbf{f}(\mathbf{y}_{1})+\dfrac{1}{3}\mathbf{f}(\mathbf{y}_{2})+\dfrac{1}{3}\mathbf{f}(\mathbf{y}_{3})+\dfrac{1}{6}\mathbf{f}(\mathbf{y}_{4})\right)
+\end{array}$
 \end_inset
-</cell>
-</row>
-</lyxtabular>
 
+
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage clearpage
 \end_inset
 
-
+Generalising
 \end_layout
 
 \begin_layout Standard
-with a 
+A 
 \begin_inset Formula $\nu$
 \end_inset
 
@@ -317,11 +281,11 @@ with a
 \begin_inset Formula $\mathbf{y}^{n}=\mathbf{y}(t^{n})$
 \end_inset
 
-:
+ can be written:
 \begin_inset Formula 
 \begin{eqnarray*}
-\mathbf{y}^{(j)} & = & \mathbf{y}^{n}+\Delta t\sum_{\ell=1}^{\nu}a_{j\ell}\mathbf{f}\left(\mathbf{y}^{(\ell)},t^{n}+c_{\ell}\Delta t\right)\ \text{ for }j=1\ldots\nu\\
-\mathbf{y}^{n+1} & = & \mathbf{y}^{n}+\Delta t\sum_{j=1}^{\nu}w_{j}\mathbf{f}\left(\mathbf{y}^{(j)},t^{n}+c_{j}\Delta t\right).
+\mathbf{y}^{(j)} & = & \mathbf{y}^{n}+\Delta t\sum_{\ell=1}^{\nu}a_{j\ell}\mathbf{f}\left(\mathbf{y}^{(\ell)}\right)\ \text{ for }j=1\ldots\nu\\
+\mathbf{y}^{n+1} & = & \mathbf{y}^{n}+\Delta t\sum_{j=1}^{\nu}w_{j}\mathbf{f}\left(\mathbf{y}^{(j)}\right).
 \end{eqnarray*}
 
 \end_inset
@@ -339,16 +303,74 @@ c_{j} & a_{j1} & a_{j2} & \cdots & a_{j\ell} & \cdots & a_{j\nu}\\
 \vdots & \vdots & \vdots &  & \vdots &  & \vdots\\
 c_{\nu} & a_{\nu1} & a_{\nu2} & \cdots & a_{\nu\ell} & \cdots & a_{\nu\nu}\\
 \hline  & w_{1} & w_{2} & \cdots & w_{\ell} & \cdots & w_{\nu}
-\end{array}.
+\end{array}
 \]
 
+\end_inset
+
+where 
+\begin_inset Formula $c_{j}$
+\end_inset
+
+ is the stage size and 
+\begin_inset Formula $c_{j}={\displaystyle \sum_{\ell=1}^{\nu}}a_{j\ell}$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph*
 \begin_inset Newpage clearpage
+\end_inset
+
+Exercise:
+\end_layout
+
+\begin_layout Standard
+Write down the Butcher tableau for forward-backward and the fourth-order
+ RK method.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optBlock{
+\end_layout
+
+\end_inset
+
+Forward-backward: 
+\begin_inset Formula $\begin{array}[t]{c|cc}
+0 & 0 & 0\\
+1 & 1 & 0\\
+\hline  & 0 & 1
+\end{array}$
+\end_inset
+
+ Fourth-order: 
+\begin_inset Formula $\begin{array}[t]{c|cccc}
+0 & 0 & 0 & 0 & 0\\
+\half & \half & 0 & 0 & 0\\
+\half & 0 & \half & 0 & 0\\
+1 & 0 & 0 & 1 & 0\\
+\hline  & \nicefrac{1}{6} & \nicefrac{1}{3} & \nicefrac{1}{3} & \nicefrac{1}{6}
+\end{array}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
@@ -392,10 +414,9 @@ Euler Implicit
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\begin{array}{c|cc}
-0 & 0 & 0\\
-1 & 0 & 1\\
-\hline  & 0 & 1
+\begin_inset Formula $\begin{array}{c|c}
+1 & 1\\
+\hline  & 1
 \end{array}$
 \end_inset
 
@@ -474,7 +495,7 @@ Euler Explicit
 \begin_inset Text
 
 \begin_layout Plain Layout
-Classic RK4
+Crank-Nicolson
 \end_layout
 
 \end_inset
@@ -483,6 +504,34 @@ Classic RK4
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optBlock{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\begin{array}{c}
+\mathbf{y}^{n+1}=\mathbf{y}^{n}+\frac{1}{2}\Delta t\left(\mathbf{f}(\mathbf{y}^{n})+\mathbf{f}(\mathbf{y}^{n+1})\right)\end{array}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -492,12 +541,10 @@ Classic RK4
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\begin{array}{c|cccc}
-0 & 0 & 0 & 0 & 0\\
-\half & \half & 0 & 0 & 0\\
-\half & 0 & \half & 0 & 0\\
-1 & 0 & 0 & 1 & 0\\
-\hline  & \nicefrac{1}{6} & \nicefrac{1}{3} & \nicefrac{1}{3} & \nicefrac{1}{6}
+\begin_inset Formula $\begin{array}{c|cc}
+0 & 0 & 0\\
+1 & \half & \half\\
+\hline  & \half & \half
 \end{array}$
 \end_inset
 
@@ -548,189 +595,16 @@ Diagonally Implicit (DIRK) schemes have
 
 \end_layout
 
-\begin_layout Paragraph*
-Exercise:
-\end_layout
-
-\begin_layout Standard
-What are the Butcher tableau of these schemes?
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="3">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="29text%">
-<column alignment="center" valignment="top" width="29text%">
-<column alignment="right" valignment="top" width="29text%">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Forward-backward
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\begin{array}{c}
-\mathbf{y}^{\prime}=\mathbf{y}^{n}+\Delta t\mathbf{f}(\mathbf{y}^{n})\\
-\mathbf{y}^{n+1}=\mathbf{y}^{n}+\Delta t\mathbf{f}(\mathbf{y}^{\prime})
-\end{array}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="right" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\optBlock{\begin{array}{c|cc}
-0 & 0 & 0\\
-1 & 1 & 0\\
-\hline  & 0 & 1
-\end{array}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="3">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="29text%">
-<column alignment="center" valignment="top" width="29text%">
-<column alignment="right" valignment="top" width="29text%">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Heun (2nd order)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\begin{array}{c}
-\mathbf{y}^{\prime}=\mathbf{y}^{n}+\Delta t\mathbf{f}(\mathbf{y}^{n})\\
-\mathbf{y}^{n+1}=\mathbf{y}^{n}+\frac{1}{2}\Delta t\left(\mathbf{f}(\mathbf{y}^{n})+\mathbf{f}(\mathbf{y}^{\prime})\right)
-\end{array}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="right" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\optBlock{\begin{array}{c|cc}
-0 & 0 & 0\\
-1 & 1 & 0\\
-\hline  & \half & \half
-\end{array}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="3">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="29text%">
-<column alignment="center" valignment="top" width="29text%">
-<column alignment="right" valignment="top" width="29text%">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Crank-Nicolson
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\begin{array}{c}
-\mathbf{y}^{n+1}=\mathbf{y}^{n}+\frac{1}{2}\Delta t\left(\mathbf{f}(\mathbf{y}^{n})+\mathbf{f}(\mathbf{y}^{n+1})\right)\end{array}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="right" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\optBlock{\begin{array}{c|cc}
-0 & 0 & 0\\
-1 & \half & \half\\
-\hline  & \half & \half
-\end{array}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
+\begin_layout Section
 Mutli-step Schemes
+\end_layout
+
+\begin_layout Standard
+Multi-step schemes can be written in one line.
+ They don't use any intermediate stages.
+ Instead to achieve high accuracy they use values from more than one previous
+ time level.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -913,7 +787,7 @@ Write out and name the multi-step scheme with
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section
 Multi-step versus multi-stage, implicit versus explicit
 \end_layout
 
@@ -971,15 +845,15 @@ status open
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section
 Semi-implicit solution of the Shallow Water Equations
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\frac{\partial\mathbf{u}}{\partial t}+\underbrace{\mathbf{u}\cdot\nabla\mathbf{u}}_{\text{advection: slow}} & =-\underbrace{2\Omega\times\mathbf{u}}_{\text{Coriolis: slow}}-\underbrace{g\nabla h}_{\text{pressure gradient: fast}}\label{eqn:SWEuv}\\
-\frac{\partial h}{\partial t}+\underbrace{\mathbf{u}\cdot\nabla h}_{\text{advection: slow}} & =-\underbrace{h\nabla\cdot\mathbf{u}}_{\text{divergence: fast}}\label{eqn:SWEh}
+\frac{\partial\mathbf{u}}{\partial t}+\underbrace{\mathbf{u}\cdot\nabla\mathbf{u}}_{\text{advection: slow}} & =-\underbrace{2\Omega\times\mathbf{u}}_{\text{Coriolis: slow}}-\underbrace{g\nabla h}_{\text{pressure gradient: fast}}\label{eqn:SWEuv2}\\
+\frac{\partial h}{\partial t}+\underbrace{\mathbf{u}\cdot\nabla h}_{\text{advection: slow}} & =-\underbrace{h\nabla\cdot\mathbf{u}}_{\text{divergence: fast}}\label{eqn:SWEh2}
 \end{align}
 
 \end_inset
@@ -1359,7 +1233,7 @@ status open
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Projection Method – for elliptic equations
 \end_layout
 
@@ -1470,7 +1344,7 @@ status open
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 HEVI –
 \bar under
  H
@@ -1639,7 +1513,7 @@ status open
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Split Explicit
 \end_layout
 

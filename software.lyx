@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass report
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -100,6 +102,10 @@ name "sec:testing"
 
 \end_layout
 
+\begin_layout Paragraph*
+Important for this week
+\end_layout
+
 \begin_layout Standard
 Code should be tested in situations where you know exactly what the output
  should.
@@ -111,6 +117,10 @@ Code should be tested in situations where you know exactly what the output
  There may also be situations where a function is expected to give an error
  message.
  The tests should include input that you know should give an error message.
+\end_layout
+
+\begin_layout Paragraph*
+Further information
 \end_layout
 
 \begin_layout Standard
@@ -163,6 +173,7 @@ PyCharm
 
 , which helps with most aspects of writing, testing, debugging, and running
  code.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -170,10 +181,6 @@ PyCharm
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Debugging
 \end_layout
 
 \begin_layout Standard
@@ -192,36 +199,17 @@ stepwise{
 
 \end_layout
 
+\begin_layout Section
+Debugging
+\end_layout
+
+\begin_layout Paragraph*
+Important for this week
+\end_layout
+
 \begin_layout Standard
-IDEs (Interactive Development Environments, such as PyCharm) usually have
- useful interactive debugging tools which allow you to set breakpoints in
- the code and see, for example, what all variable values are.
- There are also python libraries such as 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-pdb
-\end_layout
-
-\end_inset
-
- which stop the code at the line 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-pdb.set_trace()
-\end_layout
-
-\end_inset
-
- and then allow you to step through and see what all variable values are.
- You should also be able to debug by hand without a dedicated tool, using
- lots of print statements.
- Here are some tips:
+You should be able to debug by hand without a dedicated tool, using print
+ statements:
 \end_layout
 
 \begin_layout Itemize
@@ -237,10 +225,9 @@ step{
 
 \end_inset
 
-You should try to re-produce the problem with the simplest code and with
- arrays set as small as possible so that the code runs (and crashes) quickly
- and so that you can re-produce the calculations by hand in order to check
- what the code is doing.
+Re-produce the problem with the simplest code and with arrays set as small
+ as possible so that the code runs quickly and so that you can re-produce
+ the calculations by hand.
 \begin_inset ERT
 status open
 
@@ -257,7 +244,7 @@ step{
 \end_layout
 
 \begin_layout Itemize
-You should have some idea of where things go wrong.
+You need to know where things go wrong.
  Start by putting in print statements at a point in the code shortly before
  everything went wrong.
  Print out variables that you think might be related to the problem and
@@ -315,11 +302,10 @@ step{
 \end_layout
 
 \begin_layout Itemize
-When you have found and corrected the bug, delete all the de-bugging code
- rather than commenting it out.
+When you have found and corrected the bug, delete the de-bugging code rather
+ than commenting it out.
  You do not want your code littered with commented out code.
- You might like to save all of the debug statements in a branch of a version
- control repository so that you can refer to it later.
+ You could save the debug statements in a branch of your repository.
  
 \begin_inset ERT
 status open
@@ -337,8 +323,8 @@ step{
 \end_layout
 
 \begin_layout Itemize
-Think how this bug happened and how you can better test your code in future
- to avoid bugs like that happening again.
+Think how this bug happened and how you can better test your code to avoid
+ similar bugs.
 \begin_inset ERT
 status open
 
@@ -352,7 +338,50 @@ status open
 
 \end_layout
 
+\begin_layout Paragraph*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause 
+\end_layout
+
+\end_inset
+
+Further Information
+\end_layout
+
 \begin_layout Standard
+IDEs (Interactive Development Environments, such as PyCharm) have useful
+ interactive debugging tools which allow you to set breakpoints in the code
+ and see, for example, what all variable values are.
+ There are also python libraries such as 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+pdb
+\end_layout
+
+\end_inset
+
+ which stop the code at the line 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+pdb.set_trace()
+\end_layout
+
+\end_inset
+
+ and then allow you to step through and see what all variable values are.
+ 
 \begin_inset ERT
 status open
 
@@ -472,6 +501,8 @@ and
 \end_inset
 
 
+\size small
+
 \begin_inset Flex URL
 status open
 
@@ -482,9 +513,14 @@ http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
 
 \end_inset
 
+
+\size default
 .
- You should really also know about collaborating, branching and merging
- in 
+\end_layout
+
+\begin_layout Standard
+You should really also know about collaborating, branching and merging in
+ 
 \begin_inset Flex URL
 status open
 
@@ -852,41 +888,8 @@ $ git push origin master
 
 \end_layout
 
-\begin_layout Subsection
-Some more configuration
-\end_layout
-
 \begin_layout Standard
-To avoid always having to specify
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-origin master
-\end_layout
-
-\end_inset
-
-when pushing and pulling, you can set some more defaults
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git config --global pull.default matching
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git branch --set-upstream-to=origin/master master
-\end_layout
-
-\end_inset
-
-Now to push and pull you only need:
+Once everything is set up you can push and pull code using:
 \begin_inset listings
 inline false
 status open
@@ -949,7 +952,11 @@ Adding all suitable files
 \begin_layout Standard
 We may have a directory structure full of files that we want to add to the
  repository.
- However it is important not to add large or binary files to a git repository.
+ However 
+\color blue
+it is important not to add large or binary files to a git repository
+\color inherit
+.
  Therefore we need a 
 \begin_inset Flex URL
 status open

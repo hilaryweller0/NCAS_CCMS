@@ -1,5 +1,5 @@
-# Numerical solution of the inertial osicllation equation using forward-backward
-# time-stepping with Coriolis parameter f
+# Numerical solution of the inertial osicllation equation using
+# forward-backward time-stepping with Coriolis parameter f
 # dudt = f*v
 # dvdt = -f*u
 

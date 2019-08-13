@@ -31,13 +31,13 @@ produce useful forecasts.}
 
 \clearpage{}
 
-\section*{Shallow Water Equations}
+\section{Shallow Water Equations}
 
 \begin{minipage}[t]{0.48\columnwidth}%
 \textbf{Non-linear}
 \begin{align}
-\frac{D\mathbf{u}}{Dt} & =-2\Omega\times\mathbf{u}-g\nabla(h+h_{0})\label{eqn:SWEuv}\\
-\frac{Dh}{Dt} & +h\nabla\cdot\mathbf{u}=0\label{eqn:SWEh}
+\frac{D\mathbf{u}}{Dt} & =-2\Omega\times\mathbf{u}-g\nabla(h+h_{0})\label{eqn:SWEuv1}\\
+\frac{Dh}{Dt} & +h\nabla\cdot\mathbf{u}=0\label{eqn:SWEh1}
 \end{align}
 $\Omega$ is rotation
 
@@ -67,7 +67,7 @@ mountain)\optBlock{
 
 \clearpage{}
 
-\section*{Finite Differences - Arakawa A-grid}
+\section{Finite Differences - Arakawa A-grid}
 
 Store discrete values of $h$ and $u$ on a grid. A one dimensional
 example:
@@ -90,7 +90,7 @@ The Arakawa A-grid is not used by operational centres in this form.
 
 \clearpage{}
 
-\section*{Arakawa Grids \citep{AL77}}
+\section{Arakawa Grids \citep{AL77}}
 
 Consider the component form of the 2D linearised SWE:
 \begin{eqnarray}
@@ -196,7 +196,7 @@ leads to spurious gravity modes
 
 \clearpage{}
 
-\section*{Solutions of Linearised SWE starting from an initial bump}
+\subsection{Solutions of Linearised SWE starting from an initial bump}
 
 \stepwise{
 \begin{tabular}{ccc}
@@ -216,7 +216,7 @@ A-grid & B-grid & C-grid \\
 
 \begin{minipage}[t]{0.4\columnwidth}%
 
-\section*{The Pole Problem}
+\section{The Pole Problem}
 
 \includegraphics[width=1\textwidth]{/home/hilary/latex/teaching/topics/grids/latLon}%
 \end{minipage}\hfill{}%
@@ -243,7 +243,7 @@ on cubed sphere for high resolution)
 
 \begin{minipage}[t]{0.48\columnwidth}%
 
-\section*{Cubed Sphere}
+\subsection{Cubed Sphere}
 
 \includegraphics[width=1\textwidth]{graphics/a_cubedsphere}
 
@@ -280,7 +280,7 @@ avoid grid imprinting.%
 
 \begin{minipage}[t]{0.48\columnwidth}%
 
-\section*{Reduced grid}
+\subsection{Reduced grid}
 
 \includegraphics[width=1\textwidth]{/home/hilary/latex/teaching/topics/grids/reduced}%
 \end{minipage} \hfill{}%
@@ -304,7 +304,7 @@ avoid grid imprinting.%
 
 \begin{minipage}[t][0.5\paperheight]{0.48\columnwidth}%
 
-\section*{Icosahedral grids}
+\subsection{Icosahedral grids}
 
 Suitable for low order models
 
@@ -344,7 +344,7 @@ Z-grid)
 
 \begin{minipage}[t][0.5\paperheight]{0.48\columnwidth}%
 
-\section*{Yin-Yang Grid}
+\subsection{Yin-Yang Grid}
 
 \includegraphics[width=1\textwidth]{/home/hilary/latex/teaching/topics/grids/grid_yin_yang}
 
@@ -367,7 +367,7 @@ Spurious behaviour on overlaps%
 
 \clearpage{}
 
-\section*{Discretisations for terms of the Euler Equations}
+\section{Discretisations for terms of the Euler Equations}
 
 \begin{tabular}{ll}
 \textcolor{blue}{Linear Advection}\hspace{1cm} & \textcolor{cyan}{Non-linear advection}\tabularnewline
@@ -401,7 +401,7 @@ $p$  & Atmospheric pressure &  & \tabularnewline
 
 \clearpage{}
 
-\section*{Who uses what for Advection?}
+\section{Who uses what for Advection?}
 
 \begin{tabular}{lll}
 \textbf{Model/Modelling centre} & \textbf{Version} & \textbf{Numerical method}\tabularnewline
@@ -436,7 +436,7 @@ CSU &  & \textcolor{olive}{Upwinded finite volume}\tabularnewline
 
 \clearpage{}
 
-\section*{Semi-Lagrangian}
+\subsection{Semi-Lagrangian}
 
 \begin{minipage}[t]{0.6\columnwidth}%
 \[
@@ -468,7 +468,7 @@ to time step}
 
 \begin{minipage}[t]{0.6\columnwidth}%
 
-\section*{Flux Form Semi-Lagrangian}
+\subsection{Flux Form Semi-Lagrangian}
 
 \textbf{Also known as:}
 \begin{itemize}
@@ -527,7 +527,7 @@ face during one time step.
 
 \clearpage{}
 
-\section*{Other Advection Schemes}
+\subsection{Other Advection Schemes}
 
 Space and time discretised separately \textendash{} ``method of lines''. 
 
@@ -556,7 +556,7 @@ Space and time discretised separately \textendash{} ``method of lines''.
 
 \clearpage{}
 
-\section*{Numerical Methods for Gravity and Acoustic waves (2nd order wave
+\section{Numerical Methods for Gravity and Acoustic waves (2nd order wave
 equations)}
 \begin{itemize}
 \item Finite Difference - Arakawa A, B, C, D or E grids \citep{AL77}
@@ -576,7 +576,7 @@ staggered)
 
 \begin{minipage}[t]{0.68\columnwidth}%
 
-\section*{Spectral Method}
+\section{Spectral Method}
 \begin{itemize}
 \item Fourier and Legendre transforms convert grid point data, $\tilde{X}(\lambda,\theta)$
 ($\lambda$ is longitude and $\theta$ is latitude) into coefficients,
@@ -631,16 +631,10 @@ problems}
 
 \clearpage{}
 
-\begin{minipage}[c][1\totalheight][t]{0.38\columnwidth}%
-
-\subsection*{Finite Element Method}
-
-Representation of a function using a piecewise linear basis.
-\begin{center}
-\includegraphics[width=1\textwidth]{graphics/Piecewise_linear_function2D}
-\par\end{center}%
-\end{minipage}\hfill{}%
 \begin{minipage}[c][1\totalheight][t]{0.58\columnwidth}%
+
+\section{The Finite Element Method}
+
 The solution, $u(\mathbf{x})$, is represented as a sum of $N$ basis
 functions:
 \begin{equation}
@@ -660,11 +654,17 @@ stiffness matrix) \textendash{} \textbf{a global matrix}
 \item Solve to find $U_{i}$
 \end{itemize}
 %
+\end{minipage}\hfill{}%
+\begin{minipage}[c][1\totalheight][t]{0.38\columnwidth}%
+Representation of a function using a piecewise linear basis.
+\begin{center}
+\includegraphics[width=1\textwidth]{graphics/Piecewise_linear_function2D}
+\par\end{center}%
 \end{minipage}
 
 \clearpage{}
 
-\section*{Spectral Element Method }
+\section{Spectral Element Method }
 
 \begin{minipage}[t]{0.48\columnwidth}%
 Basis functions are Lagrange interpolation on Gauss-Lobatto quadrature
@@ -686,19 +686,17 @@ $\therefore$ A-grid computational mode but high order
 %
 \end{minipage}
 
-\clearpage{}
-
-\section*{Mixed Finite Element}
+\section{Mixed Finite Element}
 \begin{itemize}
 \item Different basis functions for pressure and velocity\\
 $\therefore$ good wave dispersion
-\item Hear Nigel Wood's talk on next Met Office model
+\item Finite element equivalent of staggered grid
+\item Next generation Met Office model
 \end{itemize}
 \clearpage{}
 
-\section*{Vertical Discretisation}
+\section{Vertical Discretisation}
 
-\vspace{-1cm}
 \begin{minipage}[t]{0.66\columnwidth}%
 \phantom{}\includegraphics[width=1\textwidth]{graphics/verticalStaggering}%
 \end{minipage} %
