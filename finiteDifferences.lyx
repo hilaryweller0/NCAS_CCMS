@@ -768,7 +768,7 @@ status open
 \end_layout
 
 \begin_layout Section
-Python Code to Solve the Intertial Oscillation Equation using forward-backward
+Python Code to Solve the Inertial Oscillation Equation using forward-backward
  time-stepping
 \begin_inset CommandInset label
 LatexCommand label

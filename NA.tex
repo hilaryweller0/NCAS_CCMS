@@ -131,6 +131,8 @@ $\implies f_{b}^{\prime}=\frac{\Delta x_{1}^{2}f_{c}-\Delta x_{2}^{2}f_{a}-\left
 
 \section{Stability of Numerical Methods}
 
+\subsection{Ordinary Differential Equations (ODEs)}
+
 This section will consider the stability of numerical methods for
 systems of linear ordinary differential equations (ODEs, with time-stepping
 but no spatial differentials). 
@@ -141,8 +143,9 @@ We are numerically solving an equation of the form
 \begin{equation}
 \frac{dy}{dt}=\lambda y.\label{eq:1dlinODE}
 \end{equation}
-where $y$ and $\lambda$ could by complex. }\step{To predict stability
-of the numerical method, we find an amplification factor, $A$, such
+where $y$ and $\lambda$ could by complex, $y$ could be a vector
+and $\lambda$ could be a matrix. }\step{To predict stability of
+the numerical method, we find an amplification factor, $A$, such
 that 
 \begin{equation}
 y^{(n+1)}=Ay^{(n)}
@@ -156,16 +159,18 @@ by the numerical method at time-steps $n$ and $n+1$.}\step{
 where $\rho(A)$ is the spectral radius of $A$; the largest eigenvalue
 of $A$.}
 \end{itemize}
-}\step{
+}}
+
+\clearpage{}
 
 \subsection{Example}
 
-Consider the explicit, first-order Euler method for solving eqn (\ref{eq:1dlinODE}):
+\stepwise{Consider the explicit, first-order Euler method for solving
+eqn (\ref{eq:1dlinODE}):
 \begin{equation}
 y^{(n+1)}=y^{(n)}+\Delta t\lambda y^{(n)}.
 \end{equation}
-}\step{Substitute in $y^{(n+1)}=Ay^{(n)}$ and divide through by
-$y^{(n)}$:
+\step{Substitute in $y^{(n+1)}=Ay^{(n)}$ and divide through by $y^{(n)}$:
 \begin{equation}
 A=\opttext{1-\lambda\Delta t}.
 \end{equation}
@@ -214,5 +219,162 @@ values of $\Delta t>0$.
 $\implies||A||^{2}=\left(1+(1-\alpha)^{2}\lambda^{2}\Delta t^{2}\right)/\left(1+\alpha^{2}\lambda^{2}\Delta t^{2}\right)$\\
 $\therefore\ ||A||^{2}\le1\ \iff\ \alpha^{2}\lambda^{2}\Delta t^{2}\ge(1-\alpha)^{2}\lambda^{2}\Delta t^{2}$\\
 $\iff\alpha\ge1-\alpha\ \iff\ \alpha\ge1/2$.
+\end{enumerate}
+}
+
+\clearpage{}
+
+\subsection{Von-Neumann Stability Analysis}
+
+\stepwise{
+
+The initial conditions of any PDE, or the solution at any time, can
+be written as a sum of Fourier modes:
+\begin{equation}
+\phi(x,t)=\sum_{k}A_{k}(t)\ e^{ikx}
+\end{equation}
+Linear numerical methods, operating on linear PDEs, operate independently
+on each Fourier mode of a solution. Therefore we only need to analyse
+the influence of a numerical method on a Fourier mode. 
+
+\step{We will consider the one-dimensional linear advection equation:
+\begin{equation}
+{\displaystyle \frac{\partial\phi}{\partial t}+u\frac{\partial\phi}{\partial x}=0}
+\end{equation}
+
+}\step{and the forward in time, backward in space (FTBS) scheme for
+linear advection:
+\begin{equation}
+\frac{\phi_{j}^{(n+1)}-\phi_{j}^{(n)}}{\Delta t}+u\frac{\phi_{j}^{(n)}-\phi_{j-1}^{(n)}}{\Delta x}=0
+\end{equation}
+}\step{which can be re-arranged to give $\phi_{j}^{(n+1)}$ in terms
+of the $\phi_{j}$s at the previous time-step and the Courant number,
+$c=u\Delta t/\Delta x$}\step{: 
+\begin{equation}
+\phi_{j}^{(n+1)}=\phi_{j}^{(n)}-c\bigl(\phi_{j}^{(n)}-\phi_{j-1}^{(n)}\bigr)\label{eq:FTBS}
+\end{equation}
+}\step{Replace the $\phi$s in eqn (\ref{eq:FTBS}) with one Fourier
+mode and an amplification factor that multiplies the solution at every
+time-step:
+\begin{equation}
+\phi_{j}^{(n)}=A^{n}e^{ikj\Delta x}
+\end{equation}
+giving:
+\begin{equation}
+\opttext{A^{n+1}e^{ikj\Delta x}=A^{n}e^{ikj\Delta x}-c\left(A^{n}e^{ikj\Delta x}-A^{n}e^{ik(j-1)\Delta x}\right)}
+\end{equation}
+
+}}
+
+\clearpage{}\stepwise{Cancelling powers of $A^{n}e^{ikj\Delta x}$
+gives an expression for $A$:
+
+\begin{equation}
+A=\opttext{1-c(1-e^{-ik\Delta x})}
+\end{equation}
+\step{We need to find the magnitude of $A$ so we need to write it
+down in real and imaginary form. So substitute $e^{-ik\Delta x}=\cos k\Delta x-i\sin k\Delta x$:
+\begin{equation}
+A=\opttext{1-c(1-\cos k\Delta x)-ic\sin k\Delta x}
+\end{equation}
+}\step{and calculate $|A|^{2}=AA^{*}$ ($A$ multiplied by its complex
+conjugate):
+\begin{align*}
+|A|^{2} & =1-2c(1-\cos k\Delta x)+c^{2}(1-2\cos k\Delta x+\cos^{2}k\Delta x)+c^{2}\sin^{2}k\Delta x\\
+\implies|A|^{2} & =1-2c(1-c)(1-\cos k\Delta x)
+\end{align*}
+}\step{We need to find for what value of $\Delta t$ or $c$ is $|A|\le1$
+in order to find when FTBS is stable: 
+\begin{align*}
+|A|\le1 & \iff|A|^{2}-1\le0\\
+ & \iff-2c(1-c)(1-\cos k\Delta x)\le0\\
+ & \iff c(1-c)(1-\cos k\Delta x)\ge0
+\end{align*}
+
+}\step{We know that $1-\cos k\Delta x\ge0$ for all $k\Delta x$
+so FTBS is stable when\\
+ $c(1-c)\ge0\iff0\le c\le1$.
+
+We have proved that FTBS is unstable if $u<0$ or if $\frac{u\Delta t}{\Delta x}>1$.
+We will now define:
+
+\begin{tabular}{lll}
+\textbf{Upwind scheme } & FTBS  & when $u\ge0$\tabularnewline
+ & FTFS  & when $u<0$ \tabularnewline
+\end{tabular}
+
+The upwind scheme is first order accurate in space and time, conditionally
+stable and damping.
+
+}}
+
+\clearpage{}
+
+\subsubsection*{Exercises}
+\begin{enumerate}
+\item Find the amplification factor and hence determine the stability of
+the forward in time, centred in space (FTCS) scheme for linear advection:
+\[
+\phi_{j}^{(n+1)}=\phi_{j}^{(n)}-\frac{c}{2}\left(\phi_{j+1}^{(n)}-\phi_{j-1}^{(n)}\right)
+\]
+\item Find the amplification factor and hence determine the stability of
+the forward in time, centred in space (FTCS) scheme for the heat equation:
+\[
+\frac{T_{j}^{(n+1)}-T_{j}^{(n)}}{\Delta t}=\frac{K}{\Delta x^{2}}\left(T_{j-1}^{(n)}-2T_{j}^{(n)}+T_{j+1}^{(n)}\right).
+\]
+\end{enumerate}
+\clearpage{}
+
+\optpage{
+
+\subsubsection*{Solutions}
+\begin{enumerate}
+\item FTCS: $\phi_{j}^{(n+1)}=\phi_{j}^{(n)}-\frac{c}{2}\left(\phi_{j+1}^{(n)}-\phi_{j-1}^{(n)}\right)$\\
+Substitute in $\phi_{j}^{(n)}=A^{n}e^{ikj\Delta x}$ and cancel powers
+of $A^{n}e^{ikj\Delta x}$:
+\begin{align*}
+A= & 1-\frac{c}{2}(e^{ik\Delta x}-e^{-ik\Delta x})\\
+= & 1-ic\sin k\Delta x
+\end{align*}
+Find for what Courant numbers the scheme is stable: 
+\begin{align*}
+A= & 1-ic\sin k\Delta x\\
+\Rightarrow|A|^{2}= & 1+c^{2}\sin^{2}k\Delta x
+\end{align*}
+which is $>1$ for all $|c|>0$ and so FTCS is unconditioanlly unstable
+\item For the FTCS scheme for diffusion we use the shorthand $d=\frac{K\Delta t}{\Delta x^{2}}$.
+Then:
+\begin{eqnarray}
+A & = & 1+d(e^{ik\Delta x}-2+e^{-ik\Delta x})\\
+ & = & 1-2d(1-\cos k\Delta x)
+\end{eqnarray}
+We require the scheme to be stable for all wavenumbers, $k$. So find
+for what values of $d$ the scheme is stable for all values of $k\Delta x$.
+\begin{align*}
+ & -1\le A\le1\\
+\iff & -1\le1-2d(1-\cos k\Delta x)\le1\\
+\iff & 1\ge-1+2d(1-\cos k\Delta x)\ge-1\ \text{ add one to all 3 sides}\\
+\iff & 2\ge2d(1-\cos k\Delta x)\ge0\ \text{ divide through by }2d\ \text{(which is always positive) }\\
+\iff & 0\le(1-\cos k\Delta x)\le\frac{1}{d}
+\end{align*}
+Sketch $1-\cos k\Delta x$ to find its maximum and minimum values.
+From this we can see that $0\le(1-\cos k\Delta x)\le2$ for any value
+of $k\Delta x$. For stability we need $(1-\cos k\Delta x)\le\frac{1}{d}$
+for \textit{every} value of $k\Delta x$ so we need:
+\[
+2\le\frac{1}{d}\ \iff d\le\frac{1}{2}\ \iff K\Delta t/\Delta x^{2}\le\frac{1}{2}\ \iff\Delta t\le\frac{\Delta x^{2}}{2K}
+\]
+If in addition we do not want the solution to oscillate in sign from
+one time-step (ie non-oscillatory) to the next then we require: 
+\begin{align*}
+ & 0\le A\le1\\
+\iff & 0\le1-2d(1-\cos k\Delta x)\le1\\
+\iff & 0\ge-1+2d(1-\cos k\Delta x)\ge-1\\
+\iff & 1/2\ge d(1-\cos k\Delta x)\ge0\\
+\iff & 1/(2(1-\cos k\Delta x))\ge d\ge0~\text{ since }~0\le1-\cos k\Delta x\le2\\
+\Leftarrow~~ & d\le\frac{1}{4}\iff\Delta t\le\frac{\Delta x^{2}}{4K}
+\end{align*}
+So for large $K$ or for high resolution (small $\Delta x$) a very
+small time-step must be taken for FTCS to be stable
 \end{enumerate}
 }

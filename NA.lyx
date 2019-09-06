@@ -924,6 +924,10 @@ status open
 Stability of Numerical Methods
 \end_layout
 
+\begin_layout Subsection
+Ordinary Differential Equations (ODEs)
+\end_layout
+
 \begin_layout Standard
 This section will consider the stability of numerical methods for systems
  of linear ordinary differential equations (ODEs, with time-stepping but
@@ -966,7 +970,15 @@ where
 \begin_inset Formula $\lambda$
 \end_inset
 
- could by complex.
+ could by complex, 
+\begin_inset Formula $y$
+\end_inset
+
+ could be a vector and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ could be a matrix.
  
 \begin_inset ERT
 status open
@@ -1120,11 +1132,16 @@ status open
 
 \begin_layout Plain Layout
 
-}
-\backslash
-step{
+}}
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -1135,6 +1152,18 @@ Example
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepwise{
+\end_layout
+
+\end_inset
+
 Consider the explicit, first-order Euler method for solving eqn (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1156,7 +1185,7 @@ status open
 
 \begin_layout Plain Layout
 
-}
+
 \backslash
 step{
 \end_layout
@@ -1379,6 +1408,703 @@ Answers
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Von-Neumann Stability Analysis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The initial conditions of any PDE, or the solution at any time, can be written
+ as a sum of Fourier modes:
+\begin_inset Formula 
+\begin{equation}
+\phi(x,t)=\sum_{k}A_{k}(t)\ e^{ikx}
+\end{equation}
+
+\end_inset
+
+Linear numerical methods, operating on linear PDEs, operate independently
+ on each Fourier mode of a solution.
+ Therefore we only need to analyse the influence of a numerical method on
+ a Fourier mode.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+We will consider the one-dimensional linear advection equation:
+\begin_inset Formula 
+\begin{equation}
+{\displaystyle \frac{\partial\phi}{\partial t}+u\frac{\partial\phi}{\partial x}=0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+and the forward in time, backward in space (FTBS) scheme for linear advection:
+\begin_inset Formula 
+\begin{equation}
+\frac{\phi_{j}^{(n+1)}-\phi_{j}^{(n)}}{\Delta t}+u\frac{\phi_{j}^{(n)}-\phi_{j-1}^{(n)}}{\Delta x}=0
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+which can be re-arranged to give 
+\begin_inset Formula $\phi_{j}^{(n+1)}$
+\end_inset
+
+ in terms of the 
+\begin_inset Formula $\phi_{j}$
+\end_inset
+
+s at the previous time-step and the Courant number, 
+\begin_inset Formula $c=u\Delta t/\Delta x$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+\phi_{j}^{(n+1)}=\phi_{j}^{(n)}-c\bigl(\phi_{j}^{(n)}-\phi_{j-1}^{(n)}\bigr)\label{eq:FTBS}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+Replace the 
+\begin_inset Formula $\phi$
+\end_inset
+
+s in eqn (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:FTBS"
+
+\end_inset
+
+) with one Fourier mode and an amplification factor that multiplies the
+ solution at every time-step:
+\begin_inset Formula 
+\begin{equation}
+\phi_{j}^{(n)}=A^{n}e^{ikj\Delta x}
+\end{equation}
+
+\end_inset
+
+giving:
+\begin_inset Formula 
+\begin{equation}
+\opttext{A^{n+1}e^{ikj\Delta x}=A^{n}e^{ikj\Delta x}-c\left(A^{n}e^{ikj\Delta x}-A^{n}e^{ik(j-1)\Delta x}\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepwise{
+\end_layout
+
+\end_inset
+
+Cancelling powers of 
+\begin_inset Formula $A^{n}e^{ikj\Delta x}$
+\end_inset
+
+ gives an expression for 
+\begin_inset Formula $A$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+A=\opttext{1-c(1-e^{-ik\Delta x})}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+We need to find the magnitude of 
+\begin_inset Formula $A$
+\end_inset
+
+ so we need to write it down in real and imaginary form.
+ So substitute 
+\begin_inset Formula $e^{-ik\Delta x}=\cos k\Delta x-i\sin k\Delta x$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+A=\opttext{1-c(1-\cos k\Delta x)-ic\sin k\Delta x}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+and calculate 
+\begin_inset Formula $|A|^{2}=AA^{*}$
+\end_inset
+
+ (
+\begin_inset Formula $A$
+\end_inset
+
+ multiplied by its complex conjugate):
+\begin_inset Formula 
+\begin{align*}
+|A|^{2} & =1-2c(1-\cos k\Delta x)+c^{2}(1-2\cos k\Delta x+\cos^{2}k\Delta x)+c^{2}\sin^{2}k\Delta x\\
+\implies|A|^{2} & =1-2c(1-c)(1-\cos k\Delta x)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+We need to find for what value of 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ or 
+\begin_inset Formula $c$
+\end_inset
+
+ is 
+\begin_inset Formula $|A|\le1$
+\end_inset
+
+ in order to find when FTBS is stable: 
+\begin_inset Formula 
+\begin{align*}
+|A|\le1 & \iff|A|^{2}-1\le0\\
+ & \iff-2c(1-c)(1-\cos k\Delta x)\le0\\
+ & \iff c(1-c)(1-\cos k\Delta x)\ge0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+We know that 
+\begin_inset Formula $1-\cos k\Delta x\ge0$
+\end_inset
+
+ for all 
+\begin_inset Formula $k\Delta x$
+\end_inset
+
+ so FTBS is stable when
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula $c(1-c)\ge0\iff0\le c\le1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We have proved that FTBS is unstable if 
+\begin_inset Formula $u<0$
+\end_inset
+
+ or if 
+\begin_inset Formula $\frac{u\Delta t}{\Delta x}>1$
+\end_inset
+
+.
+ We will now define:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Upwind scheme 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FTBS 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+when 
+\begin_inset Formula $u\ge0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FTFS 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+when 
+\begin_inset Formula $u<0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The upwind scheme is first order accurate in space and time, conditionally
+ stable and damping.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Exercises
+\end_layout
+
+\begin_layout Enumerate
+Find the amplification factor and hence determine the stability of the forward
+ in time, centred in space (FTCS) scheme for linear advection:
+\begin_inset Formula 
+\[
+\phi_{j}^{(n+1)}=\phi_{j}^{(n)}-\frac{c}{2}\left(\phi_{j+1}^{(n)}-\phi_{j-1}^{(n)}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Find the amplification factor and hence determine the stability of the forward
+ in time, centred in space (FTCS) scheme for the heat equation: 
+\begin_inset Formula 
+\[
+\frac{T_{j}^{(n+1)}-T_{j}^{(n)}}{\Delta t}=\frac{K}{\Delta x^{2}}\left(T_{j-1}^{(n)}-2T_{j}^{(n)}+T_{j+1}^{(n)}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+optpage{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Solutions
+\end_layout
+
+\begin_layout Enumerate
+FTCS: 
+\begin_inset Formula $\phi_{j}^{(n+1)}=\phi_{j}^{(n)}-\frac{c}{2}\left(\phi_{j+1}^{(n)}-\phi_{j-1}^{(n)}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Substitute in 
+\begin_inset Formula $\phi_{j}^{(n)}=A^{n}e^{ikj\Delta x}$
+\end_inset
+
+ and cancel powers of 
+\begin_inset Formula $A^{n}e^{ikj\Delta x}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+A= & 1-\frac{c}{2}(e^{ik\Delta x}-e^{-ik\Delta x})\\
+= & 1-ic\sin k\Delta x
+\end{align*}
+
+\end_inset
+
+Find for what Courant numbers the scheme is stable: 
+\begin_inset Formula 
+\begin{align*}
+A= & 1-ic\sin k\Delta x\\
+\Rightarrow|A|^{2}= & 1+c^{2}\sin^{2}k\Delta x
+\end{align*}
+
+\end_inset
+
+which is 
+\begin_inset Formula $>1$
+\end_inset
+
+ for all 
+\begin_inset Formula $|c|>0$
+\end_inset
+
+ and so FTCS is unconditioanlly unstable
+\end_layout
+
+\begin_layout Enumerate
+For the FTCS scheme for diffusion we use the shorthand 
+\begin_inset Formula $d=\frac{K\Delta t}{\Delta x^{2}}$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\begin{eqnarray}
+A & = & 1+d(e^{ik\Delta x}-2+e^{-ik\Delta x})\\
+ & = & 1-2d(1-\cos k\Delta x)
+\end{eqnarray}
+
+\end_inset
+
+We require the scheme to be stable for all wavenumbers, 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ So find for what values of 
+\begin_inset Formula $d$
+\end_inset
+
+ the scheme is stable for all values of 
+\begin_inset Formula $k\Delta x$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+ & -1\le A\le1\\
+\iff & -1\le1-2d(1-\cos k\Delta x)\le1\\
+\iff & 1\ge-1+2d(1-\cos k\Delta x)\ge-1\ \text{ add one to all 3 sides}\\
+\iff & 2\ge2d(1-\cos k\Delta x)\ge0\ \text{ divide through by }2d\ \text{(which is always positive) }\\
+\iff & 0\le(1-\cos k\Delta x)\le\frac{1}{d}
+\end{align*}
+
+\end_inset
+
+Sketch 
+\begin_inset Formula $1-\cos k\Delta x$
+\end_inset
+
+ to find its maximum and minimum values.
+ From this we can see that 
+\begin_inset Formula $0\le(1-\cos k\Delta x)\le2$
+\end_inset
+
+ for any value of 
+\begin_inset Formula $k\Delta x$
+\end_inset
+
+.
+ For stability we need 
+\begin_inset Formula $(1-\cos k\Delta x)\le\frac{1}{d}$
+\end_inset
+
+ for 
+\shape italic
+every
+\shape default
+ value of 
+\begin_inset Formula $k\Delta x$
+\end_inset
+
+ so we need:
+\begin_inset Formula 
+\[
+2\le\frac{1}{d}\ \iff d\le\frac{1}{2}\ \iff K\Delta t/\Delta x^{2}\le\frac{1}{2}\ \iff\Delta t\le\frac{\Delta x^{2}}{2K}
+\]
+
+\end_inset
+
+If in addition we do not want the solution to oscillate in sign from one
+ time-step (ie non-oscillatory) to the next then we require: 
+\begin_inset Formula 
+\begin{align*}
+ & 0\le A\le1\\
+\iff & 0\le1-2d(1-\cos k\Delta x)\le1\\
+\iff & 0\ge-1+2d(1-\cos k\Delta x)\ge-1\\
+\iff & 1/2\ge d(1-\cos k\Delta x)\ge0\\
+\iff & 1/(2(1-\cos k\Delta x))\ge d\ge0~\text{ since }~0\le1-\cos k\Delta x\le2\\
+\Leftarrow~~ & d\le\frac{1}{4}\iff\Delta t\le\frac{\Delta x^{2}}{4K}
+\end{align*}
+
+\end_inset
+
+So for large 
+\begin_inset Formula $K$
+\end_inset
+
+ or for high resolution (small 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+) a very small time-step must be taken for FTCS to be stable
 \end_layout
 
 \begin_layout Standard

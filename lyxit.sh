@@ -29,6 +29,6 @@ pdfjam --nup 1x2 --scale 0.95 --a4paper $file.pdf --outfile output/${file}_2_lec
 rmtexall ${file}.tex
 
 # Copy to dropbox
-cp output/* ~/Dropbox/teaching/MPECDT_summerSchool
+cp output/* ~/Dropbox/teaching/NCAS_summerSchool
 
 echo All done

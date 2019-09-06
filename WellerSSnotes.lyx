@@ -217,7 +217,7 @@ filename "NA.lyx"
 status open
 
 \begin_layout Plain Layout
-Day 2 and 3 pm
+Day 2 pm
 \end_layout
 
 \end_inset
@@ -246,21 +246,11 @@ filename "practicals/softwarePractical.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "practicals/furtherPractical.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Day 2 and 3 am
+Day 3 am
 \end_layout
 
 \end_inset
@@ -295,6 +285,16 @@ Day 3 am
 \begin_inset CommandInset include
 LatexCommand input
 filename "time.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "practicals/furtherPractical.lyx"
 
 \end_inset
 
