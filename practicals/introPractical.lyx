@@ -1,16 +1,16 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass report
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "times" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -18,9 +18,13 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics pdftex
 \default_output_format default
 \output_sync 0
@@ -38,7 +42,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle true
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -59,6 +63,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -71,18 +78,295 @@
 \tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation 0bp
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
+
+\begin_layout Chapter
+Solving an Equation using Finite Differences
+\end_layout
+
+\begin_layout Standard
+This practical is open ended and we will build on it during the week.
+ Everyone has different knowledge and experience coding numerical methods so you will choose your own equation and your own numerical method to solve it.
+ Each section of this chapter describes some alternative starting points in increasing levels of difficulty.
+ Read through sections 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:solveOscEqn"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:solveSWE"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ before deciding which to work on.
+ Focus on just one and dive deep.
+ On Thursday,
+ you will give a short presentation to the class on what equation you have solved,
+ how you have solved it,
+ your results,
+ what was most difficult and,
+ most importantly,
+ 
+\series bold
+what you have learned
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\color red
+Do not copy and paste code from the notes
+\end_layout
+
+\begin_layout Section
+
+\series bold
+The Oscillation Equation 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:solveOscEqn"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The code for oscillations is that same as the code for a simple pendulum:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{du}{dt}=fv &  & \frac{dv}{dt}=-fu.
+\end{eqnarray*}
+
+\end_inset
+
+This represents inertial oscillations when 
+\begin_inset Formula $(u,v)$
+\end_inset
+
+ are the components of the wind and 
+\begin_inset Formula $f$
+\end_inset
+
+ is the Coriolis parameter.
+ To represent a pendulum,
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ would be the angle of the pendulum,
+ 
+\begin_inset Formula $fv$
+\end_inset
+
+ the speed of the pendulum and 
+\begin_inset Formula $f$
+\end_inset
+
+ related to the length of the pendulum.
+ Here are some tasks you can explore:
+\end_layout
+
+\begin_layout Enumerate
+Type in the code to solve the oscillation equation (section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:intertial_FB"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Experiment with changing the time step.
+ How does this affect accuracy?
+\end_layout
+
+\begin_layout Enumerate
+The forward-backward method is only stable for a sufficiently small time step;
+ when the time step is too big the solution diverges.
+ The stability depends on the product 
+\begin_inset Formula $f\Delta t$
+\end_inset
+
+.
+ Find the value of 
+\begin_inset Formula $f\Delta t$
+\end_inset
+
+ above which the method is unstable.
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Here are some alternative methods for solving the oscillation equation:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+Euler Forward
+\begin_inset Formula 
+\begin{eqnarray*}
+u^{(n+1)} & = & u^{(n)}+\Delta t\ f\ v^{(n)}\\
+v^{(n+1)} & = & v^{(n)}+\Delta t\ f\ u^{(n)}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+Euler Backward
+\begin_inset Formula 
+\begin{eqnarray*}
+u^{(n+1)} & = & u^{(n)}+\Delta t\ f\ v^{(n+1)}\\
+v^{(n+1)} & = & v^{(n)}+\Delta t\ f\ u^{(n+1)}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+Crank-Nicolson
+\begin_inset Formula 
+\begin{eqnarray*}
+u^{(n+1)} & = & u^{(n)}+\frac{\Delta t}{2}\ f\ \left(v^{(n)}+v^{(n+1)}\right)\\
+v^{(n+1)} & = & v^{(n)}+\frac{\Delta t}{2}\ f\ \left(u^{(n)}+u^{(n+1)}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+Runge-Kutta 4
+\begin_inset Formula 
+\begin{eqnarray*}
+u_{1} & = & u^{(n)}+\Delta t\ f\ v^{(n)}\\
+v_{1} & = & v^{(n)}+\Delta t\ f\ u^{(n)}\\
+u_{2} & = & u^{(n)}+\frac{\Delta t}{2}\ f\ v_{1}\\
+v_{2} & = & v^{(n)}+\frac{\Delta t}{2}\ f\ u_{1}\\
+u_{3} & = & u^{(n)}+\frac{\Delta t}{2}\ f\ v_{2}\\
+v_{3} & = & v^{(n)}+\frac{\Delta t}{2}\ f\ u_{2}\\
+u_{4} & = & u^{(n)}+\Delta t\ f\ v_{3}\\
+v_{4} & = & v^{(n)}+\Delta t\ f\ u_{3}\\
+u^{(n+1)} & = & u^{(n)}+\frac{\Delta t}{6}\left(u_{1}+2u_{2}+2u_{3}+u_{4}\right)\\
+v^{(n+1)} & = & v^{(n)}+\frac{\Delta t}{6}\left(v_{1}+2v_{2}+2v_{3}+v_{4}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Code up some alternative methods and compare their behaviour with forward-backwards.
+\end_layout
 
 \begin_layout Standard
 \begin_inset Newpage clearpage
@@ -92,74 +376,501 @@
 \end_layout
 
 \begin_layout Section
-Practical: Solving a Differential Equation using Finite Differences
+
+\series bold
+The Diffusion Equation
 \end_layout
 
 \begin_layout Standard
-This practical is open ended and we will build on it during the week.
- Everyone has different knowledge and experience coding numerical methods
- so during this practical you will choose your own equation to solve and
- choose or design a numerical method to solve it.
- If you have not coded numerical methods before, you might like to start
- with the one dimensional linear advection equation and make modifications
- to the code in section 
+The one-dimensional,
+ linear diffusion equation is given in question 2 of exercises 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:CTCScode"
-
-\end_inset
-
- or inertial oscillations and start from the code in section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:intertial_FB"
+reference "sec:FD_mathEx"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
 .
- For the more adventurous, you could choose an equation that you are interested
- in or pick a couple of terms from one of the Navier-Stokes equations to
- model.
- Please discuss your decisions with the staff.
- Also feel free to find equations and numerical methods online.
- Some equations that you might like to consider:
+ 
 \end_layout
 
-\begin_layout Itemize
-The non-linear advection equation (Burger's equation)
-\end_layout
+\begin_layout Enumerate
+Write code to solve it using the forward in time,
+ centered in space method.
+ Use periodic boundary conditions,
+ 
+\begin_inset Formula $x\in[0,1)$
+\end_inset
 
-\begin_layout Itemize
-The linear or non-linear shallow-water equations
-\end_layout
+,
+ 
+\begin_inset Formula $K=1$
+\end_inset
 
-\begin_layout Itemize
-The diffusion equation (easier than the linear advection equation)
-\end_layout
-
-\begin_layout Itemize
-Inertial oscillations.
- You could start from the code in section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:intertial_FB"
+ and initial conditions
+\begin_inset Formula 
+\[
+\phi_{0}=\begin{cases}
+1 & x\in\left[0.4,0.6\right]\\
+0 & \text{otherwise}.
+\end{cases}
+\]
 
 \end_inset
 
-, see what happens when you make the time-step very large and then try to
- make the time-stepping implicit.
+
+\end_layout
+
+\begin_layout Enumerate
+With these initial conditions,
+ the analytic solution for short timescales can be approximated by
+\begin_inset Formula 
+\[
+\phi\left(x,t\right)=\frac{1}{2}\left[\text{erf}\left(\frac{x-0.4}{\sqrt{4Kt}}\right)-\text{erf}\left(\frac{x-0.6}{\sqrt{4Kt}}\right)\right].
+\]
+
+\end_inset
+
+Write code to compare your numerical solutions with the analytic solution.
+\end_layout
+
+\begin_layout Enumerate
+Investigate how the solution behaves when you change the spatial and temporal resolution.
+\end_layout
+
+\begin_layout Enumerate
+The diffusion equation can be used to represent the variation of temperature,
+ 
+\begin_inset Formula $T$
+\end_inset
+
+,
+ with height,
+ 
+\begin_inset Formula $z$
+\end_inset
+
+,
+ in the atmospheric boundary layer:
+\begin_inset Formula 
+\[
+\frac{\partial T}{\partial t}=K\frac{\partial^{2}T}{\partial z^{2}}+Q
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $Q$
+\end_inset
+
+ is a heating rate.
+ Write code to solve this equation in the lowest 1000
+\begin_inset space \thinspace{}
+\end_inset
+
+m of the atmosphere with 
+\begin_inset Formula $K=1\ \text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $Q=-1.5\ \text{K}/\text{day}$
+\end_inset
+
+,
+ subject to boundary and initial conditions:
+\begin_inset Formula 
+\begin{eqnarray*}
+\text{Bottom boundary, }T\left(0,t\right) & = & 293\ \text{K}\\
+\text{Top boundary (adiabatic), }\frac{\partial T}{\partial z}\left(1000,t\right) & = & 0\\
+\text{Initial conditions, }T\left(z,0\right) & = & 293\ \text{K}
+\end{eqnarray*}
+
+\end_inset
+
+Think about how to validate your code.
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\series bold
+T
+\series default
+he linear advection equation
+\end_layout
+
+\begin_layout Enumerate
+Type in the code given in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:CTCScode"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ to solve the linear advection equation with periodic boundary conditions.
+\end_layout
+
+\begin_layout Enumerate
+Experiment to find how the method behaves when you change the spatial and temporal resolution.
+\end_layout
+
+\begin_layout Enumerate
+Experiment to find how the method behaves when you use initial conditions with discontinuities,
+ such as:
+\begin_inset Formula 
+\[
+\phi_{0}=\begin{cases}
+1 & x\in\left[0.1,0.5\right]\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+When advecting fields with discontinuities,
+ centered in space methods such as CTCS show severe dispersion errors leading to spurious undershoots and overshoots.
+ There is a vast literature on advection schemes designed to limit these dispersion errors.
+ Here is a selection of methods you could try.
+ For each of these,
+ investigate the advantages and disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+Add a diffusion term,
+ 
+\begin_inset Formula $K\nabla^{2}\phi$
+\end_inset
+
+,
+ to the right hand side of the advection equation.
+\end_layout
+
+\begin_layout Enumerate
+Use forward in time,
+ backward in space,
+ FTBS,
+ instead of CTCS.
+\end_layout
+
+\begin_layout Enumerate
+Use an upwinded,
+ finite volume scheme such as Lax-Wendroff or Warming and Beam:
+\begin_inset Formula 
+\[
+\frac{\phi_{j}^{(n+1)}-\phi_{j}^{(n)}}{\Delta t}=-u\frac{\phi_{j+\half}-\phi_{j-\half}}{\Delta x}
+\]
+
+\end_inset
+
+Lax-Wendroff:
+ 
+\begin_inset Formula $\phi_{j+\half}=\half(1+c)\phi_{j}^{(n)}+\half(1-c)\phi_{j+1}^{(n)}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Warming and Beam:
+ 
+\begin_inset Formula $\phi_{j+\half}=\half(3-c)\phi_{j}^{(n)}-\half(1-c)\phi_{j-1}^{(n)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Use a semi-Lagrangian scheme.
+ The semi-Lagrangian method approximates the analytic solution of the advection equation:
+\begin_inset Formula 
+\begin{eqnarray*}
+\phi\left(x,t+\Delta t\right) & = & \phi\left(x-u\Delta t,t\right).
+\end{eqnarray*}
+
+\end_inset
+
+Point 
+\begin_inset Formula $x_{jd}=x_{j}-u\Delta t$
+\end_inset
+
+ is the departure point of point 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+ which,
+ let's say,
+ falls between grid points 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $k+1$
+\end_inset
+
+.
+ Can you work out how to calculate 
+\begin_inset Formula $k$
+\end_inset
+
+?
+ Once you have 
+\begin_inset Formula $k$
+\end_inset
+
+,
+ you need to work out how to interpolate 
+\begin_inset Formula $\phi$
+\end_inset
+
+ from points 
+\begin_inset Formula $x_{k-1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x_{k+1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x_{k+2}$
+\end_inset
+
+ onto 
+\begin_inset Formula $x_{jd}$
+\end_inset
+
+ in order to predict 
+\begin_inset Formula $\phi_{j}^{(n+1)}=\phi_{jd}^{(n)}$
+\end_inset
+
+ (for example using cubic-Lagrange interpolation).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The non-linear advection equation (Burger's equation)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:solveBurger"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-You will probably learn most if you stick with one dimensional equations.
- 
+Derive and code up a numerical method to solve Burger's equation.
+ Burger's equation has two equivalent forms:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}=0 &  & \frac{\partial u}{\partial t}+\frac{1}{2}\frac{\partial u^{2}}{\partial x}=0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Can you create a method that conserves the total sum of 
+\begin_inset Formula $u$
+\end_inset
+
+ over the domain?
+\end_layout
+
+\begin_layout Enumerate
+Investigate how your method behaves when you vary the spatial and temporal resolution.
+\end_layout
+
+\begin_layout Enumerate
+Is there any way you can know what the correct solution is?
+\end_layout
+
+\begin_layout Enumerate
+Try using one or two of the numerical methods described for linear advection but adapted for Burger's equation.
 \end_layout
 
 \begin_layout Standard
-You will have an opportunity at the end of the week to tell the rest of
- the class what equation you have chosen, how you have chosen to solve it
- and if you have any results or problems so far.
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The linear or non-linear shallow-water equations 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:solveSWE"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The one-dimensional,
+ linear shallow water equations are:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial u}{\partial t}=-g\frac{\partial h}{\partial x} &  & \frac{\partial h}{\partial t}=-H\frac{\partial u}{\partial x}
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $u$
+\end_inset
+
+ is the fluid velocity,
  
+\begin_inset Formula $H+h$
+\end_inset
+
+ is the total fluid height with 
+\begin_inset Formula $h<<H$
+\end_inset
+
+ and 
+\begin_inset Formula $H$
+\end_inset
+
+ is uniform in space and time.
+ Derive or find and code up a numerical method to solve the linearised shallow water equations in a periodic domain 
+\begin_inset Formula $x\in[0,1)$
+\end_inset
+
+ with 
+\begin_inset Formula $H=1$
+\end_inset
+
+,
+ 
+\begin_inset Formula $g=1$
+\end_inset
+
+ using the initial conditions 
+\begin_inset Formula 
+\begin{eqnarray*}
+u\left(x,0\right) & = & 0\\
+h\left(x,0\right) & = & \begin{cases}
+\frac{1}{2}\left(1-\cos2\pi\frac{x-0.4}{0.6-0.4}\right) & x\in\left[0.4,0.6\right]\\
+0 & \text{otherwise}.
+\end{cases}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Investigate how your code behaves when you vary the spatial and temporal resolution.
+ Are there any particularly unrealistic ways in which your code behaves for certain set ups?
+\end_layout
+
+\begin_layout Enumerate
+Is there any way you can know what the correct solution is?
+\end_layout
+
+\begin_layout Enumerate
+The code that you wrote is probably co-located or Arakawa A-grid.
+ This means that 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ are stored at the same locations.
+ Write a code using a staggered,
+ C-grid so that the locations of the points where 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ are stored are offset by 
+\begin_inset Formula $\Delta x/2$
+\end_inset
+
+.
+ This means that you can use compact differences;
+ if 
+\begin_inset Formula $h$
+\end_inset
+
+ is stored at locations 
+\begin_inset Formula $j$
+\end_inset
+
+ and 
+\begin_inset Formula $u$
+\end_inset
+
+ is stored at locations 
+\begin_inset Formula $j+\frac{1}{2}$
+\end_inset
+
+,
+ then,
+ for example,
+ you can calculate 
+\begin_inset Formula $\partial u/\partial x$
+\end_inset
+
+ and location 
+\begin_inset Formula $j$
+\end_inset
+
+,
+ where it is needed to increment 
+\begin_inset Formula $h_{j}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+h_{j}^{(n+1)}=h_{j}^{(n)}-\Delta tH\frac{u_{j+\frac{1}{2}}-u_{j-\frac{1}{2}}}{\Delta x}, &  & u_{j+\frac{1}{2}}^{(n+1)}=u_{j+\frac{1}{2}}^{(n)}-\Delta tg\frac{h_{j+1}-h_{j}}{\Delta x}.
+\end{eqnarray*}
+
+\end_inset
+
+How does the behaviour of the C-grid code compare with that of the A-grid code?
 \end_layout
 
 \end_body

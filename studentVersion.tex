@@ -20,11 +20,16 @@
 \newcommand{\onlineversionWith}{\setboolean{@onlineversionWith}{true}}
 % Command to turn on the test online version of the document
 \newcommand{\lecversion}{\setboolean{@lecversion}{true}}
-\lecversion
+\onlineversionWith
 
 \ifthenelse{\boolean{@onlineversionWith} \OR \boolean{@onlineversionWithout}}
            {\usepackage[display]{texpower}}
            {\usepackage[printout]{texpower}}
+
+% Redefine pause to use less space if online version
+\let\oldpause\pause
+\ifthenelse{\boolean{@onlineversionWithout} \OR \boolean{@onlineversionWith}}%
+    {\renewcommand{\pause}{\vspace*{0.0\baselineskip}\oldpause}}{}
 
 % The \opttext command - step through for online version, leave gap for
 % student version
@@ -35,29 +40,25 @@
     }{}%
     \ifthenelse{\boolean{@onlineversionWithout}}%
     {% online version without answers, so step without answers, leaving gap
-        \step{\color{white} #1}%
+        \step{{\color{white} #1}}%
     }{}%
     \ifthenelse{\boolean{@studentversion}}%
     {% student version so leave a gap
-        {\color{white} #1}%
+        {{\color{white} #1}}%
     }{}%
     \ifthenelse{\boolean{@lecversion}}%
     {% lecturer version so in red
-        {\color{red} #1}%
+        {{\color{red} #1}}%
     }{}%
 }
 
-% The \hidden command - blank for student version and online version
-\newcommand{\hidden}[1]{%
+% The \lecText command - blank for student version and online version
+\newcommand{\lecText}[1]{%
     \ifthenelse{\boolean{@onlineversionWithout} \OR \boolean{@studentversion}}%
     {% Student version - leave gap
         \phantom{#1}%
-    }{}%
-    \ifthenelse{\boolean{@onlineversionWith}}%
-    {% online version with answers, so step 
-        \step{{\color{red} #1}}%
-    }{}%
-    \ifthenelse{\boolean{@lecversion}}%
+        %{\color{white} #1}%
+    }%
     {% lecturer version, text in red
         {\color{red} #1}%
     }{}%
@@ -75,9 +76,27 @@
 % The optBlock command
 \newcommand{\optBlock}[1]
 {
-    \ifthenelse{\boolean{@lecversion}}
+    \ifthenelse{\boolean{@lecversion}\or\boolean{@onlineversionWith}}
         {{\color{red} #1}}
         {{\color{white} #1}}
 }
 
+% Switch redefines texpower switch so it is the same as switch for the online
+% version, shows the first thing for the student version and the last for the 
+% lecturer version
+\newcommand{\Switch}[2]{%
+    \ifthenelse{\boolean{@onlineversionWith}}%
+    {%
+        \switch{#1}{#2}%
+    }%
+    {%
+        \ifthenelse{\boolean{@studentversion}\or\boolean{@onlineversionWithout}}%
+        {% Student version so show only the first version
+            #1%
+        }%
+        {% Lecturer version so show final version
+            #2%
+        }%
+    }%
+}%
 

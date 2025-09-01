@@ -1,16 +1,16 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass report
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "times" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -18,9 +18,13 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics pdftex
 \default_output_format default
 \output_sync 0
@@ -29,7 +33,7 @@
 \paperfontsize 12
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -50,6 +54,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -62,21 +69,29 @@
 \tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation 0bp
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
 
 \begin_layout Chapter*
-Final Practical: Implement a Better Numerical Method 
+More on the Practical
 \end_layout
 
 \begin_layout Standard
@@ -91,7 +106,7 @@ addcontentsline{toc}{chapter}{
 \backslash
 protect
 \backslash
-numberline{}Final Practical}
+numberline{}More on the  Practical}
 \end_layout
 
 \end_inset
@@ -100,29 +115,69 @@ numberline{}Final Practical}
 \end_layout
 
 \begin_layout Standard
-For this practical you have two choices:
+For this practical you have more choices.
+ You can dig deeper into what you were doing yesterday,
+ or change direction.
+ Discuss your plans with staff and each other.
+ Some options:
 \end_layout
 
 \begin_layout Enumerate
-Implement a better numerical method for the equation you were solving in
- the first practical
+Develop ways to test your code (essential for everyone).
 \end_layout
 
 \begin_layout Enumerate
-Solve a different equation using a sensibly chosen numerical method
-\end_layout
-
-\begin_layout Standard
-There are many possibilities:
+Further analysis of the method that you have already chosen (numerical analysis or numerical experiment,
+ see below).
 \end_layout
 
 \begin_layout Enumerate
-If you are solving an advection equation, you might like to consider using
- one of:
-\begin_inset Separator latexpar
+Implement a better numerical method for the equation you are solving,
+ such as the spectral method (section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:spectralMethod"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
+).
+\end_layout
 
+\begin_layout Enumerate
+Solve a different equation.
+\end_layout
+
+\begin_layout Enumerate
+Download some climate data and do some spectral analysis (section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:powerSpectra"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ For example,
+ you could remove a seasonal cycle before calculating the power spectrum,
+ or look into smoothing the spectrum,
+ or Fourier filtering the data.
+\end_layout
+
+\begin_layout Subsection*
+In particular,
+ you may consider:
+\end_layout
+
+\begin_layout Enumerate
+If you are solving an advection equation,
+ you might like to consider using one of:
 \end_layout
 
 \begin_deeper
@@ -138,25 +193,42 @@ Semi-Lagrangian advection
 The Lax-Wendroff method
 \end_layout
 
+\begin_layout Enumerate
+The Spectral method
+\end_layout
+
 \end_deeper
+\begin_layout Enumerate
+Analyse how solution errors vary with resolution in time and space (look at order of convergence)?
+\end_layout
+
+\begin_layout Enumerate
+Is your numerical method stable for all time steps?
+\end_layout
+
+\begin_layout Enumerate
+Is your numerical method conservative?
+\end_layout
+
+\begin_layout Enumerate
+Is there any spurious behaviour in your solution?
+ (eg unbounded results or unrealistic oscillations).
+\end_layout
+
 \begin_layout Enumerate
 Compare explicit and implicit time-stepping.
 \end_layout
 
 \begin_layout Enumerate
-You might like to consider using Runge-Kutta time-stepping
+You could consider using Runge-Kutta time-stepping
 \end_layout
 
 \begin_layout Enumerate
-You might like to increase the order of accuracy of the spatial discretisation
+You could increase the order of accuracy of the spatial discretisation
 \end_layout
 
 \begin_layout Enumerate
 If you are solving the shallow water equations
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -175,7 +247,7 @@ Try using variable spatial resolution or adaptive time-stepping
 
 \begin_layout Standard
 You should search online for ideas of a numerical method to use.
- You can also refer to my MSc teaching notes:
+ You can also refer to Hilary's MSc teaching notes:
 \begin_inset Newline newline
 \end_inset
 
@@ -187,7 +259,7 @@ status open
 
 \begin_layout Plain Layout
 
-http://www.met.reading.ac.uk/~sws02hs/teaching/MTMW12/MTMW12_2_lec.pdf
+http://www.met.reading.ac.uk/~sws02hs/teaching/MTMFMD/MTMFMD_numerics_lecturer_2.pdf
 \end_layout
 
 \end_inset

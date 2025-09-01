@@ -1,16 +1,16 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass report
-\use_default_options true
-\maintain_unincluded_children false
+\use_default_options false
+\maintain_unincluded_children no
 \language english
-\language_package default
-\inputencoding auto
-\fontencoding global
+\language_package none
+\inputencoding auto-legacy
+\fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -18,9 +18,13 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -35,9 +39,9 @@
 \use_package amssymb 1
 \use_package cancel 1
 \use_package esint 1
-\use_package mathdots 1
+\use_package mathdots 0
 \use_package mathtools 1
-\use_package mhchem 1
+\use_package mhchem 0
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
@@ -49,7 +53,10 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,34 +65,3161 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
 
 \begin_layout Chapter
-Software Architecture
+Code for Reliable,
+ Reproducible Science
 \end_layout
 
 \begin_layout Standard
-There are numerous very bad programming practices in science.
- We will cover a few ways in which things could be done better.
+
+\series bold
+From Copilot
+\series default
+:
+ (more from me on items in 
+\series bold
+bold
+\series default
+)
+\end_layout
+
+\begin_layout Enumerate
+Version Control (eg Git and GitHub,
+ GitLab,
+ or Bitbucket) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Environment Management
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Data Provenance
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Keep raw data immutable
+\series default
+ – what does this mean?
+\end_layout
+
+\begin_layout Enumerate
+Document data sources and transformations.
+\end_layout
+
+\begin_layout Enumerate
+Use checksums or hashes to verify data integrity.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Readable and Modular Code
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Write clear,
+ well-commented code
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Break code into functions and modules
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Use docstrings 
+\series default
+and follow style guides (e.g.,
+ PEP8 for Python).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Automated 
+\series bold
+Testing
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Logging and Error Handling
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Reproducible Workflows
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Documentation (include a README.md file with install and run instructions)
+\end_layout
+
+\begin_layout Enumerate
+Archiving,
+ Sharing and Licensing
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+From
+\begin_inset space \space{}
+\end_inset
+
+me:
+ 
+\series default
+Avoid code duplication
+\begin_inset Newline newline
+\end_inset
+
+Where to define variables
+\begin_inset Newline newline
+\end_inset
+
+Rewrite
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Comments - discuss
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align block
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "49col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Subsubsection*
+Where are comments needed?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+To help the reader to understand the code
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Comments at the top of files to explain the whole content
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Comment blocks of code for efficient reading
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "49col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Subsubsection*
+Where are comments not needed?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Comments are hard to keep up to date
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+No need to explain syntax
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Make the code readable instead
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Consider print statements instead
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Use doc-strings instead
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Functions
+\end_layout
+
+\begin_layout Itemize
+A function is a set of commands that can be executed together to perform a specific task based on its arguments (inputs).
+\end_layout
+
+\begin_layout Itemize
+Functions are the key to writing re-usable,
+ reproducible code without repetition.
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "goodCode.tex"
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "48col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+You can use built in functions:
+ Eg
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "30col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+x = 3.5
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+y = 3.5 + x
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+x = max(x,y)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace -4bp*
+\end_inset
+
+What is x?
+ a) 7
+\begin_inset Formula $\opttext{\checkmark}$
+\end_inset
+
+ b) 3.5 c) 10.5 d) 0
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "55col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+You can use functions from libraries like numpy:
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "30col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+import numpy as np
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+x = np.exp(0)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace -2bp*
+\end_inset
+
+What is x?
+ a) 0 b) 1
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{$
+\backslash
+checkmark$}
+\end_layout
+
+\end_inset
+
+ c) 2.718 d) -1 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+You can define your own functions.
+\end_layout
+
+\begin_layout Itemize
+The name of the function follows 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+def
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then arguments in brackets.
+\end_layout
+
+\begin_layout Itemize
+Then a colon.
+\end_layout
+
+\begin_layout Itemize
+Then the functions statements,
+ intended.
+\end_layout
+
+\begin_layout Itemize
+The variable(s) after 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+return
+\end_layout
+
+\end_inset
+
+ is the output.
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+ 
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+#def closerToZero(a,b):
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \qquad{}
+\end_inset
+
+
+\family sans
+"""Return the argument that is closer to zero"""
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \qquad{}
+\end_inset
+
+
+\family sans
+if abs(a) < abs(b):
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\family sans
+return a
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \qquad{}
+\end_inset
+
+
+\family sans
+else:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\family sans
+return b
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+z = closerToZero(1.1,-1.1)
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+What is z?
+ a) -1.1 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{$
+\backslash
+checkmark$}
+\end_layout
+
+\end_inset
+
+,
+ b) 1.1,
+ c) 0
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Doc-strings
+\end_layout
+
+\begin_layout Standard
+Doc-strings are the text inside quotes after the def line of a function.
+ They explain
+\end_layout
+
+\begin_layout Enumerate
+What the function does
+\end_layout
+
+\begin_layout Enumerate
+What the arguments are
+\end_layout
+
+\begin_layout Enumerate
+What is returned
+\end_layout
+
+\begin_layout Standard
+
+\color red
+Functions should ALWAYS have doc-strings!
+\end_layout
+
+\begin_layout Standard
+If you type
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+help(functionName)
+\end_layout
+
+\end_inset
+
+in Python,
+ it will print out the doc-string.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\backslash
+eject {
+\backslash
+pdfpagewidth=20cm 
+\backslash
+pdfpageheight=12cm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Contents of a doc-string and Optional Arguments
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:egDocString"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-12pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+import numpy as np
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def exp_maclaurin(x,
+ N=10,
+ errors = None):
+\end_layout
+
+\begin_layout Plain Layout
+
+   """
+\end_layout
+
+\begin_layout Plain Layout
+
+   Calculate exp(x) using a Maclaurin series.
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+   Parameters:
+\end_layout
+
+\begin_layout Plain Layout
+
+   x (float):
+ Value to calculate the exponential of.
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+   Optional arguments:
+\end_layout
+
+\begin_layout Plain Layout
+
+   N (int):
+ Use first N terms of the series (default 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+   errors (numpy array of floats):
+  (default None)
+\end_layout
+
+\begin_layout Plain Layout
+
+      If errors is a numpy array,
+ it stores the errors
+\end_layout
+
+\begin_layout Plain Layout
+
+      for each additional term used.
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+   Returns:
+\end_layout
+
+\begin_layout Plain Layout
+
+   out (float):
+ exp(x) calculated with a Maclaurin series.
+\end_layout
+
+\begin_layout Plain Layout
+
+    """
+\end_layout
+
+\begin_layout Plain Layout
+
+   S = 1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+   fac = 1
+\end_layout
+
+\begin_layout Plain Layout
+
+   for i in range(1,N):
+\end_layout
+
+\begin_layout Plain Layout
+
+      fac *= i
+\end_layout
+
+\begin_layout Plain Layout
+
+      S += x**i/fac
+\end_layout
+
+\begin_layout Plain Layout
+
+      if type(errors) == np.ndarray:
+\end_layout
+
+\begin_layout Plain Layout
+
+          if len(errors) >= i:
+\end_layout
+
+\begin_layout Plain Layout
+
+             errors[i-1] = S - np.exp(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+   return S
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "48col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Itemize
+
+\size small
+The doc-string starts with a short description.
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Each compulsory argument and its type is described under 
+\begin_inset Quotes eld
+\end_inset
+
+Parameters
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Then optional arguments are described.
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Then the output of the function is described.
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+The function definition continues until the indentation stops.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+Examples of calling the function:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+import matplotlib.pyplot as plt
+\end_layout
+
+\begin_layout Plain Layout
+
+import numpy as np
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+print('exp(2) =',exp_maclaurin(2))
+\end_layout
+
+\begin_layout Plain Layout
+
+print('with 3 terms,',exp_maclaurin(2,
+ N=3))
+\end_layout
+
+\begin_layout Plain Layout
+
+print('with 30 terms,',exp_maclaurin(2,
+ N=30))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+n = 50
+\end_layout
+
+\begin_layout Plain Layout
+
+mac_errors = np.zeros(n)
+\end_layout
+
+\begin_layout Plain Layout
+
+exp_maclaurin(2,
+ N=n,
+ errors = mac_errors)
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.semilogy(range(1,n+1),
+ abs(mac_errors),
+ 'k')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.ylabel('absolute value of error')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.xlabel('number of terms of Maclaurin series')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.ylim([1e-16,10])
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.savefig('expMaclaurinError.svg')
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+eject}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Global and Local Variables
+\end_layout
+
+\begin_layout Standard
+If a variable is defined outside all functions and modules,
+ it is global (defined everywhere).
+ If a variable is defined inside a function,
+ it is only available inside that function.
+ Compare these codes for converting temperature between centigrade to Kelvin:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+1.
+ Using global variables:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def CtoKelvin(TC):
+\end_layout
+
+\begin_layout Plain Layout
+
+    return TC + Tmelt
+\end_layout
+
+\begin_layout Plain Layout
+
+def KelvintoC(TK):
+\end_layout
+
+\begin_layout Plain Layout
+
+    return TK - Tmelt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Tmelt = 273.15
+\end_layout
+
+\begin_layout Plain Layout
+
+print(CtoKelvin(1))
+\end_layout
+
+\begin_layout Plain Layout
+
+print(KelvintoC(Tmelt))
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+2.
+ Without global variables:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def CtoKelvin(TC):
+\end_layout
+
+\begin_layout Plain Layout
+
+    return TC + Tmelt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def KelvintoC(TK):
+\end_layout
+
+\begin_layout Plain Layout
+
+    return TK - Tmelt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def main():
+\end_layout
+
+\begin_layout Plain Layout
+
+    Tmelt = 273.15
+\end_layout
+
+\begin_layout Plain Layout
+
+    print(CtoKelvin(1))
+\end_layout
+
+\begin_layout Plain Layout
+
+    print(KelvintoC(Tmelt))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+main()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -12pt*
+\end_inset
+
+What will be the output of each code?
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+(a) 0
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+(b) 274.15
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+(c) NameError:
+ name 'Tmelt' is not defined
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+1.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{b,a}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+2.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{c}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So global variables look useful.
+ But they are dangerous and should be avoided.
+ Why?
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Problems with Global Variables
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "38page%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+1.
+ Using global variables:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def KelvintoC(TK):
+\end_layout
+
+\begin_layout Plain Layout
+
+   Tmelt = 273.15
+\end_layout
+
+\begin_layout Plain Layout
+
+   return TK - Tfreeze
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Tfreeze = 0
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+TC = KelvintoC(263.15)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+print(
+\begin_inset Quotes eld
+\end_inset
+
+Temperature
+\begin_inset Quotes erd
+\end_inset
+
+,
+ TC,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+degC
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+if (TC <= Tfreeze):
+\end_layout
+
+\begin_layout Plain Layout
+
+   print(
+\begin_inset Quotes eld
+\end_inset
+
+Warning:
+ freezing
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+else:
+\end_layout
+
+\begin_layout Plain Layout
+
+   print(
+\begin_inset Quotes eld
+\end_inset
+
+Enjoy your day
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "42page%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+2.
+ Solution:
+ put parameters into a module:
+\end_layout
+
+\begin_layout Plain Layout
+Contents of file 
+\begin_inset Quotes eld
+\end_inset
+
+waterProperties.py
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Tmelt = 273.15
+\end_layout
+
+\begin_layout Plain Layout
+
+Tboil = 373.15
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and put script inside main:
+\end_layout
+
+\begin_layout Plain Layout
+Contents of 
+\begin_inset Quotes eld
+\end_inset
+
+Twarn.py
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+import waterProperties as p
+\end_layout
+
+\begin_layout Plain Layout
+
+def KelvintoC(TK):
+\end_layout
+
+\begin_layout Plain Layout
+
+   return TK - p.Tmelt
+\end_layout
+
+\begin_layout Plain Layout
+
+def main():
+\end_layout
+
+\begin_layout Plain Layout
+
+   Tfreeze = 0
+\end_layout
+
+\begin_layout Plain Layout
+
+   TC = KelvintoC(263.15)
+\end_layout
+
+\begin_layout Plain Layout
+
+   print(
+\begin_inset Quotes eld
+\end_inset
+
+Temperature
+\begin_inset Quotes erd
+\end_inset
+
+,
+ TC,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+degC
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+   if (TC <= Tfreeze):
+\end_layout
+
+\begin_layout Plain Layout
+
+      print(
+\begin_inset Quotes eld
+\end_inset
+
+Warning:
+ freezing
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+   else:
+\end_layout
+
+\begin_layout Plain Layout
+
+      print(
+\begin_inset Quotes eld
+\end_inset
+
+Enjoy your day
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+main()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -30bp*
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+What will be the output of each code?
+\end_layout
+
+\begin_layout Standard
+1.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{a}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+2.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{b}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+(a) Temperature 263.15 degC
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset space \quad{}
+\end_inset
+
+Enjoy your day
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+(b) Temperature -10 degC
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset space \quad{}
+\end_inset
+
+Warning,
+ freezing
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+(c) Temperature 263.15 degC
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset space \quad{}
+\end_inset
+
+Warning,
+ freezing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+Use global variables when playing with ideas.
+\end_layout
+
+\begin_layout Standard
+Remove them and restart Python when producing results.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Reproducibility and Avoiding Code Duplication
+\end_layout
+
+\begin_layout Standard
+Almost as soon as you start to code,
+ you will create results that are not automatically reproducible,
+ or you will have repetitive code.
+ A typical coding exercise:
+\end_layout
+
+\begin_layout Enumerate
+Write a code to solve to solve an equation/analyse some data.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Experiment with,
+ eg,
+ changing the resolution,
+ using a different dataset
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+You will probably just edit your code to do something slightly different.
+ Immediately,
+ your first results are no longer automatically reproducible.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Make some more extensive modifications to use a different method.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+You will probably make a copy of your original code before editing,
+ so that you don't loose the original method.
+ Now you have a lot of code duplication.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Why are these problems?
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[2.]
+\backslash
+setcounter{enumi}{2}
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+It may turn out that your very first result was interesting.
+ So you try to edit your code to reproduce it,
+ but you can't remember exactly what you did.
+ Who has done this before?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+You realise that you made a mistake in your second code.
+ You now need to correct both versions.
+ Twice the work and opportunity for more mistakes.
+ Anyone done this before?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+pause
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inevitably,
+ when you start exploring new ideas,
+ you will focus on the science,
+ or the syntax,
+ not the code design.
+ Play is good.
+ But when you start to generate results,
+ think about the code design.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+eject {
+\backslash
+pdfpagewidth=20cm 
+\backslash
+pdfpageheight=12cm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Better Code Design for Inertial Oscillations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "18cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "8.7cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[basicstyle={
+\backslash
+ttfamily
+\backslash
+codeFont},language=Python,frame=single,tabsize=4,basicstyle=
+\backslash
+small]{practicals/inertial_2.py}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "8.7cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace -36pt*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[basicstyle={
+\backslash
+ttfamily
+\backslash
+codeFont},language=Python,frame=single,tabsize=4,basicstyle=
+\backslash
+small]{practicals/inertial_3.py}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "18cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "8.7cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[basicstyle={
+\backslash
+ttfamily
+\backslash
+codeFont},language=Python,frame=single,tabsize=4,basicstyle=
+\backslash
+small]{practicals/inertial_4.py}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "8.7cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace -18pt*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[basicstyle={
+\backslash
+ttfamily
+\backslash
+codeFont},language=Python,frame=single,tabsize=4,basicstyle=
+\backslash
+small]{practicals/inertial_5.py}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\backslash
+eject}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "35col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Then running
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+compareSolutions()
+\end_layout
+
+\end_inset
+
+ gives
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename practicals/plots/intertial_FB_CN.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+How does the error vary with time step?
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+errorVdt()
+\end_layout
+
+\end_inset
+
+gives
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename practicals/plots/inertialErrorVdt.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \enspace{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "8.5cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace -18pt*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[basicstyle={
+\backslash
+ttfamily
+\backslash
+codeFont},language=Python,frame=single,tabsize=4,basicstyle=
+\backslash
+small]{practicals/inertial_6.py}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -93,94 +3227,6 @@ filename "goodCode.tex"
 
 \begin_layout Section
 Testing
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:testing"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph*
-Important for this week
-\end_layout
-
-\begin_layout Standard
-Code should be tested in situations where you know exactly what the output
- should.
- This is a crucial part of writing bug-free code.
- Every code and every function within a code should be tested.
- For a function, you should think of a variety of different inputs for which
- you know the output and write a tests that calls the function with those
- inputs and checks that the outputs are as expected.
- There may also be situations where a function is expected to give an error
- message.
- The tests should include input that you know should give an error message.
-\end_layout
-
-\begin_layout Paragraph*
-Further information
-\end_layout
-
-\begin_layout Standard
-There are python modules to help with testing such as 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-unittest
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-nosetest
-\end_layout
-
-\end_inset
-
-.
- Tools like 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-coverage
-\end_layout
-
-\end_inset
-
- can show you how much of your code you have tested.
- There is good integration with some integrated development environments
- (IDEs), such as 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-PyCharm
-\end_layout
-
-\end_inset
-
-, which helps with most aspects of writing, testing, debugging, and running
- code.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -191,7 +3237,7 @@ status open
 
 
 \backslash
-stepwise{
+liststepwise{
 \end_layout
 
 \end_inset
@@ -199,20 +3245,13 @@ stepwise{
 
 \end_layout
 
-\begin_layout Section
-Debugging
-\end_layout
-
-\begin_layout Paragraph*
-Important for this week
-\end_layout
-
 \begin_layout Standard
-You should be able to debug by hand without a dedicated tool, using print
- statements:
-\end_layout
-
-\begin_layout Itemize
+Software testing,
+ including automated testing,
+ unit testing and integration testing is important,
+ but this section will describe some tests specific to numerical methods.
+ To start to test your code,
+ answer these questions:
 \begin_inset ERT
 status open
 
@@ -225,106 +3264,236 @@ step{
 
 \end_inset
 
-Re-produce the problem with the simplest code and with arrays set as small
- as possible so that the code runs quickly and so that you can re-produce
- the calculations by hand.
+
+\end_layout
+
+\begin_layout Enumerate
+What mathematical properties should my numerical method have?
+ Eg
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+conservation
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+a specific order of accuracy,
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ (error 
+\begin_inset Formula $\propto\Delta x^{n}$
+\end_inset
+
+ or 
+\begin_inset Formula $\propto\Delta t^{n}$
+\end_inset
+
+)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+conditional stability (stable only for a time step smaller than a critical value)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+bounded (no new extrema generated).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+How can I test that my implementation has these properties?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Is there an analytic solution I can compare with?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Is there another model I can compare with?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
 step{
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-You need to know where things go wrong.
- Start by putting in print statements at a point in the code shortly before
- everything went wrong.
- Print out variables that you think might be related to the problem and
- check that their values are as expected.
- 
+Can I simplify my model to enable more rigorous testing?
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
 step{
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-Put in print statements further up where you think that everything was working
- fine, printing out relevant variables.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\backslash
-step{
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Using more print statements, find where in between things go wrong.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\backslash
-step{
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-When you have found and corrected the bug, delete the de-bugging code rather
- than commenting it out.
- You do not want your code littered with commented out code.
- You could save the debug statements in a branch of your repository.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\backslash
-step{
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Think how this bug happened and how you can better test your code to avoid
- similar bugs.
+Are there conditions for which I know exactly what the answer should be?
 \begin_inset ERT
 status open
 
@@ -338,50 +3507,7 @@ status open
 
 \end_layout
 
-\begin_layout Paragraph*
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause 
-\end_layout
-
-\end_inset
-
-Further Information
-\end_layout
-
 \begin_layout Standard
-IDEs (Interactive Development Environments, such as PyCharm) have useful
- interactive debugging tools which allow you to set breakpoints in the code
- and see, for example, what all variable values are.
- There are also python libraries such as 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-pdb
-\end_layout
-
-\end_inset
-
- which stop the code at the line 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-pdb.set_trace()
-\end_layout
-
-\end_inset
-
- and then allow you to step through and see what all variable values are.
- 
 \begin_inset ERT
 status open
 
@@ -393,172 +3519,206 @@ status open
 \end_inset
 
 
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Version Control using git
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:git"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Very quickly after starting to write code, you will find that you have modified
- the code and it doesn't do what you want any more, you have multiple versions
- and you can't keep track, two people are working on the same code and getting
- in a muddle, you cannot reproduce the results that you got yesterday.
- You need to be using version control software like 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-git
-\end_layout
-
-\end_inset
-
- and a repository hosting service like 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/
-\end_layout
-
-\end_inset
-
-, which also provides archiving and backup.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause 
-\end_layout
-
-\end_inset
-
-There are numerous online resources for how to use 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-git
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-github
-\end_layout
-
-\end_inset
-
-.
- This will therefore be a tiny introduction.
- A more comprehensive introduction is at, for example:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://swcarpentry.github.io/git-novice/
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-and
-\begin_inset Newline newline
-\end_inset
-
-
-\size small
-
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
-\end_layout
-
-\end_inset
-
-
-\size default
-.
-\end_layout
-
-\begin_layout Standard
-You should really also know about collaborating, branching and merging in
- 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-git
-\end_layout
-
-\end_inset
-
- but this little introduction will cover setting up a repository, adding
- to it, pushing and pulling from a remote repository and recovering old
- versions.
- This introduction draws heavily from the Software Carpentry introduction.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
-Setting up 
+Example
+\end_layout
+
+\begin_layout Standard
+I have written a function to integrate a given function using one-point Gaussian quadrature (which has similar properties to the trapezium rule).
+ I know that it should:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Be second-order accurate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Be exact for linear functions.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+I also know how to integrate 
+\begin_inset Formula $\sin x$
+\end_inset
+
+ exactly
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\backslash
+eject {
+\backslash
+pdfpagewidth=20cm 
+\backslash
+pdfpageheight=12cm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "18cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "8.4cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+File 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-git
+GaussQuad.py
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[basicstyle={
+\backslash
+ttfamily
+\backslash
+codeFont},language=Python,frame=single,tabsize=4,basicstyle=
+\backslash
+small]{practicals/GaussQuad.py}
 \end_layout
 
 \end_inset
@@ -566,44 +3726,84 @@ git
 
 \end_layout
 
-\begin_layout Standard
-These are the commands that I used to set up 
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This testing 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ is not automated,
+ and it requires the user to carefully read the output.
+ But it is a start.
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "9cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+File 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-git
+testGaussQuad.py
 \end_layout
 
 \end_inset
 
- for my login on the machines at Cambridge:
+:
 \end_layout
 
-\begin_layout Standard
-\begin_inset listings
-inline false
+\begin_layout Plain Layout
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-$ git config --global user.name "Hilary Weller"
-\end_layout
 
-\begin_layout Plain Layout
-
-$ git config --global user.email "h.weller@reading.ac.uk"
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git config --global color.ui "auto"
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git config --global core.editor "gedit --wait --new-window"
+\backslash
+lstinputlisting[basicstyle={
+\backslash
+ttfamily
+\backslash
+codeFont},language=Python,frame=single,tabsize=4,basicstyle=
+\backslash
+small]{practicals/testGaussQuad.py}
 \end_layout
 
 \end_inset
@@ -611,71 +3811,9 @@ $ git config --global core.editor "gedit --wait --new-window"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage clearpage
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Setting up a Local Repository
-\end_layout
-
-\begin_layout Standard
-Next set up a local repository for my 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-helloWorld.py
-\end_layout
-
-\end_inset
-
- code:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-# Initialise the local directory as a git repository
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git init
-\end_layout
-
-\begin_layout Plain Layout
-
-# Add files to the repo, check and commit them with a commit message
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git add helloWorld.py
-\end_layout
-
-\begin_layout Plain Layout
-
-# Now the file is staged for commit.
- This can be checked and committed:
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git status
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git commit -m "First commit"
 \end_layout
 
 \end_inset
@@ -688,536 +3826,9 @@ status open
 
 
 \backslash
-pause 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Sign up for a 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-github
-\end_layout
-
-\end_inset
-
- account and create a Remote Repository
-\end_layout
-
-\begin_layout Itemize
-Sign up for a free account allowing unlimited public code at 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Create a new repository at 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/new
-\end_layout
-
-\end_inset
-
- or by following the links.
- I created a repository called 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-helloWorld
-\end_layout
-
-\end_inset
-
-.
- My new 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-github
-\end_layout
-
-\end_inset
-
- user name is 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-studentSpencer0
-\end_layout
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
+vfill
 \backslash
-pause 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Link the local and remote repositories
-\end_layout
-
-\begin_layout Standard
-Copy the url of your new repository.
- Mine is 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/studentSpencer0/helloWorld
-\end_layout
-
-\end_inset
-
-.
- Then, on the command line:
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git remote add origin https://github.com/studentSpencer0/helloWorld
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git remote -v     # (to verify the new remove URL)
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Push the changes in your local repository to GitHub.
-\end_layout
-
-\begin_layout Standard
-If you initialised the remote repository with a README pull and merge before
- push
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git pull origin master
-\end_layout
-
-\end_inset
-
-After closing the window that asks you to write a merge message you can
- now do:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git push origin master
-\end_layout
-
-\end_inset
-
- Now have a look at the url for your repository and see your new code there.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Once everything is set up you can push and pull code using:
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git pull
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git push
-\end_layout
-
-\end_inset
-
-You can avoid entering your 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-github
-\end_layout
-
-\end_inset
-
- username and password every time you push by typing:
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-git config credential.helper store
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Adding all suitable files
-\end_layout
-
-\begin_layout Standard
-We may have a directory structure full of files that we want to add to the
- repository.
- However 
-\color blue
-it is important not to add large or binary files to a git repository
-\color inherit
-.
- Therefore we need a 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-.gitignore
-\end_layout
-
-\end_inset
-
- file to tell git not to add files with well known extensions that imply
- that they are binary files.
- You can copy my 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-.gitignore
-\end_layout
-
-\end_inset
-
- file:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{lstlisting}[basicstyle=
-\backslash
-scriptsize]
-\end_layout
-
-\begin_layout Plain Layout
-
-$ wget https://raw.githubusercontent.com/studentSpencer0/helloWorld/master/.gitigno
-re
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{lstlisting}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-You can now add all files in the directory structure to the repository without
- the risk of adding large or binary files
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git add .
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Retrieving Old Versions
-\end_layout
-
-\begin_layout Itemize
-In order to see a list of commit ids and messages:
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git log
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-If you make some changes to a file (say 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-helloWorld.py
-\end_layout
-
-\end_inset
-
-), you can see the differences between what is on disk and the version of
- the previous commit:
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git diff helloWorld.py
-\end_layout
-
-\begin_layout Plain Layout
-
-# or if you have already added helloWorld.py but not committed:
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git diff HEAD helloWorld.py
-\end_layout
-
-\begin_layout Plain Layout
-
-# or if you want to compare helloWorld.py to the version from 
-\end_layout
-
-\begin_layout Plain Layout
-
-# three commits ago:
-\end_layout
-
-\begin_layout Plain Layout
-
-$ git diff HEAD~3 helloWorld.py
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-You can also show the difference between a file on disk and a previous commit
- using the commit id:
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git diff cb27fc3e526dbdcd49b70b3f08a520ae271f8be5 helloWorld.py
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-To show what changes were made at an older commit rather than differences
- between working directory and a commit:
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git show HEAD~3 helloWorld.py
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-If you need to discard the changes that you have made and go back to the
- most recent commit:
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git checkout -- helloWorld.py
-\end_layout
-
-\end_inset
-
-or to go back to a particular commit (just using first few letters of the
- commit id):
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-$ git checkout f22b25e helloWorld.py
+eject}
 \end_layout
 
 \end_inset

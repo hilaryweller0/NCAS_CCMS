@@ -37,14 +37,14 @@
 % Emoticons
 \usepackage{wasysym}
 
-% redefine normalize with different display skips
-\renewcommand\normalsize{%
-   \@setfontsize\normalsize\@xpt\@xiipt
-   \abovedisplayskip 6\p@ \@plus2\p@ \@minus5\p@
-   \abovedisplayshortskip \z@ \@plus3\p@
-   \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
-   \belowdisplayskip \abovedisplayskip
-   \let\@listi\@listI}
+% % redefine normalize with different display skips
+% \renewcommand\normalsize{%
+%    \@setfontsize\normalsize\@xpt\@xiipt
+%    \abovedisplayskip 6\p@ \@plus2\p@ \@minus5\p@
+%    \abovedisplayshortskip \z@ \@plus3\p@
+%    \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+%    \belowdisplayskip \abovedisplayskip
+%    \let\@listi\@listI}
 
 % space around figures
 \setlength{\belowcaptionskip}{-10pt}
@@ -59,11 +59,11 @@
 \let\@minipagerestore=\raggedright
 \makeatother
 
-\RequirePackage{tweaklist}
+\RequirePackage{tweaklist2}
 \renewcommand{\itemhook}
 {
     \raggedright
-    \setlength{\topsep}{3pt}
+    \setlength{\topsep}{0pt}
     \setlength{\parskip}{3pt}
     \setlength{\parsep}{0pt}
     \setlength{\partopsep}{0pt}
@@ -75,7 +75,7 @@
 \renewcommand{\enumhook}
 {
     \raggedright
-    \setlength{\topsep}{3pt}
+    \setlength{\topsep}{0pt}
     \setlength{\parskip}{3pt}
     \setlength{\parsep}{0pt}
     \setlength{\partopsep}{0pt}

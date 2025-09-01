@@ -1,15 +1,15 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass report
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package none
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -18,9 +18,13 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +54,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,15 +65,23 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -90,7 +105,7 @@ status open
 
 
 \backslash
-stepwise{
+liststepwise{
 \end_layout
 
 \end_inset
@@ -99,9 +114,7 @@ stepwise{
 \end_layout
 
 \begin_layout Standard
-Partial differential equations (PDEs) such as the Navier-Stokes equations
- can be solved approximately by splitting up space and time into discrete
- points and approximating the gradients using differences.
+Partial differential equations (PDEs) such as the Navier-Stokes equations and linear advection equation can be solved approximately by splitting up space and time into discrete points and approximating the gradients using differences.
  
 \begin_inset ERT
 status open
@@ -119,6 +132,8 @@ step{
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align block
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -138,12 +153,13 @@ backgroundcolor "none"
 status open
 
 \begin_layout Itemize
-For example, if we consider only one-dimensional space (only variations
- in the 
+For example,
+ if we consider only one-dimensional space (only variations in the 
 \begin_inset Formula $x$
 \end_inset
 
- direction), then we can divide the space between 
+ direction),
+ then we can divide the space between 
 \begin_inset Formula $x=0$
 \end_inset
 
@@ -155,11 +171,13 @@ For example, if we consider only one-dimensional space (only variations
 \begin_inset Formula $N$
 \end_inset
 
- equal intervals, each of size 
+ equal intervals,
+ each of size 
 \begin_inset Formula $\Delta x$
 \end_inset
 
-, so that 
+,
+ so that 
 \begin_inset Formula $x_{j}=j\Delta x$
 \end_inset
 
@@ -176,7 +194,8 @@ We can divide time into time steps
 \begin_inset Formula $\Delta t$
 \end_inset
 
-, so that 
+,
+ so that 
 \begin_inset Formula $t_{n}=n\Delta t,~n=0,1,2,...$
 \end_inset
 
@@ -238,11 +257,13 @@ step{
 \end_layout
 
 \begin_layout Itemize
-We wish to solve the 1D linear advection equation, 
+We wish to solve the 1D linear advection equation,
+ 
 \begin_inset Formula ${\textstyle \frac{\partial\phi}{\partial t}+u\frac{\partial\phi}{\partial x}=0}$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $u$
 \end_inset
 
@@ -268,11 +289,13 @@ Define
 \begin_inset Formula $\phi_{j}^{(n)}=\phi(x_{j},t_{n})$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\frac{\partial\phi}{\partial x}_{j}^{(n)}=\frac{\partial\phi}{\partial x}(x_{j},t_{n})$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\frac{\partial\phi}{\partial t}_{j}^{(n)}=\frac{\partial\phi}{\partial t}(x_{j},t_{n})$
 \end_inset
 
@@ -378,7 +401,7 @@ status open
 
 
 \backslash
-stepwise{
+liststepwise{
 \end_layout
 
 \end_inset
@@ -391,7 +414,8 @@ This can be re-arranged to give
 \begin_inset Formula $\phi_{j}^{(n+1)}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\phi_{j}$
 \end_inset
 
@@ -400,7 +424,8 @@ This can be re-arranged to give
 \end_inset
 
 s at previous time-steps and at adjacent locations.
- This can be simplified using the Courant number, 
+ This can be simplified using the Courant number,
+ 
 \begin_inset Formula $c=u\Delta t/\Delta x$
 \end_inset
 
@@ -429,8 +454,9 @@ step{
 \end_layout
 
 \begin_layout Itemize
-This is the CTCS scheme - Centred in Time, Centred in space, because the
- approximations for 
+This is the CTCS scheme - Centred in Time,
+ Centred in space,
+ because the approximations for 
 \begin_inset Formula $\partial\phi/\partial t$
 \end_inset
 
@@ -456,10 +482,52 @@ step{
 \end_layout
 
 \begin_layout Itemize
+CTCS uses three time levels (two previous time levels).
+ However at the first time step,
+ only one previous time level is available.
+ Therefore a forward in time approximation is needed for 
+\begin_inset Formula $\frac{\partial\phi}{\partial t}_{j}^{(n)}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial\phi}{\partial t}_{j}^{(n)}\approx\opttext{\frac{\phi_{j}^{(n+1)}-\phi_{j}^{(n)}}{\Delta t}}
+\]
+
+\end_inset
+
+Combined with centred in space,
+ this gives the FTCS scheme:
+\begin_inset Formula 
+\[
+\phi_{j}^{(n+1)}=\opttext{\phi_{j}^{(n)}-\frac{c_{j}}{2}\bigl(\phi_{j+1}^{(n)}-\phi_{j-1}^{(n)}\bigr)}
+\]
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 Python code implementing CTCS is given in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:CTCScode"
+nolink "false"
 
 \end_inset
 
@@ -521,8 +589,7 @@ lstinputlisting[basicstyle={
 \backslash
 ttfamily
 \backslash
-codeFont},frame=single,language=Python,tabsize=4,showstringspaces=true,basicstyl
-e=
+codeFont},frame=single,language=Python,tabsize=4,basicstyle=
 \backslash
 small]{practicals/CTCS.py}
 \end_layout
@@ -541,14 +608,23 @@ small]{practicals/CTCS.py}
 
 \begin_layout Section
 Exercises
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:FD_mathEx"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-Find a finite difference formula for the second derivative, 
+Find a finite difference formula for the second derivative,
+ 
 \begin_inset Formula $\partial^{2}\phi/\partial x^{2}$
 \end_inset
 
-, on a grid with spacing 
+,
+ on a grid with spacing 
 \begin_inset Formula $\Delta x$
 \end_inset
 
@@ -560,8 +636,8 @@ Find a finite difference formula for the second derivative,
 \end_layout
 
 \begin_layout Enumerate
-Hence derive the forward in time, centred in space (FTCS) scheme for the
- diffusion equation:
+Hence derive the forward in time,
+ centred in space (FTCS) scheme for the diffusion equation:
 \begin_inset Formula 
 \[
 \frac{\partial\phi}{\partial t}=K\frac{\partial^{2}\phi}{\partial x^{2}}.
@@ -573,14 +649,18 @@ Hence derive the forward in time, centred in space (FTCS) scheme for the
 \end_layout
 
 \begin_layout Enumerate
-The equation for inertial oscillations given in section 
+If the Navier-Stokes equations (section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Coriolis"
+reference "sec:NSeqns"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
- is:
+) are simplified to remove all terms apart from the rate of change of velocity and the Coriolis term then we get the equation for inertial oscillations:
 \begin_inset Formula 
 \[
 \frac{\partial\mathbf{u}}{\partial t}=\text{‐}2\bm{\Omega}\times\mathbf{u}.
@@ -597,7 +677,8 @@ Write equations for the horizontal components of
 \begin_inset Formula $\mathbf{u}$
 \end_inset
 
-, assuming that:
+,
+ assuming that:
 \begin_inset Formula 
 \[
 \mathbf{u}=\left(\begin{array}{c}
@@ -617,7 +698,8 @@ f
 \end_layout
 
 \begin_layout Enumerate
-Hence write down a numerical method for integrating 
+From this,
+ write down a numerical method for integrating 
 \begin_inset Formula $u$
 \end_inset
 
@@ -637,7 +719,8 @@ From
 \begin_inset Formula $v$
 \end_inset
 
-, write down equations for calculating the location of a parcel of air,
+,
+ write down equations for calculating the location of a parcel of air,
  
 \begin_inset Formula $(x^{(n)},y^{(n)})$
 \end_inset
@@ -690,7 +773,7 @@ Answers
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\frac{\phi_{j}^{(n+1)}-\phi_{j}^{(n)}}{\Delta t}\approx\frac{\phi_{j+1}^{(n)}-2\phi_{j}^{(n)}+\phi_{j-1}^{(n)}}{\Delta x^{2}}$
+\begin_inset Formula $\frac{\phi_{j}^{(n+1)}-\phi_{j}^{(n)}}{\Delta t}\approx K\frac{\phi_{j+1}^{(n)}-2\phi_{j}^{(n)}+\phi_{j-1}^{(n)}}{\Delta x^{2}}$
 \end_inset
 
 
@@ -700,7 +783,8 @@ Answers
 \begin_inset Formula $\partial u/\partial t=fv$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\partial v/\partial t=-fu$
 \end_inset
 
@@ -768,8 +852,7 @@ status open
 \end_layout
 
 \begin_layout Section
-Python Code to Solve the Inertial Oscillation Equation using forward-backward
- time-stepping
+Python Code to Solve the Inertial Oscillation Equation using forward-backward time-stepping
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:intertial_FB"
@@ -791,8 +874,7 @@ lstinputlisting[basicstyle={
 \backslash
 ttfamily
 \backslash
-codeFont},frame=single,language=Python,tabsize=4,showstringspaces=true,basicstyl
-e=
+codeFont},frame=single,language=Python,tabsize=4,basicstyle=
 \backslash
 small]{practicals/inertial_FB.py}
 \end_layout

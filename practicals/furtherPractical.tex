@@ -1,29 +1,44 @@
 
-\chapter*{Final Practical: Implement a Better Numerical Method }
+\chapter*{More on the Practical}
 
-\addcontentsline{toc}{chapter}{\protect\numberline{}Final Practical}
+\addcontentsline{toc}{chapter}{\protect\numberline{}More on the  Practical}
 
-For this practical you have two choices:
+For this practical you have more choices. You can dig deeper into
+what you were doing yesterday, or change direction. Discuss your plans
+with staff and each other. Some options:
 \begin{enumerate}
-\item Implement a better numerical method for the equation you were solving
-in the first practical
-\item Solve a different equation using a sensibly chosen numerical method
+\item Develop ways to test your code (essential for everyone).
+\item Further analysis of the method that you have already chosen (numerical
+analysis or numerical experiment, see below).
+\item Implement a better numerical method for the equation you are solving,
+such as the spectral method (section \ref{sec:spectralMethod}).
+\item Solve a different equation.
+\item Download some climate data and do some spectral analysis (section
+\ref{sec:powerSpectra}). For example, you could remove a seasonal
+cycle before calculating the power spectrum, or look into smoothing
+the spectrum, or Fourier filtering the data.
 \end{enumerate}
-There are many possibilities:
+
+\subsection*{In particular, you may consider:}
 \begin{enumerate}
 \item If you are solving an advection equation, you might like to consider
 using one of:
-
 \begin{enumerate}
 \item A monotonic advection scheme
 \item Semi-Lagrangian advection
 \item The Lax-Wendroff method
+\item The Spectral method
 \end{enumerate}
+\item Analyse how solution errors vary with resolution in time and space
+(look at order of convergence)?
+\item Is your numerical method stable for all time steps?
+\item Is your numerical method conservative?
+\item Is there any spurious behaviour in your solution? (eg unbounded results
+or unrealistic oscillations).
 \item Compare explicit and implicit time-stepping.
-\item You might like to consider using Runge-Kutta time-stepping
-\item You might like to increase the order of accuracy of the spatial discretisation
+\item You could consider using Runge-Kutta time-stepping
+\item You could increase the order of accuracy of the spatial discretisation
 \item If you are solving the shallow water equations
-
 \begin{enumerate}
 \item Try adding non-linear terms
 \item Try using a different Arakawa grid
@@ -31,5 +46,5 @@ using one of:
 \item Try using variable spatial resolution or adaptive time-stepping
 \end{enumerate}
 You should search online for ideas of a numerical method to use. You
-can also refer to my MSc teaching notes:\\
-{\small{} \url{http://www.met.reading.ac.uk/~sws02hs/teaching/MTMW12/MTMW12_2_lec.pdf}}{\small\par}
+can also refer to Hilary's MSc teaching notes:\\
+{\small{} \url{http://www.met.reading.ac.uk/~sws02hs/teaching/MTMFMD/MTMFMD_numerics_lecturer_2.pdf}}{\small\par}

@@ -1,55 +1,54 @@
-import numpy as np      # External library for numerical calculations
+import numpy as np                # External library for numerical calculations
 import matplotlib.pyplot as plt   # Plotting library
+%matplotlib auto                  # Makes plots show in a different window
 
-# Function defining the initial and analytic solution
 def initialBell(x):
-    return np.where(x%1. < 0.5, np.power(np.sin(2*x*np.pi), 2), 0)
+    "Initial conditions as a function of space, x"
+    return np.where(x%1. < 0.5, np.power(np.sin(2*x*np.pi), 2), 0.)
 
-# Put everything inside a main function to avoid global variables
-def main():
-    # Setup space, initial phi profile and Courant number
-    nx = 40                 # number of points in space
-    c = 0.2                 # The Courant number
-    # Spatial variable going from zero to one inclusive
-    x = np.linspace(0.0, 1.0, nx+1)
-    # Three time levels of the dependent variable, phi
-    phi = initialBell(x)
-    phiNew = phi.copy()
-    phiOld = phi.copy()
+# Setup space, x, initial phi profile and Courant number
+nx = 40; nt = 40        # number of points in space and time
+c = 0.2                 # The Courant number
+x = np.linspace(0.0, 1.0, nx+1) # From zero to one inclusive
+phi = initialBell(x)    # Three time levels of the dependent variable, 
+phiNew = phi.copy()     # phi
+phiOld = phi.copy()
 
-    # FTCS for the first time-step, looping over space
-    for j in range(1,nx):
-        phi[j] = phiOld[j] - 0.5*c*(phiOld[j+1] - phiOld[j-1])
+# derived or assumed quantities
+u = 1.0; dx = 1./nx; dt = c*dx/u
+
+# Plot the initial conditions
+plt.plot(x, phi, 'k', label='initial conditions')
+plt.legend(loc='best')
+plt.ylabel(r'$\phi$')
+plt.axhline(0, linestyle=':', color='black')
+plt.pause(1)
+
+# FTCS for the first time-step, looping over space
+for j in range(1,nx):       # loops from 1 to nx-1
+    phi[j] = phiOld[j] - 0.5*c*(phiOld[j+1] - phiOld[j-1])
+# apply periodic boundary conditions
+phi[0] = phiOld[0] - 0.5*c*(phiOld[1] - phiOld[nx-1])
+phi[nx] = phi[0]
+
+# Loop over remaining time-steps (nt-1) using CTCS
+for n in range(1,nt):       # loop from 1 to nt-1
+    for j in range(1,nx):   # loop over space from 1 to nx-1
+        phiNew[j] = phiOld[j] - c*(phi[j+1] - phi[j-1])
     # apply periodic boundary conditions
-    phi[0] = phiOld[0] - 0.5*c*(phiOld[1] - phiOld[nx-1])
-    phi[nx] = phi[0]
-
-    # Loop over remaining time-steps (nt) using CTCS
-    nt = 40
-    for n in range(1,nt):
-        # loop over space
-        for j in range(1,nx):
-            phiNew[j] = phiOld[j] - c*(phi[j+1] - phi[j-1])
-        # apply periodic boundary conditions
-        phiNew[0] = phiOld[0] - c*(phi[1] - phi[nx-1])
-        phiNew[nx] = phiNew[0]
-        #update phi for the next time-step
-        phiOld = phi.copy()
-        phi = phiNew.copy()
-
-    # derived quantities
-    u = 1.
-    dx = 1./nx
-    dt = c*dx/u
-    t = nt*dt
-
-    # Plot the solution in comparison to the analytic solution
-    plt.plot(x, initialBell(x - u*t), 'k', label='analytic')
+    phiNew[0] = phiOld[0] - c*(phi[1] - phi[nx-1])
+    phiNew[nx] = phiNew[0]
+    # update phi for the next time-step
+    phiOld = phi.copy()
+    phi = phiNew.copy()
+    # Replot
+    plt.cla()
+    plt.plot(x, initialBell(x - u*n*dt), 'k', label='analytic')
     plt.plot(x, phi, 'b', label='CTCS')
     plt.legend(loc='best')
-    plt.ylabel('$\phi$')
+    plt.ylabel(r'$\phi$')
     plt.axhline(0, linestyle=':', color='black')
-    plt.show()
+    plt.pause(0.05)
 
-# Execute the code
-main()
+plt.show() # To keep the plot showing at the end
+

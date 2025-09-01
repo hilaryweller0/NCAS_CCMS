@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8,24 +8,31 @@
 \begin_preamble
 \input{preamble}
 \input{studentVersion}
+% Added by lyx2lyx
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{0pt}
 \end_preamble
 \options 10pt
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package none
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "times" "default"
-\font_sans "default" "default"
+\font_sans "lmss" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family rmdefault
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -65,6 +72,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -78,18 +88,27 @@
 \headheight 0.5cm
 \footskip 10pt
 \secnumdepth 3
-\tocdepth 1
-\paragraph_separation skip
-\defskip 3pt
-\quotes_language english
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
+\tablestyle default
+\listings_params "showstringspaces=false"
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -98,6 +117,7 @@
 \begin_inset CommandInset include
 LatexCommand input
 filename "title.lyx"
+literal "true"
 
 \end_inset
 
@@ -108,6 +128,7 @@ filename "title.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "reading.lyx"
+literal "true"
 
 \end_inset
 
@@ -139,7 +160,8 @@ Day 1 am
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "NSeqns.lyx"
+filename "linearAdvection.lyx"
+literal "true"
 
 \end_inset
 
@@ -150,6 +172,7 @@ filename "NSeqns.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "finiteDifferences.lyx"
+literal "true"
 
 \end_inset
 
@@ -172,17 +195,8 @@ Day 1 pm
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "practicals/usingComputers.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
 filename "practicals/introPractical.lyx"
+literal "true"
 
 \end_inset
 
@@ -205,7 +219,19 @@ Day 2 am
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "NA.lyx"
+filename "Fourier.lyx"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "software.lyx"
+literal "true"
 
 \end_inset
 
@@ -228,17 +254,8 @@ Day 2 pm
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "software.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "practicals/softwarePractical.lyx"
+filename "practicals/furtherPractical.lyx"
+literal "true"
 
 \end_inset
 
@@ -262,39 +279,7 @@ Day 3 am
 \begin_inset CommandInset include
 LatexCommand input
 filename "space.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Day 3 am
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "time.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "practicals/furtherPractical.lyx"
+literal "true"
 
 \end_inset
 

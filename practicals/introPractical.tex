@@ -1,30 +1,225 @@
-\clearpage{}
 
-\section{Practical: Solving a Differential Equation using Finite Differences}
+\chapter{Solving an Equation using Finite Differences}
 
 This practical is open ended and we will build on it during the week.
 Everyone has different knowledge and experience coding numerical methods
-so during this practical you will choose your own equation to solve
-and choose or design a numerical method to solve it. If you have not
-coded numerical methods before, you might like to start with the one
-dimensional linear advection equation and make modifications to the
-code in section \ref{sec:CTCScode} or inertial oscillations and start
-from the code in section \ref{sec:intertial_FB}. For the more adventurous,
-you could choose an equation that you are interested in or pick a
-couple of terms from one of the Navier-Stokes equations to model.
-Please discuss your decisions with the staff. Also feel free to find
-equations and numerical methods online. Some equations that you might
-like to consider:
-\begin{itemize}
-\item The non-linear advection equation (Burger's equation)
-\item The linear or non-linear shallow-water equations
-\item The diffusion equation (easier than the linear advection equation)
-\item Inertial oscillations. You could start from the code in section \ref{sec:intertial_FB},
-see what happens when you make the time-step very large and then try
-to make the time-stepping implicit.
-\end{itemize}
-You will probably learn most if you stick with one dimensional equations. 
+so you will choose your own equation and your own numerical method
+to solve it. Each section of this chapter describes some alternative
+starting points in increasing levels of difficulty. Read through sections
+\ref{sec:solveOscEqn} to \ref{sec:solveSWE} before deciding which
+to work on. Focus on just one and dive deep. On Thursday, you will
+give a short presentation to the class on what equation you have solved,
+how you have solved it, your results, what was most difficult and,
+most importantly, \textbf{what you have learned}.
+\begin{center}
+\textcolor{red}{Do not copy and paste code from the notes}
+\par\end{center}
 
-You will have an opportunity at the end of the week to tell the rest
-of the class what equation you have chosen, how you have chosen to
-solve it and if you have any results or problems so far. 
+\section{The Oscillation Equation \protect\label{sec:solveOscEqn}}
+
+The code for oscillations is that same as the code for a simple pendulum:
+\begin{eqnarray*}
+\frac{du}{dt}=fv &  & \frac{dv}{dt}=-fu.
+\end{eqnarray*}
+This represents inertial oscillations when $(u,v)$ are the components
+of the wind and $f$ is the Coriolis parameter. To represent a pendulum,
+$u$ would be the angle of the pendulum, $fv$ the speed of the pendulum
+and $f$ related to the length of the pendulum. Here are some tasks
+you can explore:
+\begin{enumerate}
+\item Type in the code to solve the oscillation equation (section \ref{sec:intertial_FB}).
+\begin{enumerate}
+\item Experiment with changing the time step. How does this affect accuracy?
+\item The forward-backward method is only stable for a sufficiently small
+time step; when the time step is too big the solution diverges. The
+stability depends on the product $f\Delta t$. Find the value of $f\Delta t$
+above which the method is unstable.\clearpage{}
+\end{enumerate}
+\item Here are some alternative methods for solving the oscillation equation:\\
+\begin{minipage}[t]{0.45\columnwidth}%
+\begin{center}
+Euler Forward
+\begin{eqnarray*}
+u^{(n+1)} & = & u^{(n)}+\Delta t\ f\ v^{(n)}\\
+v^{(n+1)} & = & v^{(n)}+\Delta t\ f\ u^{(n)}
+\end{eqnarray*}
+\par\end{center}
+\begin{center}
+Euler Backward
+\begin{eqnarray*}
+u^{(n+1)} & = & u^{(n)}+\Delta t\ f\ v^{(n+1)}\\
+v^{(n+1)} & = & v^{(n)}+\Delta t\ f\ u^{(n+1)}
+\end{eqnarray*}
+\par\end{center}
+\begin{center}
+Crank-Nicolson
+\begin{eqnarray*}
+u^{(n+1)} & = & u^{(n)}+\frac{\Delta t}{2}\ f\ \left(v^{(n)}+v^{(n+1)}\right)\\
+v^{(n+1)} & = & v^{(n)}+\frac{\Delta t}{2}\ f\ \left(u^{(n)}+u^{(n+1)}\right)
+\end{eqnarray*}
+\par\end{center}%
+\end{minipage}\hfill{}%
+\begin{minipage}[t]{0.45\columnwidth}%
+\begin{center}
+Runge-Kutta 4
+\begin{eqnarray*}
+u_{1} & = & u^{(n)}+\Delta t\ f\ v^{(n)}\\
+v_{1} & = & v^{(n)}+\Delta t\ f\ u^{(n)}\\
+u_{2} & = & u^{(n)}+\frac{\Delta t}{2}\ f\ v_{1}\\
+v_{2} & = & v^{(n)}+\frac{\Delta t}{2}\ f\ u_{1}\\
+u_{3} & = & u^{(n)}+\frac{\Delta t}{2}\ f\ v_{2}\\
+v_{3} & = & v^{(n)}+\frac{\Delta t}{2}\ f\ u_{2}\\
+u_{4} & = & u^{(n)}+\Delta t\ f\ v_{3}\\
+v_{4} & = & v^{(n)}+\Delta t\ f\ u_{3}\\
+u^{(n+1)} & = & u^{(n)}+\frac{\Delta t}{6}\left(u_{1}+2u_{2}+2u_{3}+u_{4}\right)\\
+v^{(n+1)} & = & v^{(n)}+\frac{\Delta t}{6}\left(v_{1}+2v_{2}+2v_{3}+v_{4}\right)
+\end{eqnarray*}
+\par\end{center}%
+\end{minipage} \\
+Code up some alternative methods and compare their behaviour with
+forward-backwards.
+\end{enumerate}
+\clearpage{}
+
+\section{The Diffusion Equation}
+
+The one-dimensional, linear diffusion equation is given in question
+2 of exercises \ref{sec:FD_mathEx}. 
+\begin{enumerate}
+\item Write code to solve it using the forward in time, centered in space
+method. Use periodic boundary conditions, $x\in[0,1)$, $K=1$ and
+initial conditions
+\[
+\phi_{0}=\begin{cases}
+1 & x\in\left[0.4,0.6\right]\\
+0 & \text{otherwise}.
+\end{cases}
+\]
+\item With these initial conditions, the analytic solution for short timescales
+can be approximated by
+\[
+\phi\left(x,t\right)=\frac{1}{2}\left[\text{erf}\left(\frac{x-0.4}{\sqrt{4Kt}}\right)-\text{erf}\left(\frac{x-0.6}{\sqrt{4Kt}}\right)\right].
+\]
+Write code to compare your numerical solutions with the analytic solution.
+\item Investigate how the solution behaves when you change the spatial and
+temporal resolution.
+\item The diffusion equation can be used to represent the variation of temperature,
+$T$, with height, $z$, in the atmospheric boundary layer:
+\[
+\frac{\partial T}{\partial t}=K\frac{\partial^{2}T}{\partial z^{2}}+Q
+\]
+where $Q$ is a heating rate. Write code to solve this equation in
+the lowest 1000\,m of the atmosphere with $K=1\ \text{m}^{2}\text{s}^{-1}$,
+$Q=-1.5\ \text{K}/\text{day}$, subject to boundary and initial conditions:
+\begin{eqnarray*}
+\text{Bottom boundary, }T\left(0,t\right) & = & 293\ \text{K}\\
+\text{Top boundary (adiabatic), }\frac{\partial T}{\partial z}\left(1000,t\right) & = & 0\\
+\text{Initial conditions, }T\left(z,0\right) & = & 293\ \text{K}
+\end{eqnarray*}
+Think about how to validate your code.\clearpage{}
+\end{enumerate}
+
+\section{The linear advection equation}
+\begin{enumerate}
+\item Type in the code given in section \ref{sec:CTCScode} to solve the
+linear advection equation with periodic boundary conditions.
+\item Experiment to find how the method behaves when you change the spatial
+and temporal resolution.
+\item Experiment to find how the method behaves when you use initial conditions
+with discontinuities, such as:
+\[
+\phi_{0}=\begin{cases}
+1 & x\in\left[0.1,0.5\right]\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+When advecting fields with discontinuities, centered in space methods
+such as CTCS show severe dispersion errors leading to spurious undershoots
+and overshoots. There is a vast literature on advection schemes designed
+to limit these dispersion errors. Here is a selection of methods you
+could try. For each of these, investigate the advantages and disadvantages:
+\begin{enumerate}
+\item Add a diffusion term, $K\nabla^{2}\phi$, to the right hand side of
+the advection equation.
+\item Use forward in time, backward in space, FTBS, instead of CTCS.
+\item Use an upwinded, finite volume scheme such as Lax-Wendroff or Warming
+and Beam:
+\[
+\frac{\phi_{j}^{(n+1)}-\phi_{j}^{(n)}}{\Delta t}=-u\frac{\phi_{j+\half}-\phi_{j-\half}}{\Delta x}
+\]
+Lax-Wendroff: $\phi_{j+\half}=\half(1+c)\phi_{j}^{(n)}+\half(1-c)\phi_{j+1}^{(n)}$\\
+Warming and Beam: $\phi_{j+\half}=\half(3-c)\phi_{j}^{(n)}-\half(1-c)\phi_{j-1}^{(n)}$
+\item Use a semi-Lagrangian scheme. The semi-Lagrangian method approximates
+the analytic solution of the advection equation:
+\begin{eqnarray*}
+\phi\left(x,t+\Delta t\right) & = & \phi\left(x-u\Delta t,t\right).
+\end{eqnarray*}
+Point $x_{jd}=x_{j}-u\Delta t$ is the departure point of point $x_{j}$
+which, let's say, falls between grid points $k$ and $k+1$. Can you
+work out how to calculate $k$? Once you have $k$, you need to work
+out how to interpolate $\phi$ from points $x_{k-1}$, $x_{k}$, $x_{k+1}$,
+$x_{k+2}$ onto $x_{jd}$ in order to predict $\phi_{j}^{(n+1)}=\phi_{jd}^{(n)}$
+(for example using cubic-Lagrange interpolation).
+\end{enumerate}
+\end{enumerate}
+\clearpage{}
+
+\section{The non-linear advection equation (Burger's equation)\protect\label{sec:solveBurger}}
+
+Derive and code up a numerical method to solve Burger's equation.
+Burger's equation has two equivalent forms:
+\begin{eqnarray*}
+\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}=0 &  & \frac{\partial u}{\partial t}+\frac{1}{2}\frac{\partial u^{2}}{\partial x}=0
+\end{eqnarray*}
+
+\begin{enumerate}
+\item Can you create a method that conserves the total sum of $u$ over
+the domain?
+\item Investigate how your method behaves when you vary the spatial and
+temporal resolution.
+\item Is there any way you can know what the correct solution is?
+\item Try using one or two of the numerical methods described for linear
+advection but adapted for Burger's equation.
+\end{enumerate}
+\clearpage{}
+
+\section{The linear or non-linear shallow-water equations \protect\label{sec:solveSWE}}
+
+The one-dimensional, linear shallow water equations are:
+\begin{eqnarray*}
+\frac{\partial u}{\partial t}=-g\frac{\partial h}{\partial x} &  & \frac{\partial h}{\partial t}=-H\frac{\partial u}{\partial x}
+\end{eqnarray*}
+where $u$ is the fluid velocity, $H+h$ is the total fluid height
+with $h<<H$ and $H$ is uniform in space and time. Derive or find
+and code up a numerical method to solve the linearised shallow water
+equations in a periodic domain $x\in[0,1)$ with $H=1$, $g=1$ using
+the initial conditions 
+\begin{eqnarray*}
+u\left(x,0\right) & = & 0\\
+h\left(x,0\right) & = & \begin{cases}
+\frac{1}{2}\left(1-\cos2\pi\frac{x-0.4}{0.6-0.4}\right) & x\in\left[0.4,0.6\right]\\
+0 & \text{otherwise}.
+\end{cases}
+\end{eqnarray*}
+
+\begin{enumerate}
+\item Investigate how your code behaves when you vary the spatial and temporal
+resolution. Are there any particularly unrealistic ways in which your
+code behaves for certain set ups?
+\item Is there any way you can know what the correct solution is?
+\item The code that you wrote is probably co-located or Arakawa A-grid.
+This means that $u$ and $h$ are stored at the same locations. Write
+a code using a staggered, C-grid so that the locations of the points
+where $u$ and $h$ are stored are offset by $\Delta x/2$. This means
+that you can use compact differences; if $h$ is stored at locations
+$j$ and $u$ is stored at locations $j+\frac{1}{2}$, then, for example,
+you can calculate $\partial u/\partial x$ and location $j$, where
+it is needed to increment $h_{j}$
+\begin{eqnarray*}
+h_{j}^{(n+1)}=h_{j}^{(n)}-\Delta tH\frac{u_{j+\frac{1}{2}}-u_{j-\frac{1}{2}}}{\Delta x}, &  & u_{j+\frac{1}{2}}^{(n+1)}=u_{j+\frac{1}{2}}^{(n)}-\Delta tg\frac{h_{j+1}-h_{j}}{\Delta x}.
+\end{eqnarray*}
+How does the behaviour of the C-grid code compare with that of the
+A-grid code?
+\end{enumerate}
+

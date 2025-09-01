@@ -1,17 +1,22 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass report
+\begin_preamble
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\end_preamble
 \options serif
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package none
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "times" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -19,9 +24,13 @@
 \font_default_family rmdefault
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -60,6 +69,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -72,17 +84,25 @@
 \bottommargin 2cm
 \secnumdepth 1
 \tocdepth 1
-\paragraph_separation skip
-\defskip medskip
-\quotes_language english
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -96,8 +116,7 @@ Aim
 \end_layout
 
 \begin_layout Itemize
-Describe a multitude of spatial discretisation methods used in atmospheric
- modelling
+Describe a multitude of spatial discretisation methods used in atmospheric modelling
 \end_layout
 
 \begin_layout Itemize
@@ -199,75 +218,10 @@ No spatial discretisation method is perfect.
 \end_layout
 
 \begin_layout Section
-Shallow Water Equations
+Meshes (or Grids) of the Sphere
 \end_layout
 
 \begin_layout Standard
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "48col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Non-linear
-\series default
-
-\begin_inset Formula 
-\begin{align}
-\frac{D\mathbf{u}}{Dt} & =-2\Omega\times\mathbf{u}-g\nabla(h+h_{0})\label{eqn:SWEuv1}\\
-\frac{Dh}{Dt} & +h\nabla\cdot\mathbf{u}=0\label{eqn:SWEh1}
-\end{align}
-
-\end_inset
-
-
-\begin_inset Formula $\Omega$
-\end_inset
-
- is rotation
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Linearise
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathbf{u}$
-\end_inset
-
- is small
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $h\rightarrow H+h$
-\end_inset
-
- where 
-\begin_inset Formula $H$
-\end_inset
-
- is mean height and 
-\begin_inset Formula $h$
-\end_inset
-
- is small (ignore mountain)
 \begin_inset ERT
 status open
 
@@ -275,249 +229,7 @@ status open
 
 
 \backslash
-optBlock{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{align*}
-\frac{\partial\mathbf{u}}{\partial t} & =-2\Omega\times\mathbf{u}-g\nabla h\\
-\frac{\partial h}{\partial t} & +H\nabla\cdot\mathbf{u}=0
-\end{align*}
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "48col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\size small
-Solutions of non-linear SWE 
-\end_layout
-
-\begin_layout Plain Layout
-
-\size small
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-mediaMovie[autostart,loop]
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-includegraphics[width=0.9
-\backslash
-linewidth]{/home/hilary/OpenFOAM/hilary-dev/run/shallowWaterSphere/WilliMountain
-/RinglerLloyd/6/2/129600/hU.pdf}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{/home/hilary/OpenFOAM/hilary-dev/run/shallowWaterSphere/WilliMountain/RinglerLl
-oyd/6/2/hU.mp4}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\size small
-Colour shows height of atmosphere.
-\end_layout
-
-\begin_layout Plain Layout
-
-\size small
-Vectors show depth integrated wind.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Finite Differences - Arakawa A-grid
-\end_layout
-
-\begin_layout Standard
-Store discrete values of 
-\begin_inset Formula $h$
-\end_inset
-
- and 
-\begin_inset Formula $u$
-\end_inset
-
- on a grid.
- A one dimensional example:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "60col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Phantom Phantom
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset External
-	template XFig
-	filename /home/hilary/latex/teaching/topics/SWE/figs/A-grid.fig
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "38col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{eqnarray*}
-\frac{\partial u}{\partial x}_{j} & \approx & \optBlock{\frac{u_{j+1}-u_{j-1}}{2\Delta x}}\\
-\frac{\partial h}{\partial x}_{j} & \approx & \optBlock{\frac{h_{j+1}-h_{j-1}}{2\Delta x}}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-stepwise{
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-switch{
-\backslash
-includegraphics[width=0.3
-\backslash
-linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Agrid1.pdf}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-movie*{10}{1}{
-\backslash
-includegraphics[width=0.3
-\backslash
-linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Agrid
-\backslash
-thesubstep.pdf}}}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
+liststepwise{
 \end_layout
 
 \end_inset
@@ -527,886 +239,6 @@ thesubstep.pdf}}}
 
 \begin_layout Standard
 \noindent
-The Arakawa A-grid is not used by operational centres in this form.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Arakawa Grids 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "AL77"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Consider the component form of the 2D linearised SWE:
-\begin_inset Formula 
-\begin{eqnarray}
-\frac{\partial u}{\partial t} & = & \phantom{-}fv-g\frac{\partial h}{\partial x}\label{eq:linSWEu}\\
-\frac{\partial v}{\partial t} & = & -fu-g\frac{\partial h}{\partial y}\label{eq:linSWEv}\\
-\frac{\partial h}{\partial t} & = & -H\left(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}\right)\label{eq:linSWEh}
-\end{eqnarray}
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "28col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-
-\series bold
-A-grid
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifthenelse{
-\backslash
-boolean{@lecversion}}%
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/A.pdf_t}}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "70col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Phantom Phantom
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Non-compact discretisation of 
-\begin_inset Formula $\partial u/\partial x$
-\end_inset
-
-, 
-\begin_inset Formula $\partial u/\partial y$
-\end_inset
-
-, 
-\begin_inset Formula $\partial h/\partial x$
-\end_inset
-
- and 
-\begin_inset Formula $\partial h/\partial y$
-\end_inset
-
- leads to spurious gravity modes.
- 
-\end_layout
-
-\begin_layout Itemize
-Grid-scale oscillations 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-optBlock{Simple}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-optBlock{Acurate representation of inertial oscillations ($u$ and $v$ are
- together)}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "28col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-
-\series bold
-B-grid
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifthenelse{
-\backslash
-boolean{@lecversion}}%
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/B.pdf_t}}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "70col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Phantom Phantom
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Some older ocean models use B-grid.
- Eg ocean component of HadCM3.
-\end_layout
-
-\begin_layout Itemize
-Gradients are compact but averaging needed
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-optBlock{Still computational modes}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-optBlock{Acurate representation of inertial oscillations ($u$ and $v$ are
- together)}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "28col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-
-\series bold
-C-grid
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifthenelse{
-\backslash
-boolean{@lecversion}}%
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/C.pdf_t}}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "70col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Phantom Phantom
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Compact discretisation of 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-optBlock{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $\partial u/\partial x$
-\end_inset
-
-, 
-\begin_inset Formula $\partial u/\partial y$
-\end_inset
-
-, 
-\begin_inset Formula $\partial h/\partial x$
-\end_inset
-
- and 
-\begin_inset Formula $\partial h/\partial y$
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- best representation of gravity modes.
- 
-\end_layout
-
-\begin_layout Itemize
-Coriolis terms and geostrophic balance more of a problem.
-\end_layout
-
-\begin_layout Itemize
-Widely used including current UK Met Office model.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "28col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-
-\series bold
-D-grid
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifthenelse{
-\backslash
-boolean{@lecversion}}%
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/D.pdf_t}}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "70col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Phantom Phantom
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Non-compact discretisation of 
-\begin_inset Formula $\partial u/\partial x$
-\end_inset
-
- and 
-\begin_inset Formula $\partial h/\partial x$
-\end_inset
-
- leads to spurious gravity modes 
-\end_layout
-
-\begin_layout Itemize
-Lots of averaging needed
-\end_layout
-
-\begin_layout Itemize
-Best representation of geostrophic balance
-\end_layout
-
-\begin_layout Itemize
-GFDL's FV3 model uses a C-D grid
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "28col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-
-\series bold
-E-grid
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifthenelse{
-\backslash
-boolean{@lecversion}}%
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/E.pdf_t}}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-scalebox{0.7}[0.7]{
-\backslash
-input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "70col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Phantom Phantom
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Equivalent to a B-grid rotated by 
-\begin_inset Formula $45^{o}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Solutions of Linearised SWE starting from an initial bump
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-stepwise{
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{ccc}
-\end_layout
-
-\begin_layout Plain Layout
-
-A-grid & B-grid & C-grid 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-switch{
-\backslash
-includegraphics[width=0.3
-\backslash
-linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Agrid1.pdf}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-movie*{10}{1}{
-\backslash
-includegraphics[width=0.3
-\backslash
-linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Agrid
-\backslash
-thesubstep.pdf}}}
-\end_layout
-
-\begin_layout Plain Layout
-
-&
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-switch{
-\backslash
-includegraphics[width=0.3
-\backslash
-linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Bgrid1.pdf}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-movie*{10}{1}{
-\backslash
-includegraphics[width=0.3
-\backslash
-linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Bgrid
-\backslash
-thesubstep.pdf}}}
-\end_layout
-
-\begin_layout Plain Layout
-
-&
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-switch{
-\backslash
-includegraphics[width=0.3
-\backslash
-linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Cgrid1.pdf}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-movie*{10}{1}{
-\backslash
-includegraphics[width=0.3
-\backslash
-linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Cgrid
-\backslash
-thesubstep.pdf}}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -1425,8 +257,8 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section
-The Pole Problem
+\begin_layout Subsection
+Latitude-Longitude
 \end_layout
 
 \begin_layout Plain Layout
@@ -1434,6 +266,47 @@ The Pole Problem
 	filename /home/hilary/latex/teaching/topics/grids/latLon.png
 	lyxscale 40
 	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+smiley
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+The simplest,
+ finite difference and finite volume methods are accurate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
 
 \end_inset
 
@@ -1471,16 +344,145 @@ status open
 Convergence of points towards the poles
 \end_layout
 
-\begin_layout Itemize
-Severe time-step restrictions
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frownie
 \end_layout
 
-\begin_layout Itemize
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+
+\color red
+The pole problem
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frownie
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Severe time step restrictions
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frownie
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
 Parallel scaling bottlenecks
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 \begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
 \end_inset
 
 
@@ -1510,6 +512,34 @@ NCAR Community Atmosphere Model CAM-FV (for low resolution.
  CAM-SE on cubed sphere for high resolution)
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
@@ -1523,6 +553,23 @@ NCAR Community Atmosphere Model CAM-FV (for low resolution.
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -1556,9 +603,84 @@ Cubed Sphere
 
 \end_layout
 
+\begin_layout Description
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
-Grid lines are non-orthogonal which must be treated accurately to avoid
- grid imprinting.
+
+
+\backslash
+smiley
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Quasi-uniform
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frownie
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Grid lines are non-orthogonal which must be treated accurately to avoid grid imprinting.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1590,22 +712,6 @@ status open
 Used by
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-optBlock{
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 Next UK Met Office model
 \end_layout
@@ -1622,7 +728,8 @@ GFDL's FV3 (will also be used by NOAA)
 
 \begin_deeper
 \begin_layout Itemize
-finite volume, CD grid
+finite volume,
+ CD grid
 \end_layout
 
 \end_deeper
@@ -1637,7 +744,8 @@ spectral element method
 
 \end_deeper
 \begin_layout Itemize
-NUMA-NEPTUNE, from the US Navy (not operatation)
+NUMA-NEPTUNE,
+ from the US Navy (not operatation)
 \end_layout
 
 \begin_deeper
@@ -1646,7 +754,12 @@ discontinuous Galerkin
 \end_layout
 
 \end_deeper
-\begin_layout Plain Layout
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1658,14 +771,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -1673,6 +778,7 @@ status open
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -1692,12 +798,12 @@ backgroundcolor "none"
 status open
 
 \begin_layout Subsection
-Reduced grid
+Octahedral Grid
 \end_layout
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/latex/teaching/topics/grids/reduced.png
+	filename /home/hilary/latex/teaching/topics/grids/octahedralmesh.png
 	lyxscale 50
 	width 100text%
 
@@ -1746,12 +852,20 @@ spectral method
 
 \end_deeper
 \begin_layout Itemize
-ECMWF FV3
+ECMWF PMAP
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-experimental finite volume model using A-grid
+portable finite volume 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "KDK+19"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1768,6 +882,23 @@ experimental finite volume model using A-grid
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -1788,10 +919,6 @@ status open
 
 \begin_layout Subsection
 Icosahedral grids
-\end_layout
-
-\begin_layout Plain Layout
-Suitable for low order models
 \end_layout
 
 \begin_layout Plain Layout
@@ -1845,10 +972,168 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
+\begin_layout Description
+
+\series medium
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
-\series bold
-Used by
+
+\backslash
+smiley
+\end_layout
+
+\end_inset
+
+
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Quasi-uniform
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+smiley
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Can be orthogonal
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frownie
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Hexagons suitable for low order models
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frownie
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Triangles suitable for Galerkin methods
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1859,12 +1144,18 @@ status open
 
 
 \backslash
-optBlock{
+step{
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Used by
 \end_layout
 
 \begin_layout Itemize
@@ -1878,7 +1169,8 @@ Japanese A-grid model run at very high resolution
 
 \end_deeper
 \begin_layout Itemize
-MPAS (Voronoi, US community model to replace WRF)
+MPAS (Voronoi,
+ US community model to replace WRF)
 \end_layout
 
 \begin_deeper
@@ -1888,7 +1180,8 @@ finite volume C-grid
 
 \end_deeper
 \begin_layout Itemize
-ICON (triangles, German operational model)
+ICON (triangles,
+ German operational model)
 \end_layout
 
 \begin_deeper
@@ -1907,11 +1200,6 @@ finite volume C-grid
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-Colorado State University Model (Uses Vorticity is a prognostic variable,
- Z-grid)
-\end_layout
-
 \begin_layout Plain Layout
 \begin_inset ERT
 status open
@@ -1932,6 +1220,20 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -1939,6 +1241,23 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -1972,14 +1291,6 @@ Yin-Yang Grid
 
 \end_layout
 
-\begin_layout Plain Layout
-Conservation is problematic
-\end_layout
-
-\begin_layout Plain Layout
-Spurious behaviour on overlaps
-\end_layout
-
 \end_inset
 
  
@@ -2005,6 +1316,166 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+smiley
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Quasi-uniform
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+smiley
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Re-use lat-lon grid code
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frownie
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Conservation is problematic
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frownie
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Spurious behaviour on overlaps
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection*
 Used by
 \end_layout
@@ -2019,10 +1490,281 @@ for high resolution modelling
 \end_layout
 
 \begin_layout Itemize
-semi-implicit, semi-Lagrangian (like UK Met Office)
+semi-implicit,
+ semi-Lagrangian (like UK Met Office)
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Equation Sets
+\end_layout
+
+\begin_layout Subsection
+Shallow Water Equations (SWE)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "48col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Development of spatial discretisations often start by solving the SWE – simplified 2D equations.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Non-linear
+\series default
+
+\begin_inset Formula 
+\begin{align}
+\frac{D\mathbf{u}}{Dt} & =-2\Omega\times\mathbf{u}-g\nabla(h+h_{0})\label{eqn:SWEuv1}\\
+\frac{Dh}{Dt} & +h\nabla\cdot\mathbf{u}=0\label{eqn:SWEh1}
+\end{align}
+
+\end_inset
+
+
+\begin_inset Formula $h$
+\end_inset
+
+ is fluid depth,
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega=(0,0,f)$
+\end_inset
+
+ is planetary rotation.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Exercise:
+ Linearise
+\end_layout
+
+\begin_layout Plain Layout
+Assume that 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ is small and that
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $h\rightarrow H+h$
+\end_inset
+
+ where 
+\begin_inset Formula $H$
+\end_inset
+
+ is mean height and 
+\begin_inset Formula $h$
+\end_inset
+
+ is small (ignore mountain)
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "48col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset VSpace -24pt
+\end_inset
+
+Solutions of non-linear SWE 
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mediaMovie[autostart,loop]
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{/home/hilary/OpenFOAM/hilary-7/run/shallowWaterSphere/WilliMountain/RinglerLloyd/6/2/129600/hU.pdf}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{/home/hilary/OpenFOAM/hilary-7/run/shallowWaterSphere/WilliMountain/RinglerLloyd/6/2/hU.mp4}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+Colour shows height of atmosphere.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+Vectors show depth integrated wind.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial\mathbf{u}}{\partial t}=-2\Omega\times\mathbf{u}-g\nabla h & , & \frac{\partial h}{\partial t}+H\nabla\cdot\mathbf{u}=0
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Exercise:
+ 
+\series default
+Write in one dimension,
+ assuming variations only in the 
+\begin_inset Formula $x$
+\end_inset
+
+ direction
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial u}{\partial t}=fv-g\frac{\partial h}{\partial x} & , & \frac{\partial h}{\partial t}+H\frac{\partial u}{\partial x}=0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}
+\end_layout
+
 \end_inset
 
 
@@ -2035,8 +1777,8 @@ semi-implicit, semi-Lagrangian (like UK Met Office)
 
 \end_layout
 
-\begin_layout Section
-Discretisations for terms of the Euler Equations
+\begin_layout Subsection
+Compressible Euler Equations
 \end_layout
 
 \begin_layout Standard
@@ -2157,7 +1899,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-Momentum 
+Momentum
 \end_layout
 
 \end_inset
@@ -2169,7 +1911,7 @@ Momentum
 \begin_inset Formula $\frac{\partial\mathbf{u}}{\partial t}+{\color{cyan}\mathbf{u}\cdot\nabla\mathbf{u}}=\text{‐}{\color{olive}2\bm{\Omega}\times\mathbf{u}-{\color{red}\frac{\nabla p}{\rho}+\mathbf{g}}}$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -2200,7 +1942,7 @@ Momentum
 \begin_inset Text
 
 \begin_layout Plain Layout
-Continuity 
+Continuity
 \end_layout
 
 \end_inset
@@ -2243,7 +1985,7 @@ Continuity
 \begin_inset Text
 
 \begin_layout Plain Layout
-Potential temperature 
+Potential temperature
 \end_layout
 
 \end_inset
@@ -2286,7 +2028,9 @@ Potential temperature
 \begin_inset Text
 
 \begin_layout Plain Layout
-An equation of state, eg perfect gas law, 
+An equation of state,
+ eg perfect gas law,
+ 
 \begin_inset Formula $p=\rho RT$
 \end_inset
 
@@ -2337,10 +2081,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2361,7 +2101,7 @@ status collapsed
 \begin_inset Formula $\mathbf{u}$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -2370,7 +2110,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-Wind vector 
+Wind vector
 \end_layout
 
 \end_inset
@@ -2382,7 +2122,7 @@ Wind vector
 \begin_inset Formula $\vec{g}$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -2405,7 +2145,7 @@ Gravity vector (downwards)
 \begin_inset Formula $t$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -2414,7 +2154,7 @@ Gravity vector (downwards)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Time 
+Time
 \end_layout
 
 \end_inset
@@ -2426,7 +2166,7 @@ Time
 \begin_inset Formula $\theta$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -2435,7 +2175,8 @@ Time
 \begin_inset Text
 
 \begin_layout Plain Layout
-Potential temperature, 
+Potential temperature,
+ 
 \begin_inset Formula $T\left(p_{0}/p\right)^{\kappa}$
 \end_inset
 
@@ -2453,7 +2194,7 @@ Potential temperature,
 \begin_inset Formula $\bm{\Omega}$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -2506,7 +2247,7 @@ heat capacity ratio
 \begin_inset Formula $\rho$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -2550,7 +2291,7 @@ Source of heat
 \begin_inset Formula $p$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -2602,6 +2343,1426 @@ status open
 \end_inset
 
 
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Finite Differences and Arakawa Grids for Wave Equations
+\end_layout
+
+\begin_layout Subsection
+The Arakawa A-grid (a co-located method)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To solve the linearised shallow water equations in one dimension:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial u}{\partial t}=fv-g\frac{\partial h}{\partial x} & , & \frac{\partial h}{\partial t}+H\frac{\partial u}{\partial x}=0
+\end{eqnarray*}
+
+\end_inset
+
+Store discrete values of 
+\begin_inset Formula $h$
+\end_inset
+
+ and 
+\begin_inset Formula $u$
+\end_inset
+
+ on a grid.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "60col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-10pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset External
+	template XFig
+	filename /home/hilary/latex/teaching/topics/SWE/figs/A-grid.fig
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "38col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-28pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial u}{\partial x}_{i} & \approx & \opttext{\frac{u_{i+1}-u_{i-1}}{2\Delta x}}\\
+\frac{\partial h}{\partial x}_{i} & \approx & \opttext{\frac{h_{i+1}-h_{i-1}}{2\Delta x}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+step{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "55col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This can be extended to two dimensions and gives these solutions (h is coloured):
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace 1cm*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+The Arakawa A-grid is not used by operational centres in this form.
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "42col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace -12pt*
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.1
+\backslash
+linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/colorbar.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+switch{
+\backslash
+includegraphics[width=0.85
+\backslash
+linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Agrid1.pdf}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+movie*{10}{1}{
+\backslash
+includegraphics[width=0.85
+\backslash
+linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Agrid
+\backslash
+thesubstep.pdf}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Arakawa Grids A-E 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "AL77"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider the component form of the 2D linearised SWE:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial u}{\partial t}=\phantom{-}fv-g\frac{\partial h}{\partial x} &  & \frac{\partial h}{\partial t}=-H\left(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}\right)\\
+\frac{\partial v}{\partial t}-fu-g\frac{\partial h}{\partial y}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "28col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\series bold
+A-grid
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Switch
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/A.pdf_t}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "70col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Non-compact discretisation of 
+\begin_inset Formula $\partial u/\partial x$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\partial u/\partial y$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\partial h/\partial x$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial h/\partial y$
+\end_inset
+
+ leads to spurious gravity modes.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Grid-scale oscillations 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Simple
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Accurate inertial oscillations (
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ together)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "28col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\series bold
+B-grid
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Switch
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/B.pdf_t}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "70col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Some older ocean models use B-grid.
+ Eg ocean component of HadCM3.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Gradients are compact but averaging needed
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Still computational modes
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Acurate inertial oscillations (
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ together)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "28col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace -12pt*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Switch
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/C.pdf_t}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "70col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align left
+
+\series bold
+C-grid
+\end_layout
+
+\begin_layout Itemize
+Compact discretisation of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\partial u/\partial x$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\partial u/\partial y$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\partial h/\partial x$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial h/\partial y$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ best representation of gravity modes.
+ 
+\end_layout
+
+\begin_layout Itemize
+Coriolis terms and geostrophic balance more of a problem.
+\end_layout
+
+\begin_layout Itemize
+Widely used including current UK Met Office model.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "28col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace -12pt*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Switch
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/D.pdf_t}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "70col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align left
+
+\series bold
+D-grid
+\end_layout
+
+\begin_layout Itemize
+Non-compact discretisation of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\partial u/\partial x$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial h/\partial x$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ leads to spurious gravity modes 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Lots of averaging needed
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Best representation of geostrophic balance
+\end_layout
+
+\begin_layout Itemize
+GFDL's FV3 model uses a C-D grid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "28col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\series bold
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset VSpace -12pt*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Switch
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/grid.pdf_t}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+scalebox{0.7}[0.7]{
+\backslash
+input{/home/hilary/latex/teaching/topics/SWE/Arakawa/E.pdf_t}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "70col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align left
+
+\series bold
+E-grid
+\end_layout
+
+\begin_layout Itemize
+Equivalent to a B-grid rotated by 
+\begin_inset Formula $45^{o}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Solutions of Linearised SWE starting from an initial bump
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{ccc}
+\end_layout
+
+\begin_layout Plain Layout
+
+A-grid & B-grid & C-grid 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+switch{
+\backslash
+includegraphics[width=0.3
+\backslash
+linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Agrid1.pdf}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+movie*{10}{1}{
+\backslash
+includegraphics[width=0.3
+\backslash
+linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Agrid
+\backslash
+thesubstep.pdf}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+&
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+switch{
+\backslash
+includegraphics[width=0.3
+\backslash
+linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Bgrid1.pdf}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+movie*{10}{1}{
+\backslash
+includegraphics[width=0.3
+\backslash
+linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Bgrid
+\backslash
+thesubstep.pdf}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+&
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+switch{
+\backslash
+includegraphics[width=0.3
+\backslash
+linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Cgrid1.pdf}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+movie*{10}{1}{
+\backslash
+includegraphics[width=0.3
+\backslash
+linewidth]{/home/hilary/latex/teaching/topics/SWE/2dSWE/Cgrid
+\backslash
+thesubstep.pdf}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But the C-grid only really works well on a latitude-longitude grid
 \end_layout
 
 \begin_layout Standard
@@ -2612,7 +3773,13 @@ status open
 \end_layout
 
 \begin_layout Section
-Who uses what for Advection?
+Methods for Advection (or transport)
+\end_layout
+
+\begin_layout Standard
+Extending the equations to non-linear shallow water or Euler equations,
+ leads to advection terms in each equation.
+ There are many classes of advection scheme.
 \end_layout
 
 \begin_layout Standard
@@ -2713,7 +3880,8 @@ Next
 \begin_layout Plain Layout
 
 \color red
-Flux form semi-Lagrangian? (FV)
+Flux form semi-Lagrangian?
+ (FV)
 \end_layout
 
 \end_inset
@@ -3141,6 +4309,22 @@ Semi-Lagrangian
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -3160,6 +4344,16 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 \frac{\partial\psi}{\partial t}+\mathbf{u}\cdot\nabla\psi=0
@@ -3170,7 +4364,7 @@ status open
 solved as
 \begin_inset Formula 
 \[
-\psi_{ij}^{n+1}=\psi_{d}^{n}
+\psi_{ij}^{n+1}=\opttext{\psi_{d}^{n}}
 \]
 
 \end_inset
@@ -3179,7 +4373,8 @@ where
 \begin_inset Formula $n$
 \end_inset
 
- is the time level, 
+ is the time level,
+ 
 \begin_inset Formula $ij$
 \end_inset
 
@@ -3231,10 +4426,56 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Switch{
+\end_layout
+
+\end_inset
+
+
+\begin_inset External
+	template XFig
+	filename figs/semiLagrangeGrid.fig
+	width 100text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
 \begin_inset External
 	template XFig
 	filename figs/semiLagrange.fig
 	width 100text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
 
 \end_inset
 
@@ -3271,7 +4512,7 @@ status open
 
 
 \backslash
-optBlock{
+opttext{
 \end_layout
 
 \end_inset
@@ -3311,7 +4552,7 @@ status open
 
 
 \backslash
-optBlock{
+opttext{
 \end_layout
 
 \end_inset
@@ -3351,7 +4592,7 @@ status open
 
 
 \backslash
-optBlock{
+opttext{
 \end_layout
 
 \end_inset
@@ -3375,7 +4616,37 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
 \end_inset
 
 
@@ -3425,7 +4696,8 @@ Space-time
 \begin_layout Plain Layout
 
 \series bold
-Examples: 
+Examples:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -3437,7 +4709,7 @@ Lin and Rood
 \end_layout
 
 \begin_layout Itemize
-COSMIC
+COSMIC and SWIFT
 \end_layout
 
 \begin_layout Itemize
@@ -3445,7 +4717,8 @@ Lax-Wendroff.
  
 \begin_inset CommandInset citation
 LatexCommand nocite
-key "LLM96,LLM95,CW84,LR96"
+key "LLM96,CW84,LR96,BK24"
+literal "true"
 
 \end_inset
 
@@ -3484,94 +4757,13 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset External
 	template XFig
 	filename figs/hexFlux.fig
 	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-smiley{}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-optBlock{
-\end_layout
-
-\end_inset
-
-Conservative
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frownie{}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-optBlock{
-\end_layout
-
-\end_inset
-
-Only used with small time-steps ( 
-\begin_inset Formula $c<1$
-\end_inset
-
-)
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
 
 \end_inset
 
@@ -3683,7 +4875,7 @@ status open
 \color purple
 \begin_inset Formula 
 \[
-\psi^{n+1}=\psi^{n}-\frac{1}{V}\sum_{\text{faces}}\psi_{f}\mathbf{u}\cdot\mathbf{S}
+\psi^{n+1}=\opttext{\psi^{n}-\frac{\Delta t}{V}\sum_{\text{faces}}\psi_{f}\mathbf{u}\cdot\mathbf{S}}
 \]
 
 \end_inset
@@ -3705,6 +4897,100 @@ where
 
  is integrated over the volume swept through the face during one time step.
  
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+smiley{}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Conservative
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+smiley{}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{
+\end_layout
+
+\end_inset
+
+Can be used with large time steps on structured grids
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3824,26 +5110,13 @@ Implicit (eg Crank-Nicolson)
 \end_layout
 
 \begin_layout Section
-Numerical Methods for Gravity and Acoustic waves (2nd order wave equations)
+Other Numerical Methods for Waves and Advection
 \end_layout
 
 \begin_layout Itemize
-Finite Difference - Arakawa A, B, C, D or E grids 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "AL77"
-
-\end_inset
-
-
+Finite volume (like finite difference but solve on cells rather than at grid-points)
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Finite Volume (A-grid – co-located or C-grid – staggered)
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 Spectral element (co-located)
 \end_layout
@@ -3892,12 +5165,13 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section
+\begin_layout Subsection
 Spectral Method
 \end_layout
 
 \begin_layout Itemize
-Fourier and Legendre transforms convert grid point data, 
+Fourier and Legendre transforms convert grid point data,
+ 
 \begin_inset Formula $\tilde{X}(\lambda,\theta)$
 \end_inset
 
@@ -3909,12 +5183,12 @@ Fourier and Legendre transforms convert grid point data,
 \begin_inset Formula $\theta$
 \end_inset
 
- is latitude) into coefficients, 
+ is latitude) into coefficients,
+ 
 \begin_inset Formula $X_{n}^{m}$
 \end_inset
 
- so that the atmospheric state can be represented as a sum of spherical
- harmonics:
+ so that the atmospheric state can be represented as a sum of spherical harmonics:
 \begin_inset Formula 
 \[
 \tilde{X}(\lambda,\theta)=\sum_{n=0}^{N}\sum_{m=-n}^{n}X_{n}^{m}P_{n}^{m}(\theta)e^{im\lambda}
@@ -3930,8 +5204,11 @@ where
 \end_layout
 
 \begin_layout Itemize
-Differentiation and interpolation can then be done very accurately in spectral
- space.
+Differentiation and interpolation can then be done very accurately in spectral space.
+\end_layout
+
+\begin_layout Itemize
+Then inverse transporm back onto the grid for time stepping.
 \end_layout
 
 \begin_layout Plain Layout
@@ -3983,6 +5260,9 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename graphics/Spherical_harmonics.png
 	lyxscale 10
@@ -4000,6 +5280,22 @@ status open
 
 \begin_layout Standard
 \begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+liststepwise{
+\end_layout
+
 \end_inset
 
 
@@ -4024,8 +5320,8 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section*
-Spectral Method
+\begin_layout Subsubsection*
+Some Spectral Method Properties
 \end_layout
 
 \begin_layout Description
@@ -4049,12 +5345,12 @@ status open
 
 
 \backslash
-optBlock{
+opttext{
 \end_layout
 
 \end_inset
 
-Highest possible order of accuracy for the resolution
+Highest order of accuracy
 \begin_inset ERT
 status open
 
@@ -4089,12 +5385,12 @@ status open
 
 
 \backslash
-optBlock{
+opttext{
 \end_layout
 
 \end_inset
 
-ECMWF IFS has always been the most accurate model.
+ECMWF IFS always most accurate.
  
 \begin_inset ERT
 status open
@@ -4130,12 +5426,12 @@ status open
 
 
 \backslash
-optBlock{
+opttext{
 \end_layout
 
 \end_inset
 
-No grid imprinting due to gird irregularities
+No grid imprinting
 \begin_inset ERT
 status open
 
@@ -4170,17 +5466,16 @@ status open
 
 
 \backslash
-optBlock{
+opttext{
 \end_layout
 
 \end_inset
 
-Lot of  communication involved in spectral transforms and inverse transforms
- 
+Lot of communication in spectral transforms 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- parallel scaling problems
+ parallel scaling problems?
 \begin_inset ERT
 status open
 
@@ -4215,7 +5510,7 @@ status open
 
 
 \backslash
-optBlock{
+opttext{
 \end_layout
 
 \end_inset
@@ -4283,7 +5578,8 @@ status open
 
 \end_inset
 
-eller, ECMWF)
+eller,
+ ECMWF)
 \begin_inset Newline newline
 \end_inset
 
@@ -4314,6 +5610,7 @@ Performance modelling
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ZM18"
+literal "true"
 
 \end_inset
 
@@ -4332,6 +5629,20 @@ key "ZM18"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -4365,16 +5676,18 @@ framecolor "black"
 backgroundcolor "none"
 status open
 
-\begin_layout Section
+\begin_layout Subsection
 The Finite Element Method
 \end_layout
 
 \begin_layout Plain Layout
-The solution, 
+The solution,
+ 
 \begin_inset Formula $u(\mathbf{x})$
 \end_inset
 
-, is represented as a sum of 
+,
+ is represented as a sum of 
 \begin_inset Formula $N$
 \end_inset
 
@@ -4386,11 +5699,14 @@ u(\mathbf{x})=\sum_{i=1}^{N}U_{i}\phi_{i}(\mathbf{x}).\label{eq:asBasis}
 
 \end_inset
 
-For the finite element method, the basis functions, 
+For the finite element method,
+ the basis functions,
+ 
 \begin_inset Formula $\phi_{i}$
 \end_inset
 
-, are piecewise polynomials defined as non-zero on on each element.
+,
+ are piecewise polynomials defined as non-zero on on each element.
  
 \end_layout
 
@@ -4399,10 +5715,12 @@ To find
 \begin_inset Formula $U_{i}$
 \end_inset
 
-, multiply eqn (
+,
+ multiply eqn (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:asBasis"
+nolink "false"
 
 \end_inset
 
@@ -4424,8 +5742,8 @@ Integrate by parts to get weak formulation
 \end_layout
 
 \begin_layout Itemize
-Leads to a set of linear simultaneous equations: the mass matrix (or stiffness
- matrix) – 
+Leads to a set of linear simultaneous equations:
+ the mass matrix (or stiffness matrix) – 
 \series bold
 a global matrix
 \end_layout
@@ -4491,8 +5809,8 @@ Representation of a function using a piecewise linear basis.
 
 \end_layout
 
-\begin_layout Section
-Spectral Element Method 
+\begin_layout Subsection
+Spectral Element Method
 \end_layout
 
 \begin_layout Standard
@@ -4528,6 +5846,19 @@ Basis functions are Lagrange interpolation on Gauss-Lobatto quadrature points
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -4554,8 +5885,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Itemize
-Integration over an element is summation of values at Gauss-Lobatto quadrature
- points
+Integration over an element is summation of values at Gauss-Lobatto quadrature points
 \end_layout
 
 \begin_layout Itemize
@@ -4593,9 +5923,22 @@ Pressure and velocity co-located
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Mixed Finite Element
 \end_layout
 
@@ -4660,6 +6003,9 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename graphics/verticalStaggering.png
 	width 100text%
@@ -4703,6 +6049,11 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset VSpace -0.3cm
 \end_inset
 
@@ -4802,11 +6153,14 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
-MPAS, DYNAMICO
+MPAS,
+ DYNAMICO
 \begin_inset Newline newline
 \end_inset
 
-ICON, NICAM, CAM-SE
+ICON,
+ NICAM,
+ CAM-SE
 \end_layout
 
 \end_inset
@@ -4845,7 +6199,8 @@ GFDL and NOAA's FV
 \begin_inset Newline newline
 \end_inset
 
-NUMA-Neptune, CAM-FV?
+NUMA-Neptune,
+ CAM-FV?
 \end_layout
 
 \end_inset
@@ -4957,6 +6312,7 @@ status open
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "UJK+17"
+literal "true"
 
 \end_inset
 
@@ -4967,16 +6323,7 @@ key "UJK+17"
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "NRC+10"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand nocite
-key "SG11"
+literal "true"
 
 \end_inset
 
@@ -4987,6 +6334,7 @@ key "SG11"
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "SKD+12"
+literal "true"
 
 \end_inset
 
@@ -4997,6 +6345,7 @@ key "SKD+12"
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "SMT+08"
+literal "true"
 
 \end_inset
 
@@ -5007,6 +6356,7 @@ key "SMT+08"
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "ZRR+15"
+literal "true"
 
 \end_inset
 
@@ -5017,6 +6367,7 @@ key "ZRR+15"
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "DDT15"
+literal "true"
 
 \end_inset
 
@@ -5027,6 +6378,7 @@ key "DDT15"
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "ECMWF_IFS"
+literal "true"
 
 \end_inset
 
@@ -5037,6 +6389,7 @@ key "ECMWF_IFS"
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "comsol_fem"
+literal "true"
 
 \end_inset
 

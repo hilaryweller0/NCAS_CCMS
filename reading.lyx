@@ -1,15 +1,15 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass report
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package none
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -18,9 +18,13 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +54,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,15 +65,23 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -82,7 +97,7 @@
 
 \series bold
 \size large
-Reading and Resources
+Further Resources (Not essential reading)
 \end_layout
 
 \begin_layout Subsection*
@@ -92,81 +107,8 @@ Python:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-A Hands-On Introduction to Using Python in the Atmospheric and Oceanic Sciences
-\begin_inset Quotes erd
-\end_inset
-
- by Johnny Wei-Bing Lin.
- Download for free or buy cheaply from 
 \begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.johnny-lin.com/pyintro
-\end_layout
-
-\end_inset
-
- .
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-Think Python.
- How to Think Like a Computer Scientist
-\begin_inset Quotes erd
-\end_inset
-
- by Allen B.
- Downey .
- Download from free from 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.greenteapress.com/thinkpython/thinkpython.html
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-Numerical Methods in Engineering with Python
-\begin_inset Quotes erd
-\end_inset
-
- by Jaan Kiusalaas 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-www.southampton.ac.uk/sesg3020/textbook/SciPyIntro.pdf
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -180,7 +122,7 @@ http://www.python.org
 
 \begin_layout Itemize
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -194,11 +136,11 @@ http://docs.python.org/tutorial/
 
 \begin_layout Itemize
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-http://matplotlib.sourceforge.net/users/index.html
+https://matplotlib.org/stable/users/
 \end_layout
 
 \end_inset
@@ -208,49 +150,7 @@ http://matplotlib.sourceforge.net/users/index.html
 
 \begin_layout Itemize
 \begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://matplotlib.sourceforge.net/users/pyplottutorial.html
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://software-carpentry.org/
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.diveintopython.net/
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -274,6 +174,105 @@ http://www.ibiblio.org/g2swap/byteofpython/read/
 \end_inset
 
  
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.linkedin.com/learning/
+\end_layout
+
+\end_inset
+
+ (free through UoR login)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+A Hands-On Introduction to Using Python in the Atmospheric and Oceanic Sciences
+\begin_inset Quotes erd
+\end_inset
+
+ by Johnny Wei-Bing Lin.
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.johnny-lin.com/pyintro
+\end_layout
+
+\end_inset
+
+ (for Python 2.7).
+\end_layout
+
+\begin_layout Itemize
+Free courses in Python and other languages 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.codecademy.com/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Think Python.
+ How to Think Like a Computer Scientist
+\begin_inset Quotes erd
+\end_inset
+
+ by Allen B.
+ Downey .
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.greenteapress.com/thinkpython/thinkpython.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Numerical Methods in Engineering with Python 3
+\begin_inset Quotes erd
+\end_inset
+
+ by Jaan Kiusalaas 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://doi.org/10.1017/CBO9781139523899
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -320,57 +319,8 @@ Learning Python
 \begin_layout Subsection*
 
 \series bold
-Version Control
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://swcarpentry.github.io/git-novice/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\size small
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection*
-
-\series bold
 Numerical Methods:
+
 \series default
  
 \end_layout
@@ -391,42 +341,50 @@ http://en.wikipedia.org
 \end_layout
 
 \begin_layout Itemize
-Durran, D.
+Durran,
+ D.
  R.
  Numerical methods for fluid dynamics (Springer).
  
 \end_layout
 
 \begin_layout Itemize
-LeVeque, R.
+LeVeque,
+ R.
  Numerical Methods for Conservation Laws (Springer)
 \end_layout
 
 \begin_layout Itemize
-Ortega, J.M.
- and Poole, W.G.
+Ortega,
+ J.M.
+ and Poole,
+ W.G.
  An Introduction to Numerical Methods for Differential Equations.
  1981 (Pitman Publishing Inc)
 \end_layout
 
 \begin_layout Itemize
-Ferziger, J.
+Ferziger,
+ J.
  H.
- and Peric, M.
+ and Peric,
+ M.
  Computational Methods for Fluid Dynamics (Springer).
  
 \end_layout
 
 \begin_layout Itemize
-Numerical Recipes: The Art of Scientific Computing, Third Edition (2007),
+Numerical Recipes:
+ The Art of Scientific Computing,
+ Third Edition (2007),
  (Cambridge University Press).
  
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-http://www.nr.com/
+http://numerical.recipes/
 \end_layout
 
 \end_inset
@@ -437,8 +395,7 @@ http://www.nr.com/
 \begin_layout Itemize
 Lloyd N.
  Trefethen.
- Finite Difference and Spectral Methods for Ordinary and Partial Differential
- Equations.
+ Finite Difference and Spectral Methods for Ordinary and Partial Differential Equations.
  
 \begin_inset Flex URL
 status collapsed
@@ -453,24 +410,14 @@ https://people.maths.ox.ac.uk/trefethen/pdetext.html
 
 \end_layout
 
-\begin_layout Subsection*
-
-\series bold
-Website:
-\end_layout
-
-\begin_layout Standard
-The lecturer's version of the notes be downloaded from
-\begin_inset Newline newline
-\end_inset
-
- 
+\begin_layout Itemize
+Hilary Weller's MSc lecture notes 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://www.met.reading.ac.uk/~sws02hs/teaching/NCAS_CMSS/WellerSSnotes_2_lec.pdf
+http://www.met.reading.ac.uk/~sws02hs/teaching/MTMW12/MTMW12_lecturer_2.pdf
 \end_layout
 
 \end_inset

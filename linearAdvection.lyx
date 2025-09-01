@@ -1,15 +1,15 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass report
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package none
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -18,9 +18,13 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +54,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,25 +65,45 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
 
 \begin_layout Chapter
+Linear Advection
+\end_layout
+
+\begin_layout Section
 The Navier Stokes Equations
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:NSeqns"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-The Navier-Stokes Equations for a compressible, rotating atmosphere
+The Navier-Stokes Equations for a compressible,
+ rotating atmosphere
 \end_layout
 
 \begin_layout Standard
@@ -238,7 +265,9 @@ Potential temperature
 \begin_inset Text
 
 \begin_layout Plain Layout
-An equation of state, eg perfect gas law, 
+An equation of state,
+ eg perfect gas law,
+ 
 \begin_inset Formula $p=\rho RT$
 \end_inset
 
@@ -283,7 +312,7 @@ An equation of state, eg perfect gas law,
 
 \begin_layout Plain Layout
 Where the Lagrangian derivative is defined as 
-\begin_inset Formula $\frac{D\Psi}{Dt}=\frac{\partial\Psi}{\partial t}+\mathbf{u}\cdot\nabla\Psi$
+\begin_inset Formula $\frac{D\phi}{Dt}=\frac{\partial\phi}{\partial t}+\mathbf{u}\cdot\nabla\phi$
 \end_inset
 
 
@@ -343,7 +372,7 @@ status collapsed
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="4">
+<lyxtabular version="3" rows="6" columns="4">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -431,7 +460,8 @@ Time
 \begin_inset Text
 
 \begin_layout Plain Layout
-Potential temperature, 
+Potential temperature,
+ 
 \begin_inset Formula $T\left(p_{0}/p\right)^{\kappa}$
 \end_inset
 
@@ -562,7 +592,8 @@ Atmospheric pressure
 \begin_inset Formula $\mu_{u}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\mu_{\theta}$
 \end_inset
 
@@ -576,6 +607,47 @@ Atmospheric pressure
 
 \begin_layout Plain Layout
 Diffusion coefficients
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\phi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Any atmospheric constituent
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -604,12 +676,27 @@ pause
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+Each of these equations has an advection term in the Lagrangian derivative.
+\end_layout
+
+\begin_layout Standard
 What does 
-\begin_inset Formula $\nabla\cdot\mathbf{u}$
+\begin_inset Formula $\mathbf{u}\cdot\nabla\phi$
 \end_inset
 
  mean?
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Lagrangian Derivative and Advection
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -617,7 +704,7 @@ status open
 
 
 \backslash
-pause 
+liststepwise{
 \end_layout
 
 \end_inset
@@ -625,12 +712,69 @@ pause
 
 \end_layout
 
-\begin_layout Itemize
-What does 
-\begin_inset Formula $\nabla p$
+\begin_layout Standard
+All of the NS equations include advection – properties of the atmosphere are moved by the wind.
+ Consider a property 
+\begin_inset Formula $\phi$
 \end_inset
 
- mean?
+ (which could be wind,
+ density or temperature).
+ Advection with no other sources of change is governed by:
+\begin_inset Formula 
+\begin{equation}
+\frac{D\phi}{Dt}=\frac{\partial\phi}{\partial t}+\mathbf{u}\cdot\nabla\phi=0\label{eqn:3dAdvect}
+\end{equation}
+
+\end_inset
+
+Changes of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ are produced by the component of the wind in the same direction as gradients of 
+\begin_inset Formula $\phi$
+\end_inset
+
+.
+ In order to understand why the 
+\begin_inset Formula $\mathbf{u}\cdot\nabla\phi$
+\end_inset
+
+ term leads to changes in 
+\begin_inset Formula $\phi$
+\end_inset
+
+,
+ consider a region of polluted atmosphere where the pollutant has the concentration contours shown below:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+ 
+\begin_inset VSpace 1cm
+\end_inset
+
+ 
 \begin_inset ERT
 status open
 
@@ -638,41 +782,175 @@ status open
 
 
 \backslash
-pause 
+Switch{
 \end_layout
 
 \end_inset
 
 
-\end_layout
+\begin_inset External
+	template XFig
+	filename figs/contours.fig
+	width 100text%
 
-\begin_layout Itemize
-What does 
-\begin_inset Formula $\mathbf{u}\cdot\nabla\Psi$
 \end_inset
 
- mean?
+
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset External
+	template XFig
+	filename figs/contoursPlus.fig
+	width 100text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "43line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Exercise
+\series default
+:
+ Draw on the figure the directions of the gradients of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ and thus mark with a 
+\begin_inset Formula $+$
+\end_inset
+
+,
+ 
+\begin_inset Formula $-$
+\end_inset
+
+ or 
+\begin_inset Formula $0$
+\end_inset
+
+ locations where 
+\begin_inset Formula $\mathbf{u}\cdot\nabla\phi$
+\end_inset
+
+ is positive,
+ negative and zero.
+ Thus deduce where 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is increasing,
+ decreasing or staying the same based on equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eqn:3dAdvect"
+nolink "false"
+
+\end_inset
+
+.
+ Hence overlay contours of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ at a later time.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+ 
+\backslash
 
 \backslash
-pause 
+ 
+\backslash
+pause
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-What does 
-\begin_inset Formula $\bm{\Omega}\times\mathbf{u}$
+\begin_inset Formula $\mathbf{u}\cdot\nabla\phi$
 \end_inset
 
- mean?
+ is the linear advection advection term – 
+\begin_inset Formula $\phi$
+\end_inset
+
+ being moved around by the wind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathbf{u}\cdot\nabla\mathbf{u}$
+\end_inset
+
+ is non-linear advection – the wind being moved around by the wind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -705,7 +983,7 @@ name "sec:Advection-of-Pollution"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\frac{D\Psi}{Dt}$
+\begin_inset Formula $\frac{D\phi}{Dt}$
 \end_inset
 
 
@@ -729,7 +1007,7 @@ name "sec:Advection-of-Pollution"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\frac{\partial\Psi}{\partial t}$
+\begin_inset Formula $\frac{\partial\phi}{\partial t}$
 \end_inset
 
 
@@ -753,7 +1031,7 @@ name "sec:Advection-of-Pollution"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathbf{u}\cdot\nabla\Psi$
+\begin_inset Formula $\mathbf{u}\cdot\nabla\phi$
 \end_inset
 
 
@@ -801,7 +1079,7 @@ name "sec:Advection-of-Pollution"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mu_{\Psi}\nabla^{2}\Psi$
+\begin_inset Formula $\mu_{\Psi}\nabla^{2}\phi$
 \end_inset
 
 
@@ -935,7 +1213,7 @@ at fixed point
 
 \begin_layout Plain Layout
 of 
-\begin_inset Formula $\Psi$
+\begin_inset Formula $\phi$
 \end_inset
 
 
@@ -975,7 +1253,7 @@ and sinks
 
 \begin_layout Plain Layout
 of 
-\begin_inset Formula $\Psi$
+\begin_inset Formula $\phi$
 \end_inset
 
 
@@ -1003,498 +1281,45 @@ mediaMovie[autostart]{
 \backslash
 includegraphics[width=0.8
 \backslash
-textwidth]{/home/hilary/Videos/pollutionPlumes/pollutionPlumes-still.png}}{/home/
-hilary/Videos/pollutionPlumes/pollutionPlumes.avi}
+textwidth]{/home/hilary/Videos/pollutionPlumes/pollutionPlumes-still.png}}{/home/hilary/Videos/pollutionPlumes/pollutionPlumes.avi}
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newpage clearpage
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-The Momentum Equation
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:momEqn"
-
-\end_inset
-
-
+Properties of Advection 
+\series medium
+\size normal
+True or false?
+ Discuss
 \end_layout
 
 \begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="9">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\frac{D\mathbf{u}}{Dt}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $=$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\text{‐}2\bm{\Omega}\times\mathbf{u}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\frac{\nabla p}{\rho}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathbf{g}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $+$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mu_{u}\left(\nabla^{2}\mathbf{u}+\frac{1}{3}\nabla(\nabla\cdot\mathbf{u})\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Lagrangian
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Coriolis
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Pressure
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Gravitational
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Diffusion
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-derivative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-gradient
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-acceleration
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Coriolis
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Coriolis"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Inertial Oscillations governed by part of the momentum equation:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "35col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-\begin_inset Formula 
-\[
-\frac{\partial\mathbf{u}}{\partial t}=\text{‐}2\bm{\Omega}\times\mathbf{u}
-\]
+
+
+\backslash
+liststepwise{
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-\align left
-A drifting buoy set in motion by strong westerly winds in the Baltic Sea
- in July 1969.
+\begin_layout Enumerate
+Advection moves fields around without changing their shape.
  
-\end_layout
-
-\begin_layout Itemize
-\align left
-Once the wind subsides, the upper ocean follows inertia circles
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/latex/teaching/topics/NSintro/copyright_persson_broman.png
-	lyxscale 50
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "60col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/latex/teaching/topics/NSintro/inertia_circle.png
-	lyxscale 50
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-The Pressure Gradient Force
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "48col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-If the pressure gradient force is the only large term in the momentum equation,
- then together with the continuity equation and perfect gas law, we get
- equations for acoustic waves:
-\begin_inset Formula 
-\begin{eqnarray*}
-\frac{\partial\mathbf{u}}{\partial t}+\frac{1}{\rho_{0}}\nabla p & = & 0\\
-\frac{\partial p}{\partial t}+\rho_{0}c^{2}\nabla\cdot\mathbf{u} & = & 0
-\end{eqnarray*}
-
-\end_inset
-
-where 
-\begin_inset Formula $\rho_{0}$
-\end_inset
-
- is a reference density and 
-\begin_inset Formula $c$
-\end_inset
-
- is the speed of sound.
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "48col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -1502,22 +1327,122 @@ status open
 
 
 \backslash
-mediaMovie[autostart,loop]
+opttext{False.
+ Fields can be deformed.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Advection moves fields from areas of high concentration to low concentration.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{False.
+ This is diffusion.
+ Advection moves fields in the direction of the wind}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Advection mixes areas of high and low concentration (similar to previous statement).
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{No.
+ Diffusion is needed for mixing.
+ Although advection can lead to intermingling which promotes diffusion.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Nothing can be created or destroyed by advection.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{True.
+ Advection is conservative}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Advection cannot create negative values of a field that is initially all positive.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{True.
+ New extrema cannot be generated.
+ If you are at an extrema of $
+\backslash
+phi$ then
+\backslash
+
+\backslash
+
 \end_layout
 
 \begin_layout Plain Layout
 
-{
+$
 \backslash
-includegraphics[width=
+frac{
 \backslash
-textwidth]{/home/hilary/latex/teaching/topics/NSintro/Spherical_wave/Spherical_w
-ave2-0.jpg}}
+partial
+\backslash
+phi}{
+\backslash
+partial x} = 0 
+\backslash
+implies 
 \end_layout
 
 \begin_layout Plain Layout
 
-{/home/hilary/latex/teaching/topics/NSintro/Spherical_wave/Spherical_wave2.avi}
+
+\backslash
+frac{
+\backslash
+partial
+\backslash
+phi}{
+\backslash
+partial t} = 0$.
+ So the extrema stays the same.}
 \end_layout
 
 \end_inset
@@ -1525,20 +1450,29 @@ ave2-0.jpg}}
 
 \end_layout
 
+\begin_layout Enumerate
+Non-linear advection is also bounded.
+ (The simplest non-linear advection equation is 
+\begin_inset Formula $\partial u/\partial t=u\ \partial u/\partial x$
+\end_inset
+
+) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+opttext{True.
+ New extrema cannot be generated.
+ If you are at an extrema then the gradient is zero so the rate of change with time is zero.
+ Initial maxima and minima stay the same.}
+\end_layout
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection*
-Pressure Gradients lead to very fast acceleration - Acoustic Waves
 \end_layout
 
 \begin_layout Standard
@@ -1549,12 +1483,7 @@ status open
 
 
 \backslash
-mediaMovie[autostart=true,loop]{
-\backslash
-includegraphics[width=0.8
-\backslash
-textwidth]{/home/hilary/Videos/pressureWaves/bombBlast.jpg}}{/home/hilary/Videos/
-pressureWaves/bombBlast.avi}
+step{
 \end_layout
 
 \end_inset
@@ -1562,69 +1491,34 @@ pressureWaves/bombBlast.avi}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection*
-Geostrophic Balance: Pressure Gradients versus Coriolis
+\begin_layout Paragraph*
+Exercise
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\text{‐}2\bm{\Omega}\times\mathbf{u}=\frac{\nabla p}{\rho}$
+Assuming that 
+\begin_inset Formula $\phi$
 \end_inset
 
- .
- If 
-\begin_inset Formula $2\bm{\Omega}=\begin{pmatrix}0\\
-0\\
-f
-\end{pmatrix}$
+ varies only in the 
+\begin_inset Formula $x$
 \end_inset
 
- and 
-\begin_inset Formula $\mathbf{u}=\begin{pmatrix}u\\
+ direction and that the wind vector,
+ 
+\begin_inset Formula $\mathbf{u}=\left(\begin{array}{c}
+u\\
 v\\
 w
-\end{pmatrix}$
+\end{array}\right)$
 \end_inset
 
- then 
-\begin_inset Formula $u=\optBlock{-\frac{1}{f\rho}\frac{\partial p}{\partial y}}$
-\end_inset
-
-, 
-\begin_inset Formula $v=\optBlock{\frac{1}{f\rho}\frac{\partial p}{\partial x}}$
+,
+ write the one-dimensional linear advection equation for 
+\begin_inset Formula $\phi$
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename /home/hilary/latex/teaching/topics/NSintro/synnopticChart.png
-	lyxscale 50
-	height 80theight%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection*
-Geostrophic turbulence: pressure gradients, Coriolis and the (non-linear)
- advection of velocity by velocity
 \end_layout
 
 \begin_layout Standard
@@ -1635,59 +1529,16 @@ status open
 
 
 \backslash
-mediaMovie[autostart]{
-\backslash
-includegraphics[width=0.8
-\backslash
-textwidth]{/home/hilary/Videos/geoTurbulence/geoTurbulence.jpg}}{/home/hilary/Vid
-eos/geoTurbulence/geoTurbulence.avi}
+opttext{
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Gravitational Acceleration: Explosive Comulonimbus
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-mediaMovie[autostart]{
-\backslash
-includegraphics[width=0.8
-\backslash
-textwidth]{/home/hilary/Videos/convectivePlumes/explosiveComulonumbus.jpg}}{/home
-/hilary/Videos/convectivePlumes/explosiveComulonumbus.avi}
-\end_layout
-
+\begin_inset Formula $\frac{\partial\phi}{\partial t}+u\frac{\partial\phi}{\partial x}=0$
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-The Complete Navier Stokes Equations
-\end_layout
-
-\begin_layout Standard
-With moisture, phase changes, radiation, ...
- from NUGAM (courtesy of Pier Luigi)
 \end_layout
 
 \begin_layout Standard
@@ -1696,23 +1547,7 @@ status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-mediaMovie[autostart,loop]
-\end_layout
-
-\begin_layout Plain Layout
-
-{
-\backslash
-includegraphics[width=
-\backslash
-textwidth]{/home/hilary/Videos/NUGAM/NUGAM_Sun_1yr_web.jpg}}
-\end_layout
-
-\begin_layout Plain Layout
-
-{/home/hilary/Videos/NUGAM/NUGAM_Sun_1yr_web.avi}
+}}}
 \end_layout
 
 \end_inset
